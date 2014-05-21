@@ -1,0 +1,52 @@
+// Container class without fixed with
+.content{
+	padding: 0 15px;
+}
+
+// Handle margin between content modules
+.inner > * {
+	margin-top: 1em;
+	&:first-child{ margin-top: 0; }
+}
+
+// Vertical align between bootstrap cols
+.row.verticalign{
+	display: table;
+	width: 100%;
+
+	> [class|="col"]{
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+// Grid helper
+.col{ padding: 0 15px; }
+
+// Floatings
+.clearfix, .row{ .clearfix(); }
+.float-right{ float: right !important; } // Dirty, but must override float:left often
+.float-left{ float: left; }
+
+// Text align
+.text-left{ text-align: left; }
+.text-center{ text-align: center; }
+.text-right{ text-align: right; }
+
+// Text style
+.bold{ font-weight: bold; }
+.ants{ font-size: 0.8em; }
+.giants{ font-size: 1.2em; }
+
+// Display styles
+.block{ display: block; }
+.inline{ display: inline; }
+.inline-block{ display: inline-block; }
+
+.absolute{ position: absolute; }
+.relative{ position: relative; }
+.static{ position: static; }
+.fixed{ position: fixed; }
+
+// Forms
+.error{ display: none; color: red; }

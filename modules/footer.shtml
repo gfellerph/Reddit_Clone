@@ -1,0 +1,65 @@
+<footer>
+	<div class="content inner">
+		<section class="text-center">
+			<img src="/gfx/footer.jpg" alt="">
+		</section>
+		
+		<section class="footerlinks">
+			<div class="row">
+				<div class="col-sm-3">
+					<h4>Über</h4>
+					<nav>
+						<ul>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-sm-3">
+					<h4>Hilfe</h4>
+					<nav>
+						<ul>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-sm-3">
+					<h4>Tools</h4>
+					<nav>
+						<ul>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-sm-3">
+					<h4>&lt;3</h4>
+					<nav>
+						<ul>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+							<li><a href="#">some link</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</section>
+
+		<section class="disclaimer ants text-center">
+			<p>Das Benutzen dieser Website begründet sich auf der Verpflichtung unserer <a href="#">User Agreement (updated)</a> und <a href="">Privacy Policy (updated)</a>. © 2014 reddit inc. Alle Rechte vorbehalten.</p>
+			<p>REDDIT and the ALIEN Logo are registered trademarks of reddit inc.</p>
+		</section>
+	</div>
+</footer>

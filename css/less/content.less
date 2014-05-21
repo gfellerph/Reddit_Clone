@@ -1,0 +1,47 @@
+.categories{
+	> ul{
+		.floating-ul();
+
+		> li{
+			
+
+			> a{
+				display: block;
+				padding: 0.25em 0.5em;
+
+				&.active{ border: 1px solid black; }
+			}
+		}
+	}
+}
+
+#posts{
+	> ol {
+		padding: 0;
+		
+		> li{
+			border-top: 1px solid gray;
+			&:last-child{ border-bottom: 1px solid gray; }
+		}
+	}
+	article{
+		.clearfix();
+		
+
+		section{
+			float: left;
+			margin-right: 5px;
+
+			.tags > ul{ .floating-ul(); }
+			.tags li{
+				display: inline-block;
+				padding: 2px 5px;
+				background-color: gray;
+				color: white;
+				margin-right: 5px;
+			}
+
+			&.textblock h3{ margin: 0 0 5px; }
+		}
+	}
+}

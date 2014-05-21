@@ -1,0 +1,7 @@
+<div id="body">
+	<div class="content">
+		<div class="row">
+			<!-- #include file="content.shtml" -->
+		</div>
+	</div>
+</div>
