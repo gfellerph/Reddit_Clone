@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="sun"></div>
+	<div id="ray1"></div>
+	<div id="ray2"></div>
+	<div id="ray3"></div>
+	<div id="ray4"></div>
+	<div id="grass"></div>
+
+	<script type="text/javascript">
+		var s = document.getElementById("sun");
+		var r1 = document.getElementById("ray1");
+		var r2 = document.getElementById("ray2");
+		var r3 = document.getElementById("ray3");
+		var r4 = document.getElementById("ray4");
+		var body = document.getElementsByTagName("body")[0];
+		var grass = document.getElementById("grass");
+
+		s.style.width = "100px";
+		s.style.height = "100px";
+		s.style.borderRadius = "100px";
+		s.style.marginLeft = "100px";
+		s.style.marginTop = "100px";
+		s.style.backgroundColor = "yellow";
+
+		var a = [r1, r2, r3, r4];
+		for (var i = 0; i < a.length; i++){
+			a[i].style.width = "10px";
+			a[i].style.height = "200px";
+			a[i].style.marginLeft = "150px";
+			a[i].style.backgroundColor = "yellow";
+			a[i].style.position = "absolute";
+			a[i].style.top = "50px";
+		}
+		r2.style.webkitTransform = "rotate(45deg)";
+		r3.style.webkitTransform = "rotate(-45deg)";
+		r4.style.webkitTransform = "rotate(90deg)";
+
+		body.style.backgroundColor = "blue";
+		body.style.margin = "0";
+
+		grass.style.backgroundColor = "green";
+		grass.style.top = "60%";
+		grass.style.bottom = "0";
+		grass.style.width = "100%";
+		grass.style.position = "absolute";
+	</script>
+</body>
+</html>
