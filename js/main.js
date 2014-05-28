@@ -1,4 +1,5 @@
 define([
-	"modernizr",
-	"jquery"
+	"vendor/modernizr",
+	"modules/post",
+	"modules/nav"
 ]);

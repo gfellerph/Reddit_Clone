@@ -16,7 +16,6 @@
 		<title>Reddit Dolly</title>
 		
 		<link href="css/main.css" rel="stylesheet"/>
-		<script data-main="js/main.js" src="js/require.js"></script>
 	</head>
 
 	<body>
@@ -24,7 +23,7 @@
 		<div id="wrapper">
 
 			<!-- HEADER -->
-			<header>
+			<header id="header">
 				<div class="content">
 					<div class="row">
 						<h3>subreddits</h3>
@@ -53,27 +52,31 @@
 			</header>
 
 			<!-- ASIDE -->
-			<aside>
-				<div class="inner asideslider">
+			<nav id="menu">
 
-					<section class="search">
-						<div class="clearfix">
-							<div class="inline-block">
-								<div class="teasericon icon-search"></div>
-								<input type="text" placeholder="search for something">
-							</div>
-							
-							<button class="icon-search float-right"></button>
-						</div>
+				<div class="controls">
+					<div class="new-post">
+						<button data-folder="link-post" class="icon-plus">post</button>
+					</div>
+					<div class="search">
+						<span class="icon-search"></span>
+						<input type="text" placeholder="search">
+						<a data-folder="search" href="#" class="icon-cog"></a>
+					</div>
+					<div class="login">
+						<button data-folder="login" class="icon-user">login</button>
+					</div>
+				</div>
+
+				<div class="folder">
+					<section class="link-post">
+						<h3>new link post</h3>
 					</section>
-
-					<section class="submit">
-						<div class="inner">
-							<div class="teasericon icon-link"></div>
-							<a href="#" class="icon-link">submit new link</a>
-							<div class="teasericon icon-doc-text"></div>
-							<a href="#" class="icon-doc-text">submit new post</a>
-						</div>
+					<section class="text-post">
+						<h3>new text post</h3>
+					</section>
+					<section class="search">
+						
 					</section>
 
 					<section class="login">
@@ -98,37 +101,40 @@
 					<section class="register">
 						<h3>register</h3>
 						<form action="#" class="inner">
-								<input type="text" placeholder="pick a username">
-								<p class="error usernametaken">username is taken</p>
-								<p class="error noval">please fill the field</p>
-								<input type="password" placeholder="pick a password">
-								<p class="error noval">please fill the field</p>
-								<input type="password" placeholder="repeat password">
-								<p class="error nomatch">passwords do not match</p>
-								<p>
-									<span>password strength:</span>
-									<span class="passwordstrength">-</span>
-								</p>
-								<div class="row">
-									<div class="col"><button class="float-right">register</button></div>
+							<input type="text" placeholder="pick a username">
+							<p class="error usernametaken">username is taken</p>
+							<p class="error noval">please fill the field</p>
+							<input type="password" placeholder="pick a password">
+							<p class="error noval">please fill the field</p>
+							<input type="password" placeholder="repeat password">
+							<p class="error nomatch">passwords do not match</p>
+							<p>
+								<span>password strength:</span>
+								<span class="passwordstrength">-</span>
+							</p>
+							<div class="row">
+								<div class="col">
+									<button class="float-right">register</button>
 								</div>
-								
+							</div>
 						</form>
 					</section>
 
-					<section class="goldgoal">
-						<h3>daily gold goal</h3>
-						<div class="goldprogresswrapper">
-							<div class="goldprogress"></div>
-							<span class="goldpercent">7%</span>
-						</div>
-						<div class="text-center">
-							<button class="icon-dollar supportreddit">support us</button>
-						</div>
+					<section class="credentials">
+						<h3>logged in as xy</h3>
 					</section>
-
 				</div>
-			</aside>
+
+				<section class="goldgoal">
+					<div class="goldprogresswrapper">
+						<div class="goldprogress"></div>
+						<span class="goldpercent">7%</span>
+					</div>
+					<div class="text-center">
+						<button class="icon-dollar supportreddit">support us</button>
+					</div>
+				</section>
+			</nav>
 
 			<!-- CONTENT -->
 			<div id="body">
@@ -155,92 +161,92 @@
 						</section>
 
 						<section id="posts">
-									<article>
-										<section class="voting text-center">
-											<p><a href="#" class="icon-up-dir"></a></p>
-											<p class="karma">2000</p>
-											<p><a href="#" class="icon-down-dir"></a></p>
-										</section>
-										<section class="img">
-											<img src="/gfx/post.png" alt="">
-										</section>
-										<section class="textblock">
-											<h3><a href="#">Title of the post</a></h3>
-											<p class="source ants">
-												<a href="#">imgur.com</a>
-											</p>
-											<div class="tags ants">
-												<ul>
-													<li>Sport</li>
-													<li>Baseball</li>
-												</ul>
-											</div>
-											<p class="ants">
-												<span>submitted 12 hours ago by</span>
-												<span class="username">anonymous</span>
-												<span>to</span>
-												<a href="#">/r/somesubreddit</a>
-											</p>
-										</section>
-									</article>
+							<article>
+								<section class="voting text-center">
+									<p><a href="#" class="icon-up-dir"></a></p>
+									<p class="karma">2000</p>
+									<p><a href="#" class="icon-down-dir"></a></p>
+								</section>
+								<section class="img">
+									<img src="/gfx/post.png" alt="">
+								</section>
+								<section class="textblock">
+									<h3><a href="#">Title of the post</a></h3>
+									<p class="source ants">
+										<a href="#">imgur.com</a>
+									</p>
+									<div class="tags ants">
+										<ul>
+											<li>Sport</li>
+											<li>Baseball</li>
+										</ul>
+									</div>
+									<p class="ants">
+										<span>submitted 12 hours ago by</span>
+										<span class="username">anonymous</span>
+										<span>to</span>
+										<a href="#">/r/somesubreddit</a>
+									</p>
+								</section>
+							</article>
 
-									<article>
-										<section class="voting text-center">
-											<p><a href="#" class="icon-up-dir"></a></p>
-											<p class="karma">2000</p>
-											<p><a href="#" class="icon-down-dir"></a></p>
-										</section>
-										<section class="img">
-											<img src="/gfx/post.png" alt="">
-										</section>
-										<section class="textblock">
-											<h3><a href="#">Title of the post</a></h3>
-											<p class="source ants">
-												<a href="#">imgur.com</a>
-											</p>
-											<div class="tags ants">
-												<ul>
-													<li>Sport</li>
-													<li>Baseball</li>
-												</ul>
-											</div>
-											<p class="ants">
-												<span>submitted 12 hours ago by</span>
-												<span class="username">anonymous</span>
-												<span>to</span>
-												<a href="#">/r/somesubreddit</a>
-											</p>
-										</section>
-									</article>
+							<article>
+								<section class="voting text-center">
+									<p><a href="#" class="icon-up-dir"></a></p>
+									<p class="karma">2000</p>
+									<p><a href="#" class="icon-down-dir"></a></p>
+								</section>
+								<section class="img">
+									<img src="/gfx/post.png" alt="">
+								</section>
+								<section class="textblock">
+									<h3><a href="#">Title of the post</a></h3>
+									<p class="source ants">
+										<a href="#">imgur.com</a>
+									</p>
+									<div class="tags ants">
+										<ul>
+											<li>Sport</li>
+											<li>Baseball</li>
+										</ul>
+									</div>
+									<p class="ants">
+										<span>submitted 12 hours ago by</span>
+										<span class="username">anonymous</span>
+										<span>to</span>
+										<a href="#">/r/somesubreddit</a>
+									</p>
+								</section>
+							</article>
 
-									<article>
-										<section class="voting text-center">
-											<p><a href="#" class="icon-up-dir"></a></p>
-											<p class="karma">2000</p>
-											<p><a href="#" class="icon-down-dir"></a></p>
-										</section>
-										<section class="img">
-											<img src="/gfx/post.png" alt="">
-										</section>
-										<section class="textblock">
-											<h3><a href="#">Title of the post</a></h3>
-											<p class="source ants">
-												<a href="#">imgur.com</a>
-											</p>
-											<div class="tags ants">
-												<ul>
-													<li>Sport</li>
-													<li>Baseball</li>
-												</ul>
-											</div>
-											<p class="ants">
-												<span>submitted 12 hours ago by</span>
-												<span class="username">anonymous</span>
-												<span>to</span>
-												<a href="#">/r/somesubreddit</a>
-											</p>
-										</section>
-									</article>
+							<article>
+								<section class="voting text-center">
+									<p><a href="#" class="icon-up-dir"></a></p>
+									<p class="karma">2000</p>
+									<p><a href="#" class="icon-down-dir"></a></p>
+								</section>
+								<section class="img">
+									<img src="/gfx/post.png" alt="">
+								</section>
+								<section class="textblock">
+									<h3><a href="#">Title of the post</a></h3>
+									<p class="source ants">
+										<a href="#">imgur.com</a>
+									</p>
+									<div class="tags ants">
+										<ul>
+											<li>Sport</li>
+											<li>Baseball</li>
+										</ul>
+									</div>
+									<p class="ants">
+										<span>submitted 12 hours ago by</span>
+										<span class="username">anonymous</span>
+										<span>to</span>
+										<a href="#">/r/somesubreddit</a>
+									</p>
+								</section>
+							</article>
 						</section>
 
 						<section class="pagenav">
@@ -257,8 +263,8 @@
 			</div>
 
 			<!-- FOOTER -->
-			<footer>
-				<div class="content inner">
+			<footer id="footer">
+				<div class="container inner">
 					<section class="text-center">
 						<img src="/gfx/footer.jpg" alt="">
 					</section>
@@ -323,5 +329,7 @@
 				</div>
 			</footer>
 		</div>
+
+		<script data-main="js/main.js" src="js/vendor/require.js"></script>
 	</body>
 </html>
