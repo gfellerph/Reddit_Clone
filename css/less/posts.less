@@ -1,0 +1,29 @@
+#posts{
+	article{
+		.clearfix();
+		padding: 10px;
+		border-top: 1px solid gray;
+		.transition(opacity 200ms ease);
+		opacity: 1;
+		&:last-child{ border-bottom: 1px solid gray; }
+
+		&.template{ opacity: 0.5; }
+
+		section{
+			float: left;
+			margin-right: 5px;
+
+			.tags > ul{ .floating-ul(); }
+			.tags li{
+				display: inline-block;
+				padding: 2px 5px;
+				background-color: gray;
+				color: white;
+				margin-right: 5px;
+			}
+
+			&.textblock h3{ margin: 0 0 5px; }
+			&.img img{ max-width: 65px; }
+		}
+	}
+}

@@ -71,6 +71,31 @@
 				<div class="folder">
 					<section class="link-post">
 						<h3>new link post</h3>
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="">URL</label>
+								<input id="txt_new_link_url" type="text">
+							</div>
+							<div class="col-sm-6">
+								<label for="">Title</label>
+								<input id="txt_new_link_title" type="text">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="">image-URL</label>
+								<input id="txt_new_link_img" type="text">
+							</div>
+							<div class="col-sm-6">
+								<label for="">Tags (separate by space)</label>
+								<input id="txt_new_link_tags" type="text">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 float-right">
+								<button id="btn_new_link_post">post</button>
+							</div>
+						</div>
 					</section>
 					<section class="text-post">
 						<h3>new text post</h3>
@@ -161,6 +186,34 @@
 						</section>
 
 						<section id="posts">
+							<article class="template hidden">
+								<section class="voting text-center">
+									<p><a href="#" class="icon-up-dir"></a></p>
+									<p class="karma">2000</p>
+									<p><a href="#" class="icon-down-dir"></a></p>
+								</section>
+								<section class="img">
+									<img src="/gfx/post.png" alt="">
+								</section>
+								<section class="textblock">
+									<h3><a href="#">Title of the post</a></h3>
+									<p class="source ants">
+										<a href="#">imgur.com</a>
+									</p>
+									<div class="tags ants">
+										<ul>
+											<li>Sport</li>
+											<li>Baseball</li>
+										</ul>
+									</div>
+									<p class="ants">
+										<span>submitted 12 hours ago by</span>
+										<span class="username">anonymous</span>
+										<span>to</span>
+										<a href="#">/r/somesubreddit</a>
+									</p>
+								</section>
+							</article>
 							<article>
 								<section class="voting text-center">
 									<p><a href="#" class="icon-up-dir"></a></p>
