@@ -1,4 +1,4 @@
-Reddit Clone
-============
+frontiere
+=========
 
-This project is developed by students of the HSR and intended for learning puposes only.
+HTML template with LESS, Bootstrap, modernizr etc.

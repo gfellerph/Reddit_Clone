@@ -1,54 +1,327 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<div id="sun"></div>
-	<div id="ray1"></div>
-	<div id="ray2"></div>
-	<div id="ray3"></div>
-	<div id="ray4"></div>
-	<div id="grass"></div>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="UTF-8" />
+		
+		<meta name="keywords" content="" />
+		<meta name="author" content="Maxomedia AG" />
+		<meta name="publisher" content="Maxomedia AG" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		
+		<title>Reddit Dolly</title>
+		
+		<link href="css/main.css" rel="stylesheet"/>
+		<script data-main="js/main.js" src="js/require.js"></script>
+	</head>
 
-	<script type="text/javascript">
-		var s = document.getElementById("sun");
-		var r1 = document.getElementById("ray1");
-		var r2 = document.getElementById("ray2");
-		var r3 = document.getElementById("ray3");
-		var r4 = document.getElementById("ray4");
-		var body = document.getElementsByTagName("body")[0];
-		var grass = document.getElementById("grass");
+	<body>
+		<div id="background"></div>
+		<div id="wrapper">
 
-		s.style.width = "100px";
-		s.style.height = "100px";
-		s.style.borderRadius = "100px";
-		s.style.marginLeft = "100px";
-		s.style.marginTop = "100px";
-		s.style.backgroundColor = "yellow";
+			<!-- HEADER -->
+			<header>
+				<div class="content">
+					<div class="row">
+						<h3>subreddits</h3>
+						<nav id="subreddits">
+							<ul>
+								<li><a href="#">subreddit 1</a></li>
+								<li><a href="#">subreddit 2</a></li>
+								<li><a href="#">subreddit 3</a></li>
+								<li><a href="#">subreddit 4</a></li>
+								<li><a href="#">subreddit 5</a></li>
+								<li><a href="#">subreddit 6</a></li>
+								<li><a href="#">subreddit 7</a></li>
+								<li><a href="#">subreddit 8</a></li>
+								<li><a href="#">subreddit 9</a></li>
+								<li><a href="#">subreddit 10</a></li>
+								<li class="float-right"><a href="#">more</a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="row">
+						<div class="subbanner">
+							<a href="/"><img class="logo" src="/gfx/logo.jpg" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</header>
 
-		var a = [r1, r2, r3, r4];
-		for (var i = 0; i < a.length; i++){
-			a[i].style.width = "10px";
-			a[i].style.height = "200px";
-			a[i].style.marginLeft = "150px";
-			a[i].style.backgroundColor = "yellow";
-			a[i].style.position = "absolute";
-			a[i].style.top = "50px";
-		}
-		r2.style.webkitTransform = "rotate(45deg)";
-		r3.style.webkitTransform = "rotate(-45deg)";
-		r4.style.webkitTransform = "rotate(90deg)";
+			<!-- ASIDE -->
+			<aside>
+				<div class="inner asideslider">
 
-		body.style.backgroundColor = "blue";
-		body.style.margin = "0";
+					<section class="search">
+						<div class="clearfix">
+							<div class="inline-block">
+								<div class="teasericon icon-search"></div>
+								<input type="text" placeholder="search for something">
+							</div>
+							
+							<button class="icon-search float-right"></button>
+						</div>
+					</section>
 
-		grass.style.backgroundColor = "green";
-		grass.style.top = "60%";
-		grass.style.bottom = "0";
-		grass.style.width = "100%";
-		grass.style.position = "absolute";
-	</script>
-</body>
+					<section class="submit">
+						<div class="inner">
+							<div class="teasericon icon-link"></div>
+							<a href="#" class="icon-link">submit new link</a>
+							<div class="teasericon icon-doc-text"></div>
+							<a href="#" class="icon-doc-text">submit new post</a>
+						</div>
+					</section>
+
+					<section class="login">
+						<h3>login</h3>
+						<form action="#" class="inner">
+							<input type="text" placeholder="username">
+							<p class="error noval">please fill the field</p>
+							<input type="password" placeholder="password">
+							<p class="error noval">please fill the field</p>
+							<p class="error incorrectpassword">password not correct</p>
+							<div class="row">
+								<div class="col-xs-6">
+									<a href="#" class="block">forgot it</a>
+								</div>
+								<div class="col-xs-6">
+									<button class="float-right">login</button>
+								</div>
+							</div>
+						</form>
+					</section>
+
+					<section class="register">
+						<h3>register</h3>
+						<form action="#" class="inner">
+								<input type="text" placeholder="pick a username">
+								<p class="error usernametaken">username is taken</p>
+								<p class="error noval">please fill the field</p>
+								<input type="password" placeholder="pick a password">
+								<p class="error noval">please fill the field</p>
+								<input type="password" placeholder="repeat password">
+								<p class="error nomatch">passwords do not match</p>
+								<p>
+									<span>password strength:</span>
+									<span class="passwordstrength">-</span>
+								</p>
+								<div class="row">
+									<div class="col"><button class="float-right">register</button></div>
+								</div>
+								
+						</form>
+					</section>
+
+					<section class="goldgoal">
+						<h3>daily gold goal</h3>
+						<div class="goldprogresswrapper">
+							<div class="goldprogress"></div>
+							<span class="goldpercent">7%</span>
+						</div>
+						<div class="text-center">
+							<button class="icon-dollar supportreddit">support us</button>
+						</div>
+					</section>
+
+				</div>
+			</aside>
+
+			<!-- CONTENT -->
+			<div id="body">
+				<div class="content">
+					<div class="row">
+						
+						<section class="mainnav">
+							<div class="row">
+								<div class="col">
+									<nav class="categories">
+										<ul>
+											<li><a href="#" class="active">Beliebt</a></li>
+											<li><a href="#">Neu</a></li>
+											<li><a href="#">Aufsteigend</a></li>
+											<li><a href="#">Kontrovers</a></li>
+											<li><a href="#">Top</a></li>
+											<li><a href="#">gilded</a></li>
+											<li><a href="#">wiki</a></li>
+											<li><a href="#">angepriesen</a></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</section>
+
+						<section id="posts">
+									<article>
+										<section class="voting text-center">
+											<p><a href="#" class="icon-up-dir"></a></p>
+											<p class="karma">2000</p>
+											<p><a href="#" class="icon-down-dir"></a></p>
+										</section>
+										<section class="img">
+											<img src="/gfx/post.png" alt="">
+										</section>
+										<section class="textblock">
+											<h3><a href="#">Title of the post</a></h3>
+											<p class="source ants">
+												<a href="#">imgur.com</a>
+											</p>
+											<div class="tags ants">
+												<ul>
+													<li>Sport</li>
+													<li>Baseball</li>
+												</ul>
+											</div>
+											<p class="ants">
+												<span>submitted 12 hours ago by</span>
+												<span class="username">anonymous</span>
+												<span>to</span>
+												<a href="#">/r/somesubreddit</a>
+											</p>
+										</section>
+									</article>
+
+									<article>
+										<section class="voting text-center">
+											<p><a href="#" class="icon-up-dir"></a></p>
+											<p class="karma">2000</p>
+											<p><a href="#" class="icon-down-dir"></a></p>
+										</section>
+										<section class="img">
+											<img src="/gfx/post.png" alt="">
+										</section>
+										<section class="textblock">
+											<h3><a href="#">Title of the post</a></h3>
+											<p class="source ants">
+												<a href="#">imgur.com</a>
+											</p>
+											<div class="tags ants">
+												<ul>
+													<li>Sport</li>
+													<li>Baseball</li>
+												</ul>
+											</div>
+											<p class="ants">
+												<span>submitted 12 hours ago by</span>
+												<span class="username">anonymous</span>
+												<span>to</span>
+												<a href="#">/r/somesubreddit</a>
+											</p>
+										</section>
+									</article>
+
+									<article>
+										<section class="voting text-center">
+											<p><a href="#" class="icon-up-dir"></a></p>
+											<p class="karma">2000</p>
+											<p><a href="#" class="icon-down-dir"></a></p>
+										</section>
+										<section class="img">
+											<img src="/gfx/post.png" alt="">
+										</section>
+										<section class="textblock">
+											<h3><a href="#">Title of the post</a></h3>
+											<p class="source ants">
+												<a href="#">imgur.com</a>
+											</p>
+											<div class="tags ants">
+												<ul>
+													<li>Sport</li>
+													<li>Baseball</li>
+												</ul>
+											</div>
+											<p class="ants">
+												<span>submitted 12 hours ago by</span>
+												<span class="username">anonymous</span>
+												<span>to</span>
+												<a href="#">/r/somesubreddit</a>
+											</p>
+										</section>
+									</article>
+						</section>
+
+						<section class="pagenav">
+							<nav>
+								<span>Mehr:</span>
+								<a href="#" class="icon-angle-left">zurück</a>
+								<a href="#" class="icon-angle-right after">weiter</a>
+								<span>or try a</span>
+								<a href="#" class="icon-shuffle">random subreddit</a>
+							</nav>
+						</section>
+					</div>
+				</div>
+			</div>
+
+			<!-- FOOTER -->
+			<footer>
+				<div class="content inner">
+					<section class="text-center">
+						<img src="/gfx/footer.jpg" alt="">
+					</section>
+					
+					<section class="footerlinks">
+						<div class="row">
+							<div class="col-sm-3">
+								<h4>Über</h4>
+								<nav>
+									<ul>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="col-sm-3">
+								<h4>Hilfe</h4>
+								<nav>
+									<ul>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="col-sm-3">
+								<h4>Tools</h4>
+								<nav>
+									<ul>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="col-sm-3">
+								<h4>&lt;3</h4>
+								<nav>
+									<ul>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+										<li><a href="#">some link</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</section>
+
+					<section class="disclaimer ants text-center">
+						<p>Das Benutzen dieser Website begründet sich auf der Verpflichtung unserer <a href="#">User Agreement (updated)</a> und <a href="">Privacy Policy (updated)</a>. © 2014 reddit inc. Alle Rechte vorbehalten.</p>
+						<p>REDDIT and the ALIEN Logo are registered trademarks of reddit inc.</p>
+					</section>
+				</div>
+			</footer>
+		</div>
+	</body>
 </html>
