@@ -1,4 +1,4 @@
-frontiere
+School project for HSR
 =========
 
-HTML template with LESS, Bootstrap, modernizr etc.
+http://tuelsch.github.io/Reddit_Clone
