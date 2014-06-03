@@ -1,5 +1,9 @@
 #posts{
-	article{
+	.clearfix();
+	background-color: rgb(240,240,240);
+	padding-top: 15px;
+	padding-left: 15px;
+	/*article{
 		.clearfix();
 		padding: 10px;
 		border-top: 1px solid gray;
@@ -24,6 +28,55 @@
 
 			&.textblock h3{ margin: 0 0 5px; }
 			&.img img{ max-width: 65px; }
+		}
+	}*/
+
+	article{
+		float: left;
+		width: 200px;
+		margin: 0 15px 15px 0;
+		padding: 10px;
+		background-color: white;
+
+		> div{ 
+			margin-bottom: 10px;
+			&:last-child{ margin-bottom: 0; }
+		}
+
+		.score{
+			height: 50px;
+			background-color: rgb(200,200,200);
+			margin-left: -10px;
+			margin-right: -10px;
+			color: white;
+
+			.up, .down{
+				line-height: 25px;
+				text-align: center;
+				width: 50px;
+				border-left: 1px solid white;
+			}
+			.up{ border-bottom: 1px solid white; }
+		}
+		.karma{
+			line-height: 50px;
+			padding: 0 15px;
+			font-size: 1.4em;
+		}
+
+		&.pic{
+			width: 200px;
+			.img-container{ 
+				text-align: center;
+				background-color: rgb(50,50,50);
+				margin-right: -10px;
+				margin-left: -10px;
+				margin-top: -10px;
+			}
+			img{
+				max-width: 100%; 
+				max-height: 200px;
+			}
 		}
 	}
 }

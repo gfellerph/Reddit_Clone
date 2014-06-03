@@ -15,7 +15,8 @@ require.config({
 		'bootstrap': [ // CDN Bootstrap with local fallback
 			'//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min',
 			'vendor/bootstrap.min'
-		]
+		],
+		'masonry': 'vendor/masonry.min'
 	},
 	shim: { // Shim for external scripts
 		'bootstrap': {
@@ -28,9 +29,10 @@ require([
 	'vendor/modernizr',
 	'bootstrap',
 	'modules/post',
-	'modules/nav'
+	'modules/nav',
+	'modules/reddit-import'
 	/* more modules */
 	
-], function(Modernizr, module){
+], function(Modernizr, bootstrap, post, nav, redditImport, masonry){
 
 });

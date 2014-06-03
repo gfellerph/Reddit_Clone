@@ -30,13 +30,13 @@
 						<h3>subreddits</h3>
 						<nav id="subreddits">
 							<ul>
-								<li><a href="#">subreddit 1</a></li>
-								<li><a href="#">subreddit 2</a></li>
-								<li><a href="#">subreddit 3</a></li>
-								<li><a href="#">subreddit 4</a></li>
-								<li><a href="#">subreddit 5</a></li>
-								<li><a href="#">subreddit 6</a></li>
-								<li><a href="#">subreddit 7</a></li>
+								<li><a data-subreddit="r/funny" href="#">funny</a></li>
+								<li><a data-subreddit="r/pics" href="#">pics</a></li>
+								<li><a data-subreddit="r/askreddit" href="#">askreddit</a></li>
+								<li><a data-subreddit="r/iama" href="#">iama</a></li>
+								<li><a data-subreddit="r/news" href="#">news</a></li>
+								<li><a data-subreddit="domain/youtube.com" href="#">youtube.com</a></li>
+								<li><a data-subreddit="r/gif" href="#">gif</a></li>
 								<li><a href="#">subreddit 8</a></li>
 								<li><a href="#">subreddit 9</a></li>
 								<li><a href="#">subreddit 10</a></li>
@@ -187,119 +187,72 @@
 						</section>
 
 						<section id="posts">
+							<article class="hidden">
+								<section class="voting text-center">
+									<p><a href="#" class="icon-up-dir"></a></p>
+									<p class="karma">0</p>
+									<p><a href="#" class="icon-down-dir"></a></p>
+								</section>
+								<section>
+									<img class="img" src="/gfx/post.png" alt="">
+								</section>
+								<section class="textblock">
+									<h3><a class="title" href="#"></a></h3>
+									<p class="ants">
+										<a class="source" href="#">imgur.com</a>
+									</p>
+									<div class="ants">
+										<ul class="tags"></ul>
+									</div>
+									<p class="ants">
+										<span>submitted 12 hours ago by</span>
+										<span class="username">anonymous</span>
+										<span>to</span>
+										<a href="#">/r/somesubreddit</a>
+									</p>
+								</section>
+							</article>
+
 							<article class="template hidden">
-								<section class="voting text-center">
-									<p><a href="#" class="icon-up-dir"></a></p>
-									<p class="karma">2000</p>
-									<p><a href="#" class="icon-down-dir"></a></p>
-								</section>
-								<section class="img">
-									<img src="/gfx/post.png" alt="">
-								</section>
-								<section class="textblock">
-									<h3><a href="#">Title of the post</a></h3>
-									<p class="source ants">
-										<a href="#">imgur.com</a>
-									</p>
-									<div class="tags ants">
-										<ul>
-											<li>Sport</li>
-											<li>Baseball</li>
-										</ul>
+								<div class="img-container">
+									<img src="" alt="" class="img">
+								</div>
+								<div class="meta-info">
+									<div class="meta-domain">
+										<a href="" class="domain"></a>
 									</div>
-									<p class="ants">
-										<span>submitted 12 hours ago by</span>
-										<span class="username">anonymous</span>
-										<span>to</span>
-										<a href="#">/r/somesubreddit</a>
-									</p>
-								</section>
-							</article>
-							<article>
-								<section class="voting text-center">
-									<p><a href="#" class="icon-up-dir"></a></p>
-									<p class="karma">2000</p>
-									<p><a href="#" class="icon-down-dir"></a></p>
-								</section>
-								<section class="img">
-									<img src="/gfx/post.png" alt="">
-								</section>
-								<section class="textblock">
-									<h3><a href="#">Title of the post</a></h3>
-									<p class="source ants">
-										<a href="#">imgur.com</a>
-									</p>
-									<div class="tags ants">
-										<ul>
-											<li>Sport</li>
-											<li>Baseball</li>
-										</ul>
+									<div class="meta-time">
+										<span class="icon-clock time"></span>
 									</div>
+								</div>
+								<div>
+									<h3 class="title"></h3>
+								</div>
+								<div>
 									<p class="ants">
-										<span>submitted 12 hours ago by</span>
-										<span class="username">anonymous</span>
-										<span>to</span>
-										<a href="#">/r/somesubreddit</a>
+										Posted to
+										<span class="subreddit"></span>
+										by
+										<span class="user"></span>
 									</p>
-								</section>
-							</article>
-
-							<article>
-								<section class="voting text-center">
-									<p><a href="#" class="icon-up-dir"></a></p>
-									<p class="karma">2000</p>
-									<p><a href="#" class="icon-down-dir"></a></p>
-								</section>
-								<section class="img">
-									<img src="/gfx/post.png" alt="">
-								</section>
-								<section class="textblock">
-									<h3><a href="#">Title of the post</a></h3>
-									<p class="source ants">
-										<a href="#">imgur.com</a>
-									</p>
-									<div class="tags ants">
-										<ul>
-											<li>Sport</li>
-											<li>Baseball</li>
-										</ul>
+								</div>
+								<div class="score">
+									<div class="clearfix">
+										<div class="float-right">
+											<div class="up icon-angle-up"></div>
+											<div class="down icon-angle-down"></div>
+										</div>
+										<div class="float-right">
+											<span class="karma"></span>
+										</div>
 									</div>
-									<p class="ants">
-										<span>submitted 12 hours ago by</span>
-										<span class="username">anonymous</span>
-										<span>to</span>
-										<a href="#">/r/somesubreddit</a>
-									</p>
-								</section>
-							</article>
-
-							<article>
-								<section class="voting text-center">
-									<p><a href="#" class="icon-up-dir"></a></p>
-									<p class="karma">2000</p>
-									<p><a href="#" class="icon-down-dir"></a></p>
-								</section>
-								<section class="img">
-									<img src="/gfx/post.png" alt="">
-								</section>
-								<section class="textblock">
-									<h3><a href="#">Title of the post</a></h3>
-									<p class="source ants">
-										<a href="#">imgur.com</a>
-									</p>
-									<div class="tags ants">
-										<ul>
-											<li>Sport</li>
-											<li>Baseball</li>
-										</ul>
-									</div>
-									<p class="ants">
-										<span>submitted 12 hours ago by</span>
-										<span class="username">anonymous</span>
-										<span>to</span>
-										<a href="#">/r/somesubreddit</a>
-									</p>
-								</section>
+								</div>
+								<div>
+									<a href="" class="comments">
+										<span class="num-of-comments"></span>
+										comments
+									</a>
+								</div>
 							</article>
 						</section>
 
@@ -382,6 +335,7 @@
 					</section>
 				</div>
 			</footer>
+
 		</div>
 
 		<script data-main="js/main.js" src="js/vendor/require.js"></script>
