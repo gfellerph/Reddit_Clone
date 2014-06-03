@@ -1,4 +1,4 @@
-define(['jquery', 'masonry'], function ($, Masonry){
+define(['jquery', 'masonry'], function ($){
 
 	// Reddit API mantle
 	$(function(){
