@@ -3,7 +3,7 @@
 	background-color: rgb(240,240,240);
 	padding-top: 15px;
 	padding-left: 15px;
-	/*article{
+	article{
 		.clearfix();
 		padding: 10px;
 		border-top: 1px solid gray;
@@ -13,7 +13,7 @@
 
 		&.template{ opacity: 0.5; }
 
-		section{
+		>div{
 			float: left;
 			margin-right: 5px;
 
@@ -27,11 +27,31 @@
 			}
 
 			&.textblock h3{ margin: 0 0 5px; }
-			&.img img{ max-width: 65px; }
-		}
-	}*/
+			.img{ max-width: 70px; }
+			.score{
+				height: 50px;
+				background-color: rgb(200,200,200);
+				margin-left: -10px;
+				margin-right: -10px;
+				color: white;
 
-	article{
+				.up, .down{
+					line-height: 25px;
+					text-align: center;
+					width: 50px;
+					border-left: 1px solid white;
+				}
+				.up{ border-bottom: 1px solid white; }
+			}
+			.karma{
+				line-height: 50px;
+				padding: 0 15px;
+				font-size: 1.4em;
+			}
+		}
+	}
+
+	/*article{
 		float: left;
 		width: 200px;
 		margin: 0 15px 15px 0;
@@ -43,26 +63,8 @@
 			&:last-child{ margin-bottom: 0; }
 		}
 
-		.score{
-			height: 50px;
-			background-color: rgb(200,200,200);
-			margin-left: -10px;
-			margin-right: -10px;
-			color: white;
-
-			.up, .down{
-				line-height: 25px;
-				text-align: center;
-				width: 50px;
-				border-left: 1px solid white;
-			}
-			.up{ border-bottom: 1px solid white; }
-		}
-		.karma{
-			line-height: 50px;
-			padding: 0 15px;
-			font-size: 1.4em;
-		}
+		
+		
 
 		&.pic{
 			width: 200px;
@@ -78,5 +80,5 @@
 				max-height: 200px;
 			}
 		}
-	}
+	}*/
 }
