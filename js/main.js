@@ -1,5 +1,6 @@
 define([
 	"vendor/modernizr",
 	"modules/post",
-	"modules/nav"
+	"modules/nav",
+	"modules/comment"
 ]);
