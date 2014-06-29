@@ -32,12 +32,12 @@ gulp.watch(options.lessBaseDir).on('change', lessbuild);
 // =========
 
 function lessbuild(event){
-	console.time('Less build');
+	console.time('LESS build');
 
 	gulp.src(options.lessMainFile)
 	.pipe( plumber() )
 	.pipe( less({ sourceMap: true }) )
 	.pipe( gulp.dest(options.lessOutputDir) );
 
-	console.timeEnd('Less build');
+	console.timeEnd('LESS build');
 }

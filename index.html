@@ -24,142 +24,22 @@
 
 			<!-- HEADER -->
 			<header id="header">
-				<div class="content">
-					<div class="row">
-						<h3>subreddits</h3>
-						<nav id="subreddits">
-							<ul>
-								<li><a data-subreddit="r/funny" href="#">funny</a></li>
-								<li><a data-subreddit="r/pics" href="#">pics</a></li>
-								<li><a data-subreddit="r/askreddit" href="#">askreddit</a></li>
-								<li><a data-subreddit="r/iama" href="#">iama</a></li>
-								<li><a data-subreddit="r/news" href="#">news</a></li>
-								<li><a data-subreddit="domain/youtube.com" href="#">youtube.com</a></li>
-								<li><a data-subreddit="r/gif" href="#">gif</a></li>
-								<li><a href="#">subreddit 8</a></li>
-								<li><a href="#">subreddit 9</a></li>
-								<li><a href="#">subreddit 10</a></li>
-								<li class="float-right"><a href="#">more</a></li>
-							</ul>
-						</nav>
-					</div>
-					<div class="row">
-						<div class="subbanner">
-							<a href="/"><img class="logo" src="/assets/gfx/logo.jpg" alt=""></a>
-						</div>
-					</div>
+				<div class="sticky">
+					<nav>
+						<ul>
+							<li>
+								<a href="#" class="add"></a>
+							</li>
+							<li>
+								<a href="#" class="favs"></a>
+							</li>
+							<li>
+								<a href="" class="alerts"></a>
+							</li>
+						</ul>
+					</nav>
 				</div>
 			</header>
-
-			<!-- ASIDE -->
-			<nav id="menu">
-
-				<div class="controls">
-					<div class="new-post">
-						<button data-folder="link-post" class="icon-plus">post</button>
-					</div>
-					<div class="search">
-						<span class="icon-search"></span>
-						<input type="text" placeholder="search">
-						<a data-folder="search" href="#" class="icon-cog"></a>
-					</div>
-					<div class="login">
-						<button data-folder="login" class="icon-user">login</button>
-					</div>
-				</div>
-
-				<div class="folder">
-					<section class="link-post">
-						<h3>new link post</h3>
-						<div class="row">
-							<div class="col-sm-6">
-								<label for="">URL</label>
-								<input id="txt_new_link_url" type="text">
-							</div>
-							<div class="col-sm-6">
-								<label for="">Title</label>
-								<input id="txt_new_link_title" type="text">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<label for="">image-URL</label>
-								<input id="txt_new_link_img" type="text">
-							</div>
-							<div class="col-sm-6">
-								<label for="">Tags (separate by space)</label>
-								<input id="txt_new_link_tags" type="text">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12 float-right">
-								<button id="btn_new_link_post">post</button>
-							</div>
-						</div>
-					</section>
-					<section class="text-post">
-						<h3>new text post</h3>
-					</section>
-					<section class="search">
-						
-					</section>
-
-					<section class="login">
-						<h3>login</h3>
-						<form action="#" class="inner">
-							<input type="text" placeholder="username">
-							<p class="error noval">please fill the field</p>
-							<input type="password" placeholder="password">
-							<p class="error noval">please fill the field</p>
-							<p class="error incorrectpassword">password not correct</p>
-							<div class="row">
-								<div class="col-xs-6">
-									<a href="#" class="block">forgot it</a>
-								</div>
-								<div class="col-xs-6">
-									<button class="float-right">login</button>
-								</div>
-							</div>
-						</form>
-					</section>
-
-					<section class="register">
-						<h3>register</h3>
-						<form action="#" class="inner">
-							<input type="text" placeholder="pick a username">
-							<p class="error usernametaken">username is taken</p>
-							<p class="error noval">please fill the field</p>
-							<input type="password" placeholder="pick a password">
-							<p class="error noval">please fill the field</p>
-							<input type="password" placeholder="repeat password">
-							<p class="error nomatch">passwords do not match</p>
-							<p>
-								<span>password strength:</span>
-								<span class="passwordstrength">-</span>
-							</p>
-							<div class="row">
-								<div class="col">
-									<button class="float-right">register</button>
-								</div>
-							</div>
-						</form>
-					</section>
-
-					<section class="credentials">
-						<h3>logged in as xy</h3>
-					</section>
-				</div>
-
-				<section class="goldgoal">
-					<div class="goldprogresswrapper">
-						<div class="goldprogress"></div>
-						<span class="goldpercent">7%</span>
-					</div>
-					<div class="text-center">
-						<button class="icon-dollar supportreddit">support us</button>
-					</div>
-				</section>
-			</nav>
 
 			<!-- CONTENT -->
 			<div id="body">
@@ -337,6 +217,6 @@
 
 		</div>
 
-		<script data-main="js/main.js" src="js/vendor/require.js"></script>
+		<script async src="/assets/build/main.js"></script>
 	</body>
 </html>

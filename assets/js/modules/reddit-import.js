@@ -1,5 +1,5 @@
-define(['jquery', 'masonry'], function ($){
-
++function($){
+	
 	// Reddit API mantle
 	$(function(){
 
@@ -78,12 +78,6 @@ define(['jquery', 'masonry'], function ($){
 			container.append($article);
 			$article.removeClass('hidden template');
 		}
-
-		// Initialize masonry
-		var masonry = new Masonry('#posts', {
-			itemSelector: 'article',
-			columnWidth: 200
-		});
 	}
 
 	function normalizeThumbnail(thumb){
@@ -109,4 +103,4 @@ define(['jquery', 'masonry'], function ($){
 	String.prototype.endsWith = function(suffix) {
 	    return this.indexOf(suffix, this.length - suffix.length) !== -1;
 	};
-});
+}(require('../vendor/jquery'));

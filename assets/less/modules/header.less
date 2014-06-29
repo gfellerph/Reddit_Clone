@@ -1,19 +1,27 @@
-#subreddits{
-	> ul{
-		.clearfix();
-		padding: 0; margin: 0;
-		list-style: none;
+#header{
+	nav ul{
+		.floating-ul();
 
-		> li{
-			float: left;
-
-			> a{
+		.add{
+			height: 30px;
+			width: 30px;
+			display: block;
+			position: relative;
+			text-decoration: none;
+			
+			&:after, &:before{
+				content: ' ';
 				display: block;
-				padding: 0.25em 0.75em;
+				background-color: black;
+			}
+			&:after{
+				height: 50%;
+				width: 3px;
+			}
+			&:before{
+				height: 3px;
+				width: 50%;
 			}
 		}
 	}
 }
-
-.logo{ height: 50px; }
-.subbanner{ background-color: rgb(200,200,200); }
