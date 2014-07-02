@@ -1,18 +1,21 @@
 // Dependencies
 // ============
 
-var gulp = require('gulp');
-var plumber = require('gulp-plumber');
-var less = require('gulp-less');
+var gulp 		= require('gulp');
+var plumber 	= require('gulp-plumber');
+var less 		= require('gulp-less');
+var rename 		= require('gulp-rename');
+var minify		= require('gulp-minify-css');
 
 
 // Options
-// =======
+// =====
 
 var options = {
-	lessBaseDir: './assets/less/**/*.less', 			// Where all less files are stored and the watcher is set
-	lessMainFile: './assets/less/main.less', 			// Where your less files are imported
-	lessOutputDir: './assets/build' 							// Where main.css, main.min.css and the sourcemap would be written to
+	lessBaseDir: 'assets/less/**/*.less', 		// Where all less files are stored and the watcher is set
+	lessMainFile: './assets/less/main.less', 	// Where your less files are imported
+	lessOutputDir: './assets/build', 			// Where main.css, main.min.css and the sourcemap would be written to
+	lessOutputMinName: 'main.min.css'	// Name of the minified css
 }
 
 
@@ -32,12 +35,28 @@ gulp.watch(options.lessBaseDir).on('change', lessbuild);
 // =========
 
 function lessbuild(event){
-	console.time('LESS build');
+	console.time('Less build');
 
+	// Start piping with main file
 	gulp.src(options.lessMainFile)
+
+	// Report errors and keep watching
 	.pipe( plumber() )
+
+	// Compile less and generate sourcemap
 	.pipe( less({ sourceMap: true }) )
+
+	// Save compiled css
+	.pipe( gulp.dest(options.lessOutputDir) )
+
+	// Rename stream
+	.pipe( rename(options.lessOutputMinName) )
+
+	// Minify
+	.pipe( minify() )
+
+	// Save minified file
 	.pipe( gulp.dest(options.lessOutputDir) );
 
-	console.timeEnd('LESS build');
+	console.timeEnd('Less build');
 }

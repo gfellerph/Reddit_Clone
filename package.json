@@ -7,16 +7,15 @@
   },
   "devDependencies": {
     "browserify": "^4.1.11",
-    "express": "^4.4.3",
     "gulp": "^3.8.0",
     "gulp-iconfont": "0.0.12",
-    "gulp-notify": "^1.3.1",
+    "gulp-less": "^1.2.4",
+    "gulp-minify-css": "^0.3.6",
     "gulp-plumber": "^0.6.3",
-    "gulp-util": "^2.2.17",
-    "pretty-hrtime": "^0.2.1",
-    "vinyl-source-stream": "^0.1.1",
-    "http-server": "~0.6.1",
-    "gulp-less": "~1.2.4",
-    "uglify-js": "~2.4.14"
+    "gulp-rename": "^1.2.0",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": "^0.3.1",
+    "gulp-util": "^2.2.19",
+    "vinyl-source-stream": "^0.1.1"
   }
 }

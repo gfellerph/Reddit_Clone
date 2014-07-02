@@ -1,20 +1,25 @@
 // Dependencies
 // ============
 
-var browserify   = require('browserify');
-var gulp         = require('gulp');
-var handleErrors = require('../utils/handleErrors');
-var source       = require('vinyl-source-stream');
+var browserify  = require('browserify');
+var gulp        = require('gulp');
+var source      = require('vinyl-source-stream');
+var plumber 	= require('gulp-plumber');
+var rename		= require('gulp-rename');
+var uglify		= require('gulp-uglify');
+var streamify	= require('gulp-streamify');
 
 
 // Options
 // =======
 
 var options = {
-	jsBaseDir: './assets/js/**/*.js',
-	jsMainFile: './assets/js/main.js',
-	jsOutputDir: './assets/build',
-	jsOutputFileName: 'main.js'
+	minify: true,						// Minify the file or not
+	jsBaseDir: 'assets/js/**/*.js',			// Where your js files are stored
+	jsMainFile: './assets/js/main.js',			// Entry point to js files
+	jsOutputDir: './assets/build',				// Output directory
+	jsOutputFileName: 'main.js',		// Name of the output file
+	jsOutputMinFileName: 'main.min.js'	// Name of the minified output file (no sourcemap)
 }
 
 
@@ -42,13 +47,22 @@ function jsbuild(event){
 	// Bundle that shit and enable sourcemaps
 	.bundle({ debug: true })
 
-	// Log errors
-	.on('error', handleErrors)
+	// Report errors and continue watching
+	.pipe( plumber() )
 
 	// use vinyl source stream to hand the file to gulp
 	.pipe( source(options.jsOutputFileName) )
 
 	// Save it
+	.pipe(gulp.dest(options.jsOutputDir))
+
+	// Rename it
+	.pipe(rename(options.jsOutputMinFileName))
+
+	// Minify it
+	.pipe( streamify(uglify()) )
+
+	// Save minified file
 	.pipe(gulp.dest(options.jsOutputDir));	
 
 	console.timeEnd('JS build');

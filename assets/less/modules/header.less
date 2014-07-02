@@ -1,27 +1,36 @@
 #header{
+	.sticky{
+		height: 64px;
+		background-color: @gray900;
+	}
 	nav ul{
 		.floating-ul();
 
-		.add{
-			height: 30px;
-			width: 30px;
+		a{
+			line-height: 64px;
 			display: block;
-			position: relative;
+			font-size: 20px;
+			width: 64px;
+			color: white;
 			text-decoration: none;
-			
-			&:after, &:before{
-				content: ' ';
-				display: block;
-				background-color: black;
+			text-align: center;
+			font-weight: @robotobold;
+			.transition(background 150ms ease);
+
+			&:hover, &:focus{
+				background-color: @gray800;
 			}
-			&:after{
-				height: 50%;
-				width: 3px;
-			}
-			&:before{
-				height: 3px;
-				width: 50%;
-			}
+		}
+
+		h1{
+			margin: 0;
+			line-height: 64px;
+			font-size: 24px;
+			font-family: @robotolight;
+			font-weight: normal;
+			text-transform: uppercase;
+			padding: 0 1em;
+			color: rgba(255,255,255, 0.5);
 		}
 	}
 }
