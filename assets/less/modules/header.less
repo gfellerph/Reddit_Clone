@@ -7,15 +7,15 @@
 	nav > ul{
 		.floating-ul();
 
-		.add{
-			line-height: 64px;
+		.addLink{
+			line-height: 61px;
 			display: block;
 			font-size: 20px;
 			width: 64px;
 			color: white;
 			text-decoration: none;
 			text-align: center;
-			font-family: @robotobold;
+			font-family: @roboto-bold;
 			.transition(background 150ms ease);
 
 			&:hover, &:focus{
@@ -27,7 +27,6 @@
 			margin: 0;
 			line-height: 64px;
 			font-size: 24px;
-			font-family: @robotolight;
 			font-weight: normal;
 			text-transform: uppercase;
 			padding: 0 1em;
@@ -44,19 +43,10 @@
 				display: table-cell;
 				vertical-align: middle;
 			}
-			.filter{
-				font-size: 15px;
-				font-family: @robotolight;
-				display: block;
-				padding: 0.25em 1em;
+			.tag{
 				color: white;
-				text-decoration: none;
-				border-radius: 5px;
-				.transition(background 150ms);
 
-				&.active{
-					background-color: rgba(255,255,255, 0.2);
-				}
+				&.active{ background-color: rgba(255,255,255, 0.2); }
 			}
 		}
 	}

@@ -1,3 +1,10 @@
+/* 
+	Require jquery with the CommonJS pattern
+
+	File is rendered on save with gulp.js and 
+	the browserify node module.
+*/
+
 var jQuery = require('../vendor/jquery');
 
 +function navigation($){
@@ -7,19 +14,22 @@ var jQuery = require('../vendor/jquery');
 
 	// Handler for the click event on a menu point with a folder
 	function expand(event){
-		console.log('expand');
+
 		// Get the clicked menu point and all folders
-		var $target = $(event.currentTarget),
-			$expander = $('#expander');
+		var $target = $(event.currentTarget);
+		var	$expander = $('#expander');
 
 		// Look for open panels
 		if($expander.hasClass('open')){
-			// If there are any, fade them out and in the callback, fade the new one in
+
+			// If there are any, fade them out and in the callback,
+			// fade the new one in
 			$expander.data('openPanel').fadeOut(
 				200, 
 				showPanel($target.attr('data-expands'))
 			);
 		} else {
+
 			// If there are none, fade in new panel
 			showPanel($target.attr('data-expands'));
 		}
@@ -35,12 +45,24 @@ var jQuery = require('../vendor/jquery');
 	}
 
 
-	// Activate the clicked filter
-	var $filters = $('#header .filter');
-	$filters.on('click', filter_click);
-	function filter_click(e){
-		e.preventDefault();
-		$filters.removeClass('active');
-		$(e.currentTarget).addClass('active');
+	// Toggle the clicked tag
+	var $tags = $('.tag');
+
+	$tags.on('click', tag_click);
+
+	function tag_click(event){
+		var $target = $(event.currentTarget);
+		var dataGroup = $target.attr('data-group');
+
+		// If tag is part of a data-group, reset its siblings
+		if(dataGroup){
+			var $group = $('[data-group="' + dataGroup + '"]');
+			$group.removeClass('active');
+		}
+
+		$target.toggleClass('active');
+
+		// Don't follow link and reload page
+		event.preventDefault(); 
 	}
 }(jQuery);

@@ -1,0 +1,20 @@
+.panel{
+	background-color: @gray800;
+	color: white;
+
+	padding: 1em 0;
+
+	.post-title, .post-type{
+		.floating-ul();
+		li{
+			margin-right: 1em;
+		}
+	}
+
+	.post-type .tag{
+		color: white;
+		&.active{ 
+			background-color: @gray500; 
+		}
+	}
+}

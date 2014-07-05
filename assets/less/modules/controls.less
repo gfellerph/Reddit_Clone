@@ -1,3 +1,77 @@
 input, textarea{
 	width: 100%;
 }
+
+label[for]{
+	display: block;
+	padding-left: 16px;
+	text-indent: -16px;
+
+	input[type="checkbox"], 
+	input[type="radio"]{
+		top: -1px;
+		position: relative;
+		width: 13px;
+		height: 13px;
+		padding: 0;
+		margin: 0;
+		vertical-align: middle;
+	}
+}
+
+button{
+	padding: 0.25em 1em;
+	border-radius: 5px;
+	border: none;
+	border-bottom: 3px solid;
+	font-family: @robotocondensed-regular;
+	font-size: 1.2em;
+
+	.transition(background 150ms);
+
+	&.blue{ 
+		background-color: @blue; 
+		color: white;
+		border-color: @blueDark;
+		&:hover, &:active, &:focus{
+			background-color: @blueLight;
+		}
+	}
+	&.gray{
+		background-color: @gray300;
+		color: @gray900;
+		border-color: @gray800;
+		&:hover, &:active, &:focus{
+			background-color: @gray400;
+		}
+	}
+}
+
+input[type="text"], input[type="password"]{
+	border: none;
+	border-radius: 5px;
+	border: 3px solid transparent;
+	padding: 0.25em 0.5em;
+	outline: none;
+
+	&.gray{
+		background-color: rgba(255,255,255,0.3);
+		color: white;
+		&:focus{
+			border: 3px solid white;
+		}
+	}
+}
+
+input[type="checkbox"], input[type="radio"]{
+	border: 3px solid transparent;
+	outline: none;
+
+	&.gray{
+		background-color: rgba(255,255,255,0.3);
+		color: white;
+		&:focus{
+			border: 3px solid white;
+		}
+	}
+}

@@ -24,25 +24,27 @@
 
 			<!-- HEADER -->
 			<header id="header">
+
+				<!-- STICKY HEADER (BLUE) -->
 				<div class="sticky">
 					<nav>
 						<ul>
 							<li>
-								<a href="#" data-expands="add" class="add">+</a>
+								<a href="#" data-expands="addLink" class="addLink">+</a>
 							</li>
 							<li>
 								<h1>reddit:</h1>
 							</li>
 							<li>
 								<ul class="filters">
-									<li><a href="#" class="filter active">front</a></li>
-									<li><a href="#" class="filter">all</a></li>
-									<li><a href="#" class="filter">random</a></li>
+									<li><a href="#" data-group="filter" class="tag active">front</a></li>
+									<li><a href="#" data-group="filter" class="tag">all</a></li>
+									<li><a href="#" data-group="filter" class="tag">random</a></li>
 								</ul>
 							</li>
 							<li class="float-right">
 								<div class="profile">
-									<button>login</button>
+									<button class="gray">login</button>
 								</div>
 							</li>
 							<li class="float-right">
@@ -51,16 +53,82 @@
 						</ul>
 					</nav>
 				</div>
-
+				
+				<!-- HIDDEN SECTION WITH FORMS ETC. -->
 				<div id="expander">
-					<div class="panel" data-expandable="add">
-						<div class="types">
-							<ul>
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Text</a></li>
-							</ul>
+					<div class="panel" data-expandable="addLink">
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-7 inner">
+									<ul class="post-title">
+										<li>
+											<h3>Share link:</h3>
+										</li>
+										<li>
+											<ul class="post-type">
+												<li><a class="tag active" data-group="post-type" href="#">Image</a></li>
+												<li><a class="tag" data-group="post-type" href="#">Text</a></li>
+											</ul>
+										</li>
+									</ul>
+									<div class="row">
+										<div class="col-sm-8 inner">
+											<div class="row">
+												<div class="col-sm-2">
+													<span>Link</span>
+												</div>
+												<div class="col-sm-10">
+													<input class="gray" type="text">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-2">
+													<span>Title</span>
+												</div>
+												<div class="col-sm-10">
+													<input class="gray" type="text">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<label for="">
+														<input class="gray" type="checkbox">
+														<span>I accept the rules</span>
+													</label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<button class="blue">Submit</button>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<img src="//placehold.it/300" alt="">
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-5 inner">
+									<h3>Rules:</h3>
+									<ul class="rules">
+										<li>No reactiongifs or HIFW posts</li>
+										<li>No posts with their sole purpose being to communicate with another redditor.</li>
+										<li>No posts for the specific point of it being your reddit brithday.</li>
+										<li>Posts which result in harassment of any individual, subreddit, or other entity may be removed at the moderator's discretion.</li>
+										<li>No politics</li>
+										<li>No pictures of just text</li>
+										<li>No DAE posts</li>
+										<li>No reactiongifs or HIFW posts</li>
+										<li>No posts with their sole purpose being to communicate with another redditor.</li>
+										<li>No posts for the specific point of it being your reddit brithday.</li>
+										<li>Posts which result in harassment of any individual, subreddit, or other entity may be removed at the moderator's discretion.</li>
+										<li>No politics</li>
+										<li>No pictures of just text</li>
+										<li>No DAE posts</li>
+									</ul>
+								</div>
+							</div>
 						</div>
-						<input type="text" placeholder="link">
 					</div>
 				</div>
 			</header>
@@ -69,111 +137,46 @@
 			<div id="body">
 				<div class="content">
 					<div class="row">
-						
-						<section class="mainnav">
-							<div class="row">
-								<div class="col">
-									<nav class="categories">
-										<ul>
-											<li><a href="#" class="active">Beliebt</a></li>
-											<li><a href="#">Neu</a></li>
-											<li><a href="#">Aufsteigend</a></li>
-											<li><a href="#">Kontrovers</a></li>
-											<li><a href="#">Top</a></li>
-											<li><a href="#">gilded</a></li>
-											<li><a href="#">wiki</a></li>
-											<li><a href="#">angepriesen</a></li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-						</section>
+						<div class="col-sm-4 pull-right">
+							<h2>funny</h2>
+						</div>
+						<div class="col-sm-8">
+							<section id="posts" class="inner">
+								<ol>
+									<li>
+										<article class="hidden">
+											<div class="controls">
+												<ul>
+													<li><a data-group="voting" class="upvote" href="#">up</a></li>
+													<li><a data-group="voting" class="downvote" href="#">down</a></li>
+												</ul>
+											</div>
+											<div class="score">
+												<span class="h4">1903</span>
+											</div>
+											<div class="content">
+												<header class="h3">
+													Time to walk funny
+												</header>
+												<time>12.12.2012 12:34</time>
+												<!-- additional info -->
 
-						<section id="posts">
-							<article class="hidden">
-								<section class="voting text-center">
-									<p><a href="#" class="icon-up-dir"></a></p>
-									<p class="karma">0</p>
-									<p><a href="#" class="icon-down-dir"></a></p>
-								</section>
-								<section>
-									<img class="img" src="/assets/gfx/post.png" alt="">
-								</section>
-								<section class="textblock">
-									<h3><a class="title" href="#"></a></h3>
-									<p class="ants">
-										<a class="source" href="#">imgur.com</a>
-									</p>
-									<div class="ants">
-										<ul class="tags"></ul>
-									</div>
-									<p class="ants">
-										<span>submitted 12 hours ago by</span>
-										<span class="username">anonymous</span>
-										<span>to</span>
-										<a href="#">/r/somesubreddit</a>
-									</p>
-								</section>
-							</article>
-
-							<article class="template hidden">
-								<div class="img-container">
-									<img src="" alt="" class="img">
-								</div>
-								<div class="meta-info">
-									<div class="meta-domain">
-										<a href="" class="domain"></a>
-									</div>
-									<div class="meta-time">
-										<span class="icon-clock time"></span>
-									</div>
-								</div>
-								<div>
-									<h3 class="title"></h3>
-								</div>
-								<div>
-									<p class="ants">
-										Posted to
-										<span class="subreddit"></span>
-										by
-										<span class="user"></span>
-									</p>
-								</div>
-								<div class="score">
-									<div class="clearfix">
-										<div class="float-right">
-											<div class="up icon-angle-up"></div>
-											<div class="down icon-angle-down"></div>
-										</div>
-										<div class="float-right">
-											<span class="karma"></span>
-										</div>
-									</div>
-								</div>
-								<div>
-									<a href="" class="comments">
-										<span class="num-of-comments"></span>
-										comments
-									</a>
-								</div>
-							</article>
-						</section>
-
-						<section class="pagenav">
-							<nav>
-								<span>Mehr:</span>
-								<a href="#" class="icon-angle-left">zurück</a>
-								<a href="#" class="icon-angle-right after">weiter</a>
-								<span>or try a</span>
-								<a href="#" class="icon-shuffle">random subreddit</a>
-							</nav>
-						</section>
+												<div class="comments">
+													<!-- KOMMENTARE HIER -->
+												</div>
+											</div>
+										</article>
+									</li>
+								</ol>
+								
+							</section>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<!-- FOOTER -->
-			<footer id="footer">
+			<!-- <footer id="footer">
 				<div class="container inner">
 					<section class="text-center">
 						<img src="/assets/gfx/footer.jpg" alt="">
@@ -231,13 +234,13 @@
 							</div>
 						</div>
 					</section>
-
+			
 					<section class="disclaimer ants text-center">
 						<p>Das Benutzen dieser Website begründet sich auf der Verpflichtung unserer <a href="#">User Agreement (updated)</a> und <a href="">Privacy Policy (updated)</a>. © 2014 reddit inc. Alle Rechte vorbehalten.</p>
 						<p>REDDIT and the ALIEN Logo are registered trademarks of reddit inc.</p>
 					</section>
 				</div>
-			</footer>
+			</footer> -->
 		</div>
 
 		<script async src="/assets/build/main.js"></script>
