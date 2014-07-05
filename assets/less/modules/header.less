@@ -1,12 +1,13 @@
 #header{
 	.sticky{
 		height: 64px;
-		background-color: @gray900;
+		background-color: @blue;
+		border-bottom: 3px solid @blueDark;
 	}
-	nav ul{
+	nav > ul{
 		.floating-ul();
 
-		a{
+		.add{
 			line-height: 64px;
 			display: block;
 			font-size: 20px;
@@ -14,11 +15,11 @@
 			color: white;
 			text-decoration: none;
 			text-align: center;
-			font-weight: @robotobold;
+			font-family: @robotobold;
 			.transition(background 150ms ease);
 
 			&:hover, &:focus{
-				background-color: @gray800;
+				background-color: @blueLight;
 			}
 		}
 
@@ -31,6 +32,32 @@
 			text-transform: uppercase;
 			padding: 0 1em;
 			color: rgba(255,255,255, 0.5);
+		}
+
+		.filters{
+			display: table;
+			height: 64px;
+			margin: 0;
+			padding: 0;
+			
+			li{
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.filter{
+				font-size: 15px;
+				font-family: @robotolight;
+				display: block;
+				padding: 0.25em 1em;
+				color: white;
+				text-decoration: none;
+				border-radius: 5px;
+				.transition(background 150ms);
+
+				&.active{
+					background-color: rgba(255,255,255, 0.2);
+				}
+			}
 		}
 	}
 }

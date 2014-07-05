@@ -28,25 +28,36 @@
 					<nav>
 						<ul>
 							<li>
-								<a href="#" data-form="add" class="add">+</a>
+								<a href="#" data-expands="add" class="add">+</a>
 							</li>
 							<li>
-								<h1>reddit</h1>
+								<h1>reddit:</h1>
 							</li>
 							<li>
-								<a href="" class="alerts"></a>
+								<ul class="filters">
+									<li><a href="#" class="filter active">front</a></li>
+									<li><a href="#" class="filter">all</a></li>
+									<li><a href="#" class="filter">random</a></li>
+								</ul>
+							</li>
+							<li class="float-right">
+								<div class="profile">
+									<button>login</button>
+								</div>
+							</li>
+							<li class="float-right">
+								<input type="text">
 							</li>
 						</ul>
 					</nav>
 				</div>
 
-				<div class="expander">
-					<div class="panel" data-name="add">
+				<div id="expander">
+					<div class="panel" data-expandable="add">
 						<div class="types">
 							<ul>
 								<li><a href="#">Link</a></li>
 								<li><a href="#">Text</a></li>
-								<li><a href="#">Image</a></li>
 							</ul>
 						</div>
 						<input type="text" placeholder="link">
@@ -227,7 +238,6 @@
 					</section>
 				</div>
 			</footer>
-
 		</div>
 
 		<script async src="/assets/build/main.js"></script>
