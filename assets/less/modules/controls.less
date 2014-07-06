@@ -33,15 +33,21 @@ button{
 		background-color: @blue; 
 		color: white;
 		border-color: @blueDark;
-		&:hover, &:active, &:focus{
+
+		&:hover,
+		&:active,
+		&:focus{
 			background-color: @blueLight;
 		}
 	}
+
 	&.gray{
 		background-color: @gray300;
 		color: @gray900;
 		border-color: @gray800;
-		&:hover, &:active, &:focus{
+		&:hover,
+		&:active,
+		&:focus{
 			background-color: @gray400;
 		}
 	}
@@ -57,6 +63,7 @@ input[type="text"], input[type="password"]{
 	&.gray{
 		background-color: rgba(255,255,255,0.3);
 		color: white;
+
 		&:focus{
 			border: 3px solid white;
 		}
@@ -70,6 +77,7 @@ input[type="checkbox"], input[type="radio"]{
 	&.gray{
 		background-color: rgba(255,255,255,0.3);
 		color: white;
+		
 		&:focus{
 			border: 3px solid white;
 		}
