@@ -1,8 +1,18 @@
 .panel{
-	background-color: @gray800;
 	color: white;
 
-	padding: 1em 0;
+	padding: 2em;
+
+	opacity: 0;
+	visibility: hidden;
+
+	.clearfix();
+	.transition(opacity 200ms);
+
+	&.active{
+		opacity: 1;
+		visibility: visible;
+	}
 
 	.post-title, .post-type{
 		.floating-ul();
