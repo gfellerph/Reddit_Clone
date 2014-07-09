@@ -7,6 +7,7 @@
 
 var jQuery = require('../vendor/jquery');
 
+// Self executing closure function
 +function navigation($){
 
 	// Live event binding
@@ -22,33 +23,58 @@ var jQuery = require('../vendor/jquery');
 		// Look for open panels
 		if($expander.hasClass('open')){
 
-			// If there are any, fade them out and in the callback,
-			// fade the new one in
-			$expander.data('openPanel').fadeOut(
-				200, 
+			// If there are any, hide them, and in the callback,
+			// show the new panel
+			hidePanel(
+				$expander.data('openPanel'),
 				showPanel($target.attr('data-expands'))
 			);
 		} else {
 
-			// If there are none, fade in new panel
+			// If there are none, show the new panel
 			showPanel($target.attr('data-expands'));
 		}
 
-		function showPanel(ident){
-			var $panel = $expander.find('[data-expandable="' + ident + '"]');
+		function showPanel(ident, callback){
+			
 
+			// Execute callback, if there is any
+			if(callback) return callback();
+		}
+
+		function hidePanel($ident, callback){
+
+			// Set height to current height of the panel
 			$expander.css({'height': $panel.outerHeight()});
-			$expander.addClass('open');
-			$panel.fadeIn(200);
-			$expander.data('openPanel', $panel);
+
+			// Remove the class open (no more height: auto !important)
+			$expander.removeClass('open');
+
+			// Fade out the panel
+			$ident.removeClass('active');
+
+			// Force rerendering of the expander
+			$expander.hide().show();
+
+			// Animate with css transitions to 0 height
+			$expander.css({'height': 0});
+
+			// Remove openPanel from $expander
+			$expander.data('openPanel', null);
+
+			// Execute callback, if there is any
+			if(callback) return callback();
 		}
 	}
+}(jQuery);
 
++function tags($){
 
 	// Toggle the clicked tag
-	var $tags = $('.tag');
+	var tags = $('.tag');
 
-	$tags.on('click', tag_click);
+	// Live event binding
+	$(document).on('click', tags, tag_click);
 
 	function tag_click(event){
 		var $target = $(event.currentTarget);
