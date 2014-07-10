@@ -2885,8 +2885,8 @@ input[type="radio"].gray:focus {
   -webkit-perspective: 500px;
   -moz-perspective: 500px;
   perspective: 500px;
-  -webkit-transition: height 200ms;
-  transition: height 200ms;
+  -webkit-transition: height 500ms;
+  transition: height 500ms;
 }
 #expander.open {
   height: auto !important;

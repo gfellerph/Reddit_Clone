@@ -25,13 +25,13 @@ var jQuery = require('../vendor/jquery');
 
 			var ident = $expander.data('activePanel').attr('data-expandable');
 
-			// If open panel == new panel, close this
+			// If open panel == new panel, close the open panel
 			if($target.attr('data-expands') == ident){
 				hidePanel(ident);
 			} else {
 
-				// If there are any, hide them, and in the callback,
-				// show the new panel
+				// If new panel != old panel, close old panel and
+				// in the callback, open the new panel
 				hidePanel(
 					$expander.data('openPanel'),
 					showPanel($target.attr('data-expands'))
@@ -55,18 +55,17 @@ var jQuery = require('../vendor/jquery');
 			$panel.addClass('active');
 
 			// Register one event listener to catch transition end
-			// with vendor prefixes. Also keep browsers accepting
-			// prefixed and non-prefixed events from firing twice
-			var fired = false;
+			// with vendor prefixes.
 			$expander.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-    			if ( ! fired ) {
-        			fired = true;
-        			console.log('add class open transitionend');
-        			$expander.unbind('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
-        			// Set height to auto and save the active panel
-        			$expander.addClass('open');
-        			$expander.data('activePanel', $panel);
-    			}
+
+				// Keep browsers accepting
+				// prefixed and non-prefixed events from firing twice
+    			$expander.unbind('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
+    			
+    			// Set height to auto and save the active panel
+    			$expander.addClass('open');
+    			$expander.data('activePanel', $panel);
+
 			});
 
 			// Execute callback, if there is any
