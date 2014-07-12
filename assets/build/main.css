@@ -2596,12 +2596,18 @@ input[type="radio"].gray:focus {
   padding: 12px;
 }
 #header nav > ul #headerRight .profile {
-  float: right;
   padding: 0;
 }
+#header nav > ul #headerRight .profile .login {
+  color: #e0e0e0;
+}
 #header nav > ul #headerRight .search {
-  float: right;
+  float: left;
   padding-left: 0;
+}
+#header nav > ul #headerRight .search input {
+  background-color: #5b9bd5;
+  font-size: 200%;
 }
 #menu .controls:before,
 #menu .controls:after {
@@ -2800,6 +2806,20 @@ input[type="radio"].gray:focus {
   right: 7px;
   font-size: 90%;
   color: #9e9e9e;
+}
+#posts ol li article .content .comments {
+  position: absolute;
+  bottom: 5px;
+  right: 7px;
+}
+#posts ol li article .content .comments .commentBtn {
+  background-color: #2e75b6;
+  color: #5b9bd5;
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  border: none;
+  padding: 0;
 }
 .panel {
   color: white;
