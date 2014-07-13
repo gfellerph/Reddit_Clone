@@ -2317,6 +2317,13 @@ h3,
   font-size: 1.5em;
   font-family: 'robotocondensed-regular', Helvetica, Arial, sans-serif;
 }
+#loginArea {
+  margin-top: 30px;
+}
+#loginArea h2 {
+  font-size: 150%;
+  color: #2e75b6;
+}
 .content {
   padding: 0 15px;
 }

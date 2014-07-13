@@ -30,7 +30,7 @@
         var commentSubmit = '<button class="submitComment">Kommentar hinzufügen</button>';
         var commentList = '<li>' + $('.textComment').val() + '</li>';
 
-        $('.comment').on('click', function (event) {
+        $('.commentBtn').on('click', function (event) {
             var element = $(event.currentTarget)
             if(element.hasClass('openComment')){
                 $(element).parent().find('.textComment').remove();
