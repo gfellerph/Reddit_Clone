@@ -32,6 +32,7 @@ var jQuery = require('../vendor/jquery');
 
 				// If new panel != old panel, close old panel and
 				// in the callback, open the new panel
+				$('[data-expands]').removeClass('active');
 				hidePanel(
 					$expander.data('openPanel'),
 					showPanel($target.attr('data-expands'))
@@ -47,12 +48,14 @@ var jQuery = require('../vendor/jquery');
 		function showPanel(ident, callback){
 
 			var $panel = $('[data-expandable="' + ident + '"]');
+			var $button = $('[data-expands="' + ident + '"]');
 
 			// Set expander height to panel height
 			$expander.css({'height': $panel.outerHeight()});
 
 			// Show the panel
 			$panel.addClass('active');
+			$button.addClass('active');
 
 			// Register one event listener to catch transition end
 			// with vendor prefixes.
@@ -75,9 +78,11 @@ var jQuery = require('../vendor/jquery');
 		function hidePanel(ident, callback){
 
 			var $panel = $('[data-expandable="' + ident + '"]');
+			var $button = $('[data-expands="' + ident + '"]');
 
 			// Remove the class open (no more height: auto !important)
 			$expander.removeClass('open');
+			$button.removeClass('active');
 
 			// Set height to current height of the panel
 			$expander.css({'height': $panel.outerHeight()});
