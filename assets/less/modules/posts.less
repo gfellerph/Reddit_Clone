@@ -9,8 +9,8 @@
     margin-bottom: 1.4em;
 
     article{
+      .clearfix();
       background-color: white;
-      height: 110px;
       .transition(box-shadow 200ms);
 
       &:hover{
@@ -82,9 +82,7 @@
         }
 
         .comments {
-          position: absolute;
-          bottom: 5px;
-          right: 7px;
+          margin-top: 1.4em;
 
           .commentBtn {
             background-color: @blueLight;

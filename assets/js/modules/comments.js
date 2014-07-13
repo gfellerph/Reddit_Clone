@@ -28,22 +28,41 @@
     $(document).ready(function () {
         var commentTextBox = '<textarea class="textComment"></textarea>';
         var commentSubmit = '<button class="submitComment">Kommentar hinzufügen</button>';
-        var commentList = '<li>' + $('.textComment').val() + '</li>';
+        var commentContainer = '<ul class="comment-container"></ul>';
+        var commentAdd = '<button class="commentBtn">Kommentar</button>';
 
-        $('.commentBtn').on('click', function (event) {
-            var element = $(event.currentTarget)
-            if(element.hasClass('openComment')){
-                $(element).parent().find('.textComment').remove();
-                $(element).parent().find('.submitComment').remove();
-                $(element).removeClass('openComment');
+        $(document).on('click', '.commentBtn', function (event) {
+            var $element = $(event.currentTarget);
+            var $parent = $element.parent();
+            if($element.hasClass('active')){
+                $parent.find('.textComment:first').remove();
+                $parent.find('.submitComment:first').remove();
+                $element.removeClass('active');
+
+                
             } else {
-                $(element).parent().append(commentTextBox + commentSubmit);
-                $(element).addClass('openComment');
+                $element.after(commentTextBox + commentSubmit);
+                $element.addClass('active');
             }
         });
 
-        $('.submitComment').on('click', function () {
-            $('.commentBox').append(commentList);
+        $(document).on('click', '.submitComment', function (event) {
+        	var $element = $(event.currentTarget);
+        	var $parent = $element.parent();
+            var $ul = $parent.find('.comment-container:first');
+            var $newCont = {};
+            if($ul.length > 0){
+            	$newCont = $ul;
+            } else {
+            	$newCont = $(commentContainer);
+            	$parent.append($newCont);
+            }
+
+            $newCont.append('<li>' + $parent.find('.textComment:first').val() + '</li>');
+            $newCont.append(commentAdd);
+            $parent.find('.textComment').remove();
+                $parent.find('.submitComment').remove();
+                $parent.find('.commentBtn').removeClass('active');
         });
     });
 
