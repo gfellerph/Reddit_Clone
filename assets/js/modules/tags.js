@@ -9,11 +9,8 @@ var jQuery = require('../vendor/jquery');
 
 +function tags($){
 
-	// Toggle the clicked tag
-	var tags = $('.tag');
-
 	// Live event binding
-	$(document).on('click', tags, tag_click);
+	$(document).on('click', '.tag', tag_click);
 
 	function tag_click(event){
 		var $target = $(event.currentTarget);

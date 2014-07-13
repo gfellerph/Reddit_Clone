@@ -1,4 +1,7 @@
 +function($){
+
+	// Load the post object
+	var Post = require('./post');
 	
 	// Reddit API mantle
 	$(function(){
@@ -6,9 +9,8 @@
 		// Attach event handler to all elements with
 		// data-subreddit="..." which loads latest
 		// posts from this subreddit into #posts
-		var elements = $('[data-subreddit]');
 		
-		elements.on('click', function(e){
+		$(document).on('click', '[data-subreddit]', function(e){
 			e.preventDefault();
 			var subreddit = $(e.currentTarget).attr('data-subreddit');
 			getPosts_from_subreddit(subreddit, insertPosts);
@@ -24,22 +26,19 @@
 		});
 	}
 
-	window.testReddit = getPosts_from_subreddit;
-
 	function insertPosts(posts){
-		
-	}
+		var $container = $('#posts');
+		$container.find('li:not(.template)').remove();
 
-	function normalizeThumbnail(thumb){
-		if(thumb == 'self'){
-			thumb = '/gfx/post.png';
-		} else if(thumb == 'nsfw'){
-			thumb = '/gfx/post.png';
-		} else if(thumb == 'default'){
-			thumb = '/gfx/post.png';
+		for(var i = 0; i < posts.length; i++){
+
+			// Create new post object and pass
+			// the JSON object from reddit as option
+			var post = new Post(posts[i].data);
+
+			// Add the post to the container
+			$container.append(post.html());
 		}
-		return thumb;
 	}
-
 	
 }(require('../vendor/jquery'));
