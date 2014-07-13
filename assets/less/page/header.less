@@ -1,14 +1,24 @@
 #header{
+
 	.sticky{
-		height: 64px;
+		.clearfix();
 		background-color: @blue;
 		border-bottom: 3px solid @blueDark;
 	}
+
+	nav{
+		float: left;
+	}
+
+	#headerRight{
+		float: right;
+	}
+
 	nav > ul{
 		.floating-ul();
 
 		.addLink{
-			line-height: 61px;
+			line-height: 64px;
 			display: block;
 			font-size: 20px;
 			width: 64px;
@@ -51,27 +61,33 @@
 				}
 			}
 		}
+	}
 
-		#headerRight {
-			padding: 12px;
+	#headerRight {
+		padding: 12px;
 
-			.profile {
-				padding: 0;
+		.profile {
+			padding: 0;
 
-                .login {
-                  color: @gray300;
-                }
-			}
+            .login {
+              white-space: nowrap;
+            }
+		}
 
-			.search {
-				float: left;
-				padding-left: 0;
+		.search {
+			float: left;
+			padding-left: 0;
 
-              input {
-                  background-color: @blueLight;
-                  font-size: 200%;
-                }
+			input[type="text"]{
+				background-color: @blueLight;
+				color: white;
+				.placeholder(fade(white, 50%));
 			}
 		}
+	}
+
+	@media screen and (max-width: @screen-xs-max){
+
+		nav > ul .filters, .search{display:  none;}
 	}
 }
