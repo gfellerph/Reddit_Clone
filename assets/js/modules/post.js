@@ -1,18 +1,17 @@
-
-// Require jQuery
-var $ = require('../vendor/jquery');
-
-// Default options object with all the possible variables
-var DEFAULT = {
-	created: new Date(),
-	$template: $('#posts').find('.template'),
-	score: 0,
-	selftext: '',
-	comments: null,
-	url: ''
-}
-
 module.exports = function Post(options){
+
+	// Require jQuery
+	var $ = require('../vendor/jquery');
+
+	// Default options object with all the possible variables
+	var DEFAULT = {
+		created: new Date(),
+		$template: $('#posts').find('.template'),
+		score: 0,
+		selftext: '',
+		comments: null,
+		url: ''
+	}
 
 	// Merge options
 	if(typeof options == 'undefined') options = {};
@@ -47,9 +46,11 @@ module.exports = function Post(options){
 
 		// Security checks
 		if(!typeof t.$template == 'object') console.warn('Template must be an object');
-		t.$object = $(t.$template).clone();
+		if(!t.$template instanceof $) console.warn('Template must be an jQuery object');
+
+		// Clone the template and remove the class
+		t.$object = t.$template.clone();
 		t.$object.removeClass('template');
-		if(!t.$object instanceof $) console.warn('Template must be an jQuery object');
 
 		var $title = t.$object.find('.title');
 		var $text = t.$object.find('.text');
@@ -68,14 +69,16 @@ module.exports = function Post(options){
 		if(t.selftext.length > 0) $text.html(t.selftext);
 
 		// Save the post object to the data property of the html-element
+		// for later use. It can be accessed from $('.post').data('post')
 		t.$object.data('post', t);
-		t.$object = t.$object;
 
+		// Return the jQuery HTML object, so it can be appended to something
 		return t.$object;
 	}
 
 	// Construct the name property of a post
 	function name(){ return this.kind + '_' + this.id; }
+
 	// Check if the URL points to an image resource
 	function isImageURL(url){
 		var imgTypes = ['.png', '.jpg', '.gif'],
@@ -85,22 +88,11 @@ module.exports = function Post(options){
 		}
 		return test;
 	}
+
 	// Helper function to get filetype of a path/url
 	String.prototype.endsWith = function(suffix) {
 	    return this.indexOf(suffix, this.length - suffix.length) !== -1;
 	};
-	// Helper function for date formatting
-	function formatedDate(date){
-		var d = date.getDay();
-		var M = date.getMonth() + 1; // Month counts begins with 0
-		var y = date.getFullYear();
-		var m = date.getMinutes();
-		var h = date.getHours();
-
-		console.log(date.toLocaleString());
-
-		return d + '.' + M + '.' + y + ' ' + h + ':' + m;
-	}
 
 	return {
 		log: function(){

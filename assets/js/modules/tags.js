@@ -5,8 +5,6 @@
 	the browserify node module.
 */
 
-var jQuery = require('../vendor/jquery');
-
 +function tags($){
 
 	// Live event binding
@@ -27,4 +25,4 @@ var jQuery = require('../vendor/jquery');
 		// Don't follow link or reload page
 		event.preventDefault(); 
 	}
-}(jQuery);
+}(require('../vendor/jquery'));
