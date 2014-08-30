@@ -1,2 +1,4 @@
 node_modules
+assets/js/*
+assets/css/*
 *.cache
