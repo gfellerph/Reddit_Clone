@@ -1,5 +1,6 @@
 var Datastore = require('nedb');
-var db = new Datastore({ filename: __dirname + '/data/test', autoload: true });
+var path = require('path');
+var db = new Datastore({ filename: path.join(__dirname + '/data/test'), autoload: true });
 var getOneUser;
 
 getOneUser = function(id, callback){
