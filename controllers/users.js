@@ -1,6 +1,6 @@
 var Datastore = require('nedb');
 var path = require('path');
-var db = new Datastore({ filename: path.join(__dirname + '/data/test'), autoload: true });
+var db = new Datastore({ filename: path.join(__dirname + '/../data/test'), autoload: true });
 var getOneUser;
 
 getOneUser = function(id, callback){
@@ -13,7 +13,7 @@ getOneUser = function(id, callback){
 	});
 }
 
-exports.list = function (req, res, next){
+exports.list = function (req, res){
 	db.find({}, function (err, doc){
 		if (err){
 			console.log(err);
@@ -41,13 +41,13 @@ exports.add = function (req, res){
 	});
 }
 
-exports.one = function (req, res, next){
+exports.one = function (req, res){
 	getOneUser(req.params.id, function (user){
-		res.render('../views/test/one', { title: 'One User', user: user }, next);
+		res.render('../views/test/one', { title: 'One User', user: user });
 	});
 }
 
-exports.updateForm = function (req, res, next){
+exports.updateForm = function (req, res){
 	getOneUser(req.params.id, function (user){
 		res.render('../views/test/update', { title: 'Update User', user: user });
 	});
@@ -65,7 +65,7 @@ exports.update = function (req, res){
 		if (err){
 			console.log(err);
 		}
-		res.location('list');
-		res.redirect('list');
+		res.location('/test/list');
+		res.redirect('/test/list');
 	});
 }

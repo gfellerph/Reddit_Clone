@@ -30,10 +30,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 var routes = require('./routes');
 var api = require('./routes/api');
 var test = require('./routes/users');
+var posts = require('./routes/posts');
 
 app.use('/', routes);
 app.use('/api', api);
 app.use('/test', test);
+app.use('/posts', posts);
 
 
 // Handle errors

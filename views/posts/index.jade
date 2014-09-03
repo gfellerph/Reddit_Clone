@@ -1,0 +1,28 @@
+extends ../shared/post-layout
+
+block content
+
+	div.container(ng-controller='PostController as postCtrl')
+		form(name='addPost', ng-controller='FormController as formCtrl', ng-submit='formCtrl.submit(postCtrl)')
+			h2 New post
+			input(type='text', placeholder='Title', ng-model='formCtrl.post.title')
+			br
+			textarea(placeholder='Text', ng-model='formCtrl.post.text')
+			br
+			input(type='text', placeholder='Image URL', ng-model='formCtrl.post.image')
+			br
+			button Add
+
+		h1= title
+
+		ul
+			li(ng-repeat='post in postCtrl.posts')
+				img(ng-src='{{post.image}}')
+				h3 {{post.title}}
+				p {{post.text}}
+				p {{post.posted | date: 'dd.MM.yyyy hh:mm'}} - {{post.user.name}}
+				div.clearfix
+					p {{post.score.upvotes - post.score.downvotes}} ({{post.score.upvotes}} / {{post.score.downvotes}})
+					div
+						button(ng-click='post.score.upvotes = post.score.upvotes + 1') +
+						button(ng-click='post.score.downvotes = post.score.downvotes + 1') -

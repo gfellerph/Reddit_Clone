@@ -2,7 +2,7 @@ extends ../shared/test-layout
 
 block content
 	h1= title
-	form#updateUser.inner(name='updateUser', method='put', action='/test/user/#{user._id}')
+	form#updateUser.inner(name='updateUser', method='put', action='/test/user/#{user._id}/update')
 		input#inputUserName(type='text', placeholder='name', name='username', value='#{user.username}')
 		input#inputUserEmail(type='text', placeholder='email', name='useremail', value='#{user.useremail}')
 		button#btnSubmit(type='submit') submit

@@ -6,9 +6,13 @@ var users = require('../controllers/users');
 router.get('/list', users.list);
 
 /* GET add user */
-router.get('/add', function (req, res, next){
+router.get('/add', function (req, res){
 	res.render('../views/test/add');
-	next();
+});
+
+/* GET add user */
+router.get('/angular', function (req, res){
+	res.render('../views/test/angular');
 });
 
 /* POST add user */
@@ -21,7 +25,7 @@ router.get('/user/:id', users.one);
 router.get('/update/:id', users.updateForm);
 
 /* PUT update a user */
-router.put('/user/:id', users.update);
+router.post('/user/:id/update', users.update);
 
 
 module.exports = router;

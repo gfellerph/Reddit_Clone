@@ -1,5 +1,5 @@
 doctype html
-html(ng-app='gemStore')
+html(ng-app='reddit')
 	head
 		meta(charset='UTF-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -7,7 +7,7 @@ html(ng-app='gemStore')
 
 		title= title
 
-		link(rel='stylesheet', href='/css/main.css')
+		//link(rel='stylesheet', href='/css/main.css')
 		script(src='/js/Modernizr.js')
 
 		script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
@@ -17,18 +17,7 @@ html(ng-app='gemStore')
 		script(src='/js/angular.min.js')
 		
 	body
-		div#background
-
-		div#wrapper
-			header#header
-				//include header.jade
-
-			main#main
-				div.content
-					block content
-
-			footer#footer
-				block footer
+		main#main
+			block content
 		
 		script(src='/js/angular-app.js')
-		script(src='/js/main.js')

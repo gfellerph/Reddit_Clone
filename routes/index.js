@@ -6,11 +6,6 @@ router.get('/', function (req, res) {
   res.render('index', { title: 'Express' });
 });
 
-/* GET some subpage */
-router.get('/post', function (req, res){
-	res.render('post', { title: 'Post' });
-});
-
 
 
 module.exports = router;
