@@ -17,7 +17,7 @@ var gutil		= require('gulp-util');
 var options = {
 	jsBaseDir: '../js/**/*.js',			// Where your js files are stored
 	jsMainFile: '../js/main.js',			// Entry point to js files
-	jsOutputDir: '../../assets/js',				// Output directory
+	jsOutputDir: '../../public/js',				// Output directory
 	jsOutputFileName: 'main.js',		// Name of the output file
 	jsOutputMinFileName: 'main.min.js'	// Name of the minified output file (no sourcemap)
 }

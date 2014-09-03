@@ -1,24 +1,34 @@
 // Vendor files
+// ===========================================================
 @import "vendor/bootstrap/bootstrap.less";
 
-// Code files
-@import "code/mixins.less";
-@import "code/variables.less";
 
-// Basic styles
-@import "page/fonts.less";
-@import "page/general.less";
-@import "page/convenience.less";
-@import "page/controls.less";
+// Core files
+// ===========================================================
+@import "core/variables.less";
+@import "core/mixins.less";
+@import "core/convenience.less";
 
-// Page structure styles
-@import "page/skeleton.less";
-@import "page/header.less";
-@import "page/nav.less";
-@import "page/content.less";
-@import "page/footer.less";
+
+// Scaffolding files
+// ===========================================================
+@import "scaffolding/fonts.less";
+@import "scaffolding/fonticons.less";
+@import "scaffolding/general.less";
+@import "scaffolding/controls.less";
+@import "scaffolding/scaffolding.less";
+
+
+// Shared styles
+// ===========================================================
+@import "shared/header.less";
+@import "shared/nav.less";
+@import "shared/content.less";
+@import "shared/footer.less";
+
 
 // Modules
+// ===========================================================
 @import "modules/posts.less";
 @import "modules/panels.less"; // Hidden forms for new post
 @import "modules/tags.less";

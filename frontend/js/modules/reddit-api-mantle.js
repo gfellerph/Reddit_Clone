@@ -41,4 +41,4 @@
 		}
 	}
 	
-}(require('../vendor/jquery'));
+}(jQuery);

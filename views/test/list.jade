@@ -1,0 +1,14 @@
+extends ../shared/test-layout
+
+block content
+	h1 User List
+	a(href='/test/add') Add new user
+	ul
+		each user in userlist
+			li
+				a(href='/test/user/#{user._id}')= user.username
+				span  [
+				a(href='/test/update/#{user._id}') update
+				span , 
+				a(href='/test/delete/#{user._id}') delete
+				span ]

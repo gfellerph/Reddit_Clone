@@ -66,4 +66,4 @@
         });
     });
 
-}(require('../vendor/jquery'));
+}(jQuery);

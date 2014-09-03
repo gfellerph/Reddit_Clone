@@ -1,0 +1,25 @@
+nav.sticky
+	ul
+		li
+			a.addLink(href='#', data-expands='addLink')
+		li
+			h1 reddit:
+		li
+			ul.filters
+				li
+					a.tag.active(href='#', data-group='filter') front
+				li
+					a.tag(href='#', data-group='filter') all
+				li
+					a.tag(href='#', data-group='filter') random
+				li
+					a.tag(href='#', data-group='filter', data-subreddit='r/funny') funny
+
+div#headerRight
+	div.search.col-sm-8
+		input(type='text', placeholder='Search')
+	div.profile.col-sm-4
+		button.login.icon-user login
+
+div#expander
+	include ./expander.jade

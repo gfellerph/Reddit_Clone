@@ -18,7 +18,7 @@ var options = {
 	svgBaseDir: '../svg/**/*.svg',
 
 	// Where the font files will be saved to
-	iconfontOutputDir: '../../assets/fonts/',
+	iconfontOutputDir: '../../public/fonts/',
 
 	// Name to use on generated webfont, in the less file and as font-family name		
 	fontName: 'fonticons',
@@ -30,10 +30,10 @@ var options = {
 	lessTemplate: 'tasks/iconfont-template.less',
 
 	// Where the generated less file should be saved to
-	lessOutputFilePath: '../less/code/',
+	lessOutputFilePath: '../less/scaffolding/',
 
 	// This path will be written in the @fontface rule in the less file
-	fontServerPath: '/assets/fonts/'
+	fontServerPath: '/fonts/'
 }
 
 

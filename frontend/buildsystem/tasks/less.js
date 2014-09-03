@@ -16,7 +16,7 @@ var gutil		= require('gulp-util');
 var options = {
 	lessBaseDir: '../less/**/*.less', 		// Where all less files are stored and the watcher is set
 	lessMainFile: '../less/main.less', 	// Where your less files are imported
-	lessOutputDir: '../../assets/css', 			// Where main.css, main.min.css and the sourcemap would be written to
+	lessOutputDir: '../../public/css', 			// Where main.css, main.min.css and the sourcemap would be written to
 	lessOutputMinName: 'main.min.css'	// Name of the minified css
 }
 

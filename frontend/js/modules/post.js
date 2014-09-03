@@ -1,7 +1,7 @@
 module.exports = function Post(options){
 
-	// Require jQuery
-	var $ = require('../vendor/jquery');
+	// Unobtrusive jQuery
+	var $ = jQuery;
 
 	// Default options object with all the possible variables
 	var DEFAULT = {

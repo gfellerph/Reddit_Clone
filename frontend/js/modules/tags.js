@@ -25,4 +25,4 @@
 		// Don't follow link or reload page
 		event.preventDefault(); 
 	}
-}(require('../vendor/jquery'));
+}(jQuery);

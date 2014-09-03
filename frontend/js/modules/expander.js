@@ -5,8 +5,6 @@
 	the browserify node module.
 */
 
-var jQuery = require('../vendor/jquery');
-
 // Self executing closure function
 +function expander($){
 

@@ -35,6 +35,6 @@
 	    return http.status!=404;
 	}
 }(
-	require('../vendor/jquery'), 
+	jQuery, 
 	require('./post')
 );
