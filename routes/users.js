@@ -23,4 +23,5 @@ router.get('/update/:id', users.updateForm);
 /* PUT update a user */
 router.put('/user/:id', users.update);
 
+
 module.exports = router;
