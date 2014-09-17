@@ -1,6 +1,14 @@
 School project for HSR
 =========
 
-foobar
+To start the project on your local machine, run
+```
+npm start
+```
+in the root directory then visit `http://localhost:3000/posts` for the post overview.
 
-http://tuelsch.github.io/Reddit_Clone
+To build assets, run
+```
+gulp
+```
+at `/frontend/buildsystem`.
