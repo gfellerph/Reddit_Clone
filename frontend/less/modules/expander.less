@@ -5,8 +5,8 @@
 	background-color: rgb(50,50,50);
 	box-shadow: inset 0 -30px 30px -30px #000,inset 0px 30px 30px -30px #000;
 
-	.perspective(500px); // Force 3D rendering context
-	.transition(height 500ms);
+	perspective: 500px; // Force 3D rendering context
+	transition: height 500ms;
 	
 	// Style must override inline set height from js expander functionality,
 	// otherwise it would not be possible to use transition to animate the

@@ -21,15 +21,16 @@ label[for]{
 
 button{
 	padding: 0.25em 1em;
-	border-radius: 5px;
+
 	border: none;
 	border-bottom: 3px solid;
+
 	font-family: @robotocondensed-regular;
 	font-size: 1.2em;
 
-	.transition(background 150ms);
+	transition: background 150ms;
 
-	&.blue{ 
+	&.blue, &{ 
 		background-color: @blue; 
 		color: white;
 		border-color: @blueDark;

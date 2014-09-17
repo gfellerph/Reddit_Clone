@@ -8,6 +8,7 @@ var rename 		= require('gulp-rename');
 var minify		= require('gulp-minify-css');
 var sourcemaps 	= require('gulp-sourcemaps');
 var gutil		= require('gulp-util');
+var autoprefixer = require('gulp-autoprefixer');
 
 
 // Options
@@ -52,6 +53,9 @@ function lessbuild(event){
 
 	// Generate sourcemap
 	.pipe( sourcemaps.write() )
+
+	// Run autoprefixer
+	.pipe( autoprefixer() )
 
 	// Save compiled css
 	.pipe( gulp.dest(options.lessOutputDir) )

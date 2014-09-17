@@ -7,12 +7,9 @@ html(ng-app='reddit')
 
 		title= title
 
-		//link(rel='stylesheet', href='/css/main.css')
+		link(rel='stylesheet', href='/css/main.css')
 		script(src='/js/Modernizr.js')
 
-		script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-		script.
-			window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js">\x3C/script>')
 		
 		script(src='/js/angular.min.js')
 		
@@ -20,4 +17,7 @@ html(ng-app='reddit')
 		main#main
 			block content
 		
+		script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+		script.
+			window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js">\x3C/script>')
 		script(src='/js/angular-app.js')
