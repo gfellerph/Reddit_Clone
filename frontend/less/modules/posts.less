@@ -9,28 +9,13 @@
 
   background-color: @gray900;
 
-  @media screen and (max-width: @screen-xs-max){
-    margin: 0 -15px;
-  }
-
   .post{
-    margin: 15px;
     padding: 1em;
+    margin: 5px;
 
     background-color: @gray300;
     transition: width 200ms;
 
-    max-width: 25%;
-
-    @media screen and (max-width: @screen-sm-max){
-      max-width: 100%;
-      min-width: 50%;
-    }
-
-    @media screen and (max-width: @screen-xs-max){
-      min-width: 100%;
-      margin: 0 0 5px 0;
-      &:last-child{ margin: 0; }
-    }
+    max-width: 300px;
   }
 }

@@ -1,4 +1,5 @@
 +function(){
+	'use strict';
 
 	var app = angular.module('reddit', []);
 
@@ -6,18 +7,43 @@
 	var dummy_user = { name: 'Philipp', joined: Date.now() };
 
 	// Get the post list from the server
-	app.controller('PostController', ['$http', function ($http){
+	app.controller('PostController', ['$scope', '$http', function ($scope, $http){
 
-		var $this = this;
-		$this.posts = {};
+		// Initialize posts collection
+		$scope.posts = [];
 
+		// Get data for the post list
 		var req = $http.get('/api/posts');
 		req.success(function (data, status, headers, config){
-			$this.posts = data;
+			$scope.posts = data;
 		});
 		req.error(function (data, status, headers, config){
 			console.log(data);
 		});
+
+		this.add = function (post){
+
+			post.posted = Date.now();
+			post.score = {
+				upvotes: 0,
+				downvotes: 0
+			};
+			post.user = dummy_user;			
+
+			// Push to the server
+			var req = $http.post('/api/post', post);
+			req.success(function (data, status, headers, config){
+				
+				// Push to the list
+				$scope.posts.push(data);
+			});
+			req.error(function (data, status, headers, config){
+				console.log(data);
+			});
+
+			// Clean up
+			post = {};
+		};
 
 		this.upvote = function (post){
 			if(!post.score.upvotes) post.score.upvotes = 0;
@@ -33,8 +59,14 @@
 
 		this.delete = function (post){
 			$http.delete('/api/post/' + post._id);
-			$this.posts.splice($this.posts.indexOf(post), 1);
+			$scope.posts.splice($scope.posts.indexOf(post), 1);
 		}
+
+		this.edit = function (post){
+			addPost.post.title = post.title;
+			console.log(addPost);
+		}
+
 	}]);
 
 	// Save new post
@@ -42,29 +74,7 @@
 		this.post = {};
 		
 		this.submit = function (postCtrl){
-			this.post.posted = Date.now();
-			this.post.score = {
-				upvotes: 0,
-				downvotes: 0
-			};
-			this.post.user = dummy_user;
-			this.post.image = '/gfx/footer.jpg';
 			
-			// Push to the list
-			postCtrl.posts.push(this.post);
-
-			// Push to the server
-			var req = $http.post('/api/post', this.post);
-			req.success(function (data, status, headers, config){
-				//console.log(data);
-				// Add ID to the post
-			});
-			req.error(function (data, status, headers, config){
-				console.log(data);
-			});
-
-			// Clean up
-			this.post = {};
 		}
 	}]);
 }();

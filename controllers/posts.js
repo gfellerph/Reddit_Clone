@@ -1,5 +1,6 @@
 var getOnePost;
 
+var Post = require('../models/post');
 var Datastore = require('nedb');
 var path = require('path');
 
@@ -30,8 +31,8 @@ exports.getOne = function (req, res){
 
 // Add a post
 exports.add = function (req, res){
-	console.log(req.body);
-	req.body.user = 
+	var newPost = new Post(req.body);
+
 	db.insert( req.body, function (err, doc){
 		if (err){ console.log(err); }
 		else { res.json(doc); }
@@ -40,21 +41,10 @@ exports.add = function (req, res){
 
 // Update one post
 exports.update = function (req, res){
+	var updatedPost = new Post(req.body);
+
 	var update_rule = {
-		$set: {
-			title: req.body.title,
-			text: req.body.text,
-			image: req.body.image,
-			posted: req.body.posted,
-			score: {
-				upvotes: req.body.upvotes,
-				downvotes: req.body.downvotes
-			},
-			user: {
-				name: req.body.name,
-				joined: req.body.joined
-			}
-		}
+		$set: updatedPost
 	};
 
 	db.update({'_id': req.params.id}, update_rule, {}, function (err, numReplaced, newDoc){
@@ -79,8 +69,6 @@ exports.upvote = function (req, res){
 		}
 	};
 
-	console.log(JSON.stringify(req.body));
-
 	db.update({'_id': req.params.id}, update_rule, {}, function (err, numReplaced, doc){
 		if (err){ console.log(err); }
 		else { res.json(doc); }
@@ -94,8 +82,6 @@ exports.downvote = function (req, res){
 			'score.downvotes': req.body.score.downvotes
 		}
 	};
-
-	console.log(JSON.stringify(req.body));
 
 	db.update({'_id': req.params.id}, update_rule, {}, function (err, numReplaced, doc){
 		if (err){ console.log(err); }
