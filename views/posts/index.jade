@@ -25,14 +25,16 @@ block content
 		ul.posts
 			li.post(ng-repeat='post in posts | filter:query | orderBy:order')
 				img(ng-src='{{post.image}}')
+				p.username {{post.user.name}}
 				h3 {{post.title}}
 				p.text {{post.text}}
-				p.meta
-					span.date {{post.posted | date: 'dd.MM.yyyy hh:mm'}}
-					span  - 
-					span.username {{post.user.name}}
+				div.timing
+					span.time {{post.posted | date: 'hh:mm'}}
+					span.date {{post.posted | date: 'dd.MM.yyyy'}}
 				div.clearfix
-					p {{post.score.upvotes - post.score.downvotes}} ({{post.score.upvotes}} / {{post.score.downvotes}})
+					div {{post.score.upvotes - post.score.downvotes}}
+					div.comments-button
+						span.comments-count 120
 					div
 						button(ng-click='postCtrl.upvote(post)') +
 						button(ng-click='postCtrl.downvote(post)') -
