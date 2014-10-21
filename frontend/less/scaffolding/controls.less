@@ -3,12 +3,14 @@ input, textarea{
 }
 
 label[for]{
+
 	display: block;
 	padding-left: 16px;
 	text-indent: -16px;
 
 	input[type="checkbox"], 
 	input[type="radio"]{
+
 		top: -1px;
 		position: relative;
 		width: 13px;
@@ -20,36 +22,34 @@ label[for]{
 }
 
 button{
-	padding: 0.25em 1em;
 
 	border: none;
-	border-bottom: 3px solid;
-
-	font-family: @robotocondensed-regular;
-	font-size: 1.2em;
-
+	background: none;
+	outline: none;
+	box-shadow: none;
 	transition: background 150ms;
 
-	&.blue, &{ 
-		background-color: @blue; 
+	&.teal{ 
+		background-color: @teal--500; 
 		color: white;
-		border-color: @blueDark;
+		border-color: @teal--700;
 
 		&:hover,
 		&:active,
 		&:focus{
-			background-color: @blueLight;
+			background-color: @teal--300;
 		}
 	}
 
 	&.gray{
-		background-color: @gray300;
-		color: @gray900;
-		border-color: @gray800;
+		background-color: @grey--300;
+		color: @grey--900;
+		border-color: @grey--800;
+		
 		&:hover,
 		&:active,
 		&:focus{
-			background-color: @gray400;
+			background-color: @grey--400;
 		}
 	}
 }
