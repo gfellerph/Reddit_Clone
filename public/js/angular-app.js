@@ -77,4 +77,11 @@
 			
 		}
 	}]);
+
+	// Post directive
+	app.directive('post', function () {
+		return {
+			templateUrl: '/posts/post-template'
+		};
+	});
 }();

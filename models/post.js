@@ -1,5 +1,5 @@
-var User = require('./user');
-var Score = require('./score');
+var User 	= require('./user');
+var Score 	= require('./score');
 
 // Data model of a post
 module.exports = function (object){
@@ -8,10 +8,10 @@ module.exports = function (object){
 
 	if(!object) object = {score: {}, user: {}};
 
-	this.title = object.title || '';
-	this.text = object.text || '';
-	this.image = object.image || '';
+	this.title 	= object.title 	|| '';
+	this.text 	= object.text 	|| '';
+	this.image 	= object.image 	|| '';
 	this.posted = object.posted || Date.now();
-	this.score = object.score || new Score();
-	this.user = object.user || new User();
+	this.score 	= object.score;
+	this.user 	= object.user;
 };
