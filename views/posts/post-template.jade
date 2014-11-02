@@ -3,7 +3,7 @@ div.post--content
 p.post--username {{post.user.name}}
 h3.post--title {{post.title}}
 p.post--text {{post.text}}
-a.post--link(href="/posts/post/{{post._id}}") Post link
+a.post--link(href="#/post/{{post._id}}") Post link
 div.post--meta
 	div.post--timing
 		span.post--time {{post.posted | date: 'hh:mm'}}
@@ -15,6 +15,8 @@ div.post--meta
 		div
 			button.post--upvote(ng-click='postCtrl.upvote(post)') +
 			button.post--downvote(ng-click='postCtrl.downvote(post)') -
+
+		// TODO: Show only when logged in
 		//div
 			//button.post--edit(ng-click='postCtrl.edit(post)') edit
 			//button.post--delete(ng-click='postCtrl.delete(post)') delete

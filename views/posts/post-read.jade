@@ -1,0 +1,12 @@
+a(href="#/") Zurück
+
+ul.posts
+	li.post
+		post
+
+div(ng-controller='CommentController as comCtrl')
+	include ../comments/comment-form.jade
+
+	ul.comments
+		li(ng-repeat='comment in comments | filter:query | orderBy:order')
+			comment

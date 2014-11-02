@@ -14,4 +14,5 @@ module.exports = function (object) {
 	$scope.posted 	= object.posted || Date.now();
 	$scope.user 	= object.user;
 	$scope.score 	= object.score;
+	$scope.postId 	= object.postId;
 };

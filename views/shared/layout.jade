@@ -7,9 +7,6 @@ html
 
 		title= title
 
-		link(rel='stylesheet', href='/css/main.css')
-		script(src='/js/Modernizr.js')
-
 	body
 		div#background
 
@@ -22,10 +19,4 @@ html
 					block content
 
 			footer#footer
-				block footer
-		
-		script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-		script.
-			window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js">\x3C/script>')
-
-		script(src='/js/main.js')
+				include footer.jade

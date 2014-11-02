@@ -1,0 +1,5 @@
+div.comment--timing
+		span.comment--time {{comment.posted | date: 'hh:mm'}}
+		span.comment--date {{comment.posted | date: 'dd.MM.yyyy'}}
+p.comment--text {{comment.text}}
+p.comment--author {{comment.author}}

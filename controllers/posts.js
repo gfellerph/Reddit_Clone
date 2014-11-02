@@ -25,7 +25,7 @@ getOnePost = function (id, next) {
 //=====
 // LIST
 //=====
-exports.getAll = function (req, res) {
+exports.list = function (req, res) {
 	db.find({}, function (err, doc){
 		if (err) console.log(err);
 		else res.json(doc);
@@ -35,7 +35,7 @@ exports.getAll = function (req, res) {
 //=======
 // CREATE
 //=======
-exports.add = function (req, res) {
+exports.create = function (req, res) {
 	db.insert( new Post(req.body), function (err, doc){
 		if (err) console.log(err);
 		else res.json(doc);
@@ -45,8 +45,8 @@ exports.add = function (req, res) {
 //=====
 // READ
 //=====
-exports.getOne = function (req, res) {
-	getOneUser(req.params.id, function (post){
+exports.read = function (req, res) {
+	getOnePost(req.params.id, function (post){
 		res.json(post);
 	});
 };

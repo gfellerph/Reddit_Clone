@@ -1,16 +1,26 @@
+// Mounted on localhost:3000/posts/
+
 var express = require('express');
 var router = express.Router();
-var posts = require('../controllers/posts');
 
 // Index
 router.get('/', function (req, res){
-	res.render('../views/posts/index', { title: 'Posts'});
+	res.render('../views/posts/index', { title: 'List of posts'} );
+});
+
+// List of posts
+router.get('/list', function (req, res) {
+	res.render('../views/posts/post-list');
+});
+
+// Error with post
+router.get('/404', function (req, res) {
+	res.render('../views/posts/post-error');
 });
 
 // Specific post with comments
 router.get('/post/:id', function (req, res) {
-	console.log('Post id: ', req.params.id);
-	res.render('../views/posts/post', { id: req.params.id});
+	res.render('../views/posts/post-read', { id: req.params.id});
 });
 
 // Angular Templates

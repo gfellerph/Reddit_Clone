@@ -1,0 +1,37 @@
+doctype html
+html(ng-app='reddit')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		
+		//=======
+		// Styles
+		// ======
+		link(rel='stylesheet', href='/css/main.css')
+		
+		//===============
+		// Header scripts
+		// ==============
+		script(src='/js/bower_components/modernizr/modernizr.js')
+		
+	body
+		block content
+
+		//===============
+		// View container
+		// ==============
+		main#main(ng-view)
+		
+		//===============
+		// Footer scripts
+		// ==============
+
+		// jQuery
+		script(src='/js/bower_components/jquery/dist/jquery.js')
+
+		// Angular
+		script(src='/js/bower_components/angular/angular.js')
+		script(src='/js/bower_components/angular-route/angular-route.js')
+
+		// Custom
+		script(src='/js/main.js')

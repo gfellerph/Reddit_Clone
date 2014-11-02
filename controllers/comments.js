@@ -26,16 +26,17 @@ getOneComment = function (id, callback) {
 // LIST
 //=====
 exports.list = function (req, res) {
-	db.find({}, function (err, doc){
+	// Get all comments of one post
+	db.find({postId: req.params.id}, function (err, doc){
 		if (err) console.log(err);
-		else console.log(doc);
+		else res.json(doc);
 	});
 };
 
 //=======
 // CREATE
 //=======
-exports.add = function (req, res) {
+exports.create = function (req, res) {
 	db.insert( new Comment(req.body), function (err, doc){
 		if (err) console.log(err);
 		else res.json(doc);
@@ -45,7 +46,7 @@ exports.add = function (req, res) {
 //=====
 // READ
 //=====
-exports.getOne = function (req, res) {
+exports.read = function (req, res) {
 	getOneComment(req.params.id, function (user){
 		res.json(user);
 	});

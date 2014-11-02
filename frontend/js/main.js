@@ -1,8 +1,38 @@
+var app = angular.module('reddit', ['ngRoute']);
 
-// Basic page functionality
-require('./modules/tags'); 				// Toggle class on tag elements
-require('./modules/expander'); 			// Show/hide the menu panels
-require('./modules/reddit-api-mantle'); // Get data from reddit
-require('./modules/add-post');			// Add a post with the form
-require('./modules/voting');			// The voting logic
-require('./modules/comments');			// Comment logic
+//========
+// Imports
+//========
+
+// Routes
+var postRoutes = require('./routes/post');
+
+// Controllers
+var postListCtrl = require('./controllers/post-list-ctrl');
+var postReadCtrl = require('./controllers/post-read-ctrl');
+var commentCtrl = require('./controllers/comment-ctrl');
+
+// Directives
+var postDirective = require('./directives/postDirective');
+var commentDirective = require('./directives/commentDirective');
+
+
+//=======
+// Routes
+//=======
+app.config(postRoutes);
+
+
+//============
+// Controllers
+//============
+app.controller('PostListController', postListCtrl);
+app.controller('PostReadController', postReadCtrl);
+app.controller('CommentController', commentCtrl);
+
+
+//===========
+// Directives
+//===========
+app.directive('post', postDirective);
+app.directive('comment', commentDirective);

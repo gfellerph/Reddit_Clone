@@ -84,4 +84,14 @@
 			templateUrl: '/posts/post-template'
 		};
 	});
+
+	// Get one post from the server
+	app.controller('CommentController', ['$scope', '$http', function ($scope, $http) {
+
+		// Initialize post object
+		$scope.post = null;
+
+		// Get data for the post
+		var req = $http.get('/api/post')
+	}]);
 }();
