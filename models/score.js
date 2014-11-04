@@ -1,11 +1,16 @@
+var extend = require('extend');
+
 // Score model
-module.exports = function (object){
+module.exports = function (constructor){
+	var $scope = this;
 
-	var $this = this;
-	this.upvotes = object.upvotes || 0;
-	this.downvotes = object.downvotes || 0;
+	var DEFAULT = {
+		upvotes: 0,
+		downvotes: 0,
+		get: function (){
+			return $scope.upvotes - $scope.downvotes;
+		}
+	}
 
-	this.get = function (){
-		return $this.upvotes - $this.downvotes;
-	};
+	return extend($scope, DEFAULT, constructor);
 }

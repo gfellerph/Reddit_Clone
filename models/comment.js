@@ -1,18 +1,21 @@
 var User 	= require('./user');
 var Score 	= require('./score');
+var extend = require('extend');
 
 //=====
 // Data model of a comment
 //=====
-module.exports = function (object) {
+module.exports = function (constructor) {
 	var $scope = this;
 
-	if(!object) object = {user: new User(), score: new Score()};
-
-	$scope.text 	= object.text 	|| '';
-	$scope.parent	= object.parent || null;
-	$scope.posted 	= object.posted || Date.now();
-	$scope.user 	= object.user;
-	$scope.score 	= object.score;
-	$scope.postId 	= object.postId;
+	var DEFAULT = {
+		text: '',
+		parent: null,
+		posted: Date.now(),
+		user: new User(),
+		score: new Score(),
+		postId: -1
+	}
+	
+	return extend($scope, DEFAULT, constructor);
 };

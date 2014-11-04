@@ -8,4 +8,9 @@ router.get('/comment-template', function (req, res){
 	res.render('../views/comments/comment-template');
 });
 
+// Form template
+router.get('/comment-form', function (req, res) {
+	res.render('../views/comments/comment-form');
+});
+
 module.exports = router;

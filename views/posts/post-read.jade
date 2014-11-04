@@ -5,7 +5,7 @@ ul.posts
 		post
 
 div(ng-controller='CommentController as comCtrl')
-	include ../comments/comment-form.jade
+	commentform
 
 	ul.comments
 		li(ng-repeat='comment in comments | filter:query | orderBy:order')

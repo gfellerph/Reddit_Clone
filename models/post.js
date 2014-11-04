@@ -1,17 +1,20 @@
 var User 	= require('./user');
 var Score 	= require('./score');
+var extend = require('extend');
 
 // Data model of a post
-module.exports = function (object){
+module.exports = function (constructor){
 
-	var $this = this;
+	var $scope = this;
 
-	if(!object) object = {score: {}, user: {}};
+	var DEFAULT = {
+		title: '',
+		text: '',
+		image: '',
+		posted: Date.now(),
+		score: new Score(),
+		user: new User()
+	}
 
-	this.title 	= object.title 	|| '';
-	this.text 	= object.text 	|| '';
-	this.image 	= object.image 	|| '';
-	this.posted = object.posted || Date.now();
-	this.score 	= object.score;
-	this.user 	= object.user;
+	return extend($scope, DEFAULT, constructor);
 };

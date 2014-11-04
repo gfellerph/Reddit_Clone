@@ -37,6 +37,9 @@ exports.list = function (req, res) {
 // CREATE
 //=======
 exports.create = function (req, res) {
+	console.log(req.body);
+	var c = new Comment(req.body);
+	console.log(c);
 	db.insert( new Comment(req.body), function (err, doc){
 		if (err) console.log(err);
 		else res.json(doc);

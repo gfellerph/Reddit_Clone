@@ -14,7 +14,7 @@ var commentCtrl = require('./controllers/comment-ctrl');
 
 // Directives
 var postDirective = require('./directives/postDirective');
-var commentDirective = require('./directives/commentDirective');
+var commentDirective = require('./directives/comment');
 
 
 //=======
@@ -35,4 +35,5 @@ app.controller('CommentController', commentCtrl);
 // Directives
 //===========
 app.directive('post', postDirective);
-app.directive('comment', commentDirective);
+app.directive('comment', commentDirective.comment);
+app.directive('commentform', commentDirective.commentForm);
