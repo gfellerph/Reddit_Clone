@@ -6,7 +6,7 @@ module.exports = [
 			// List of all posts
 			when('/', {
 				templateUrl: '/posts/list',
-				controller: 'PostListController'
+				controller: 'PostController'
 			}).
 
 			// List of specific post
@@ -14,7 +14,7 @@ module.exports = [
 				templateUrl: function ($params) {
 					return '/posts/post/' + $params.id
 				},
-				controller: 'PostReadController'
+				controller: 'PostController'
 			}).
 
 			// Error

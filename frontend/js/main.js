@@ -8,32 +8,33 @@ var app = angular.module('reddit', ['ngRoute']);
 var postRoutes = require('./routes/post');
 
 // Controllers
-var postListCtrl = require('./controllers/post-list-ctrl');
-var postReadCtrl = require('./controllers/post-read-ctrl');
-var commentCtrl = require('./controllers/comment-ctrl');
+var postCtrl = require('./controllers/post');
+var commentCtrl = require('./controllers/comment');
 
 // Directives
-var postDirective = require('./directives/postDirective');
+var postDirective = require('./directives/post');
 var commentDirective = require('./directives/comment');
 
 
 //=======
 // Routes
 //=======
+
 app.config(postRoutes);
 
 
 //============
 // Controllers
 //============
-app.controller('PostListController', postListCtrl);
-app.controller('PostReadController', postReadCtrl);
+
+app.controller('PostController', postCtrl);
 app.controller('CommentController', commentCtrl);
 
 
 //===========
 // Directives
 //===========
+
 app.directive('post', postDirective);
 app.directive('comment', commentDirective.comment);
 app.directive('commentform', commentDirective.commentForm);

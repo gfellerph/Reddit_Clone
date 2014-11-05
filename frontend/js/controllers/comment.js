@@ -22,6 +22,7 @@ module.exports = [
 		//=====
 		// LIST
 		//=====
+
 		this.list = function () {
 
 			// Get comment list
@@ -30,12 +31,13 @@ module.exports = [
 				$scope.comments = data;
 			});
 			req.error (function (err) { console.log(err); });
-		}; // (default)
+		};
 
 
 		//=======
 		// CREATE
 		//=======
+
 		this.create = function () {
 
 			// Initialize comment object
@@ -64,7 +66,10 @@ module.exports = [
 		}
 
 
+		//==============
 		// Initial calls
+		//==============
+
 		this.list();
 	}
 ];

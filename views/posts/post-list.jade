@@ -1,4 +1,4 @@
-div(ng-controller='PostListController')
+div(ng-controller='PostController as postCtrl', ng-init='postCtrl.list()')
 	select(ng-model='order')
 			option(value='posted') posted
 			option(value='title') title
@@ -7,5 +7,5 @@ div(ng-controller='PostListController')
 	input(type='text', ng-model='query', placeholder='search', id='filter')
 
 	ul.posts
-		li.post(ng-repeat='post in posts | filter:query | orderBy:order')
+		li.post(ng-repeat='post in postCtrl.posts | filter:query | orderBy:order')
 			post
