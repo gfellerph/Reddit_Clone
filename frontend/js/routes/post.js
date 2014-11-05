@@ -9,12 +9,12 @@ module.exports = [
 				controller: 'PostController'
 			}).
 
-			// List of specific post
+			// Detail of specific post
 			when('/post/:id', {
 				templateUrl: function ($params) {
 					return '/posts/post/' + $params.id
 				},
-				controller: 'PostController'
+				controller: 'PostDetailController'
 			}).
 
 			// Error

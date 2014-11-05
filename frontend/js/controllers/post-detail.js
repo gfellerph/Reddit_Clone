@@ -8,8 +8,6 @@ module.exports = [
 	'$routeParams',
 	function ($scope, $http, $routeParams) {
 
-		// List of all posts
-		$scope.posts = [];
 		// Form model/Detail view
 		$scope.post = new Post();
 		// ID of the post
@@ -19,37 +17,21 @@ module.exports = [
 
 
 		//=====
-		// LIST
+		// Read
 		//=====
 
-		$scope.list = function () {
+		$scope.read = function () {
 
-			// Get list of posts
-			$http.get('/api/posts')
+			// Get details of one post
+			$http.get('/api/post/' + $routeParams.id)
 				.success ( function (data) {
-					$scope.posts = data;
+					$scope.post = new Post(data);
+					console.log($scope.post);
 				})
 				.error ( function (err) {
 					console.log(err);
 				});
 		};
-
-
-		//=======
-		// CREATE
-		//=======
-
-		$scope.create = function (post) {
-			console.log('create post', post);
-			var $post = new Post(post);
-			$http.post('/api/post', $post)
-				.success ( function (data) {
-					$scope.posts.push(data);
-				})
-				.error ( function (err) {
-					console.log(err);
-				});
-		}
 
 
 		//=======
@@ -88,6 +70,6 @@ module.exports = [
 		// Initiate
 		//=========
 
-		$scope.list();
+		$scope.read();
 	}
 ];

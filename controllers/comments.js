@@ -93,7 +93,7 @@ exports.upvote = function (req, res) {
 
 	db.update({_id: req.params.id}, update_rule, {}, function (err, numReplaced, doc) {
 		if (err) console.log(err);
-		else res.json(dco);
+		else res.json(doc);
 	});
 };
 

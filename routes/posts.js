@@ -28,4 +28,12 @@ router.get('/post-template', function (req, res){
 	res.render('../views/posts/post-template');
 });
 
+router.get('/post-detail', function (req, res) {
+	res.render('../views/posts/post-detail');
+});
+
+router.get('/post-form', function (req, res) {
+	res.render('../views/posts/post-form');
+});
+
 module.exports = router;

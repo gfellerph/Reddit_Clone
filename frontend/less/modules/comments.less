@@ -1,15 +1,19 @@
-.comments--invoker{
-	line-height: 3em;
-	width: 3.5em;
-	border-radius: 3em;
-	margin-top: -0.3em;
-	margin-bottom: -0.3em;
-	
-	font-size: 1.2em;
-	text-align: center;
+ul.comments {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 
-	background: @amber--500;
-	border: 0.25em solid white;
-	color: white;
-	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+	> li {
+		background-color: @grey--100;
+		margin-top: 6px;
+		padding: 0.5em 1em;
+
+		&:first-child { margin-top: 0; }
+	}
+}
+
+.comment--blank-slate {
+	color: @grey--600;
+	margin: 2em 0;
+	text-align: center;
 }

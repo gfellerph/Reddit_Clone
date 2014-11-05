@@ -63,7 +63,14 @@ module.exports = [
 		//=======
 
 		this.answer = function () {
-
+			console.log($scope);
+			var template = {};
+			var req = $http.get('/comments/comment-template');
+			req.success = function ( data ) {
+				template = data;
+				console.log(template);
+				$(document).prepend(template);
+			}
 		}
 
 
@@ -75,7 +82,7 @@ module.exports = [
 			var $comment = new Comment(comment);
 
 			$comment.score.upvotes++;
-			$http.put('/api/comments/' + $comment._id + '/upvote')
+			$http.put('/api/comment/' + $comment._id + '/upvote', $comment)
 			.error ( function (err) {
 				$comment.score.upvotes--;
 				console.log(err);
@@ -91,7 +98,7 @@ module.exports = [
 			var $comment = new Comment(comment);
 
 			$comment.score.downvotes++;
-			$http.put('/api/comments/' + $comment._id + '/downvote')
+			$http.put('/api/comment/' + $comment._id + '/downvote', $comment)
 			.error ( function (err) {
 				$comment.score.downvotes--;
 				console.log(err);

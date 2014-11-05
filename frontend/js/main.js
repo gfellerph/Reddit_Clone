@@ -9,6 +9,7 @@ var postRoutes = require('./routes/post');
 
 // Controllers
 var postCtrl = require('./controllers/post');
+var postDetailCtrl = require('./controllers/post-detail');
 var commentCtrl = require('./controllers/comment');
 
 // Directives
@@ -28,6 +29,7 @@ app.config(postRoutes);
 //============
 
 app.controller('PostController', postCtrl);
+app.controller('PostDetailController', postDetailCtrl);
 app.controller('CommentController', commentCtrl);
 
 
@@ -35,6 +37,8 @@ app.controller('CommentController', commentCtrl);
 // Directives
 //===========
 
-app.directive('post', postDirective);
+app.directive('post', postDirective.list);
+app.directive('postdetail', postDirective.detail);
+app.directive('postform', postDirective.form);
 app.directive('comment', commentDirective.comment);
 app.directive('commentform', commentDirective.commentForm);

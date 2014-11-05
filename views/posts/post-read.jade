@@ -2,7 +2,7 @@ a(href="#/") Zurück
 
 ul.posts
 	li.post
-		post
+		postdetail
 
 div(ng-controller='CommentController as comCtrl')
 	commentform
@@ -10,3 +10,4 @@ div(ng-controller='CommentController as comCtrl')
 	ul.comments
 		li(ng-repeat='comment in comments | filter:query | orderBy:order')
 			comment
+	p.comment--blank-slate(ng-show='comments.length==0') Erfasse den ersten Kommentar!
