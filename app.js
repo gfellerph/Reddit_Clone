@@ -31,11 +31,13 @@ var routes = require('./routes');
 var api = require('./routes/api');
 var test = require('./routes/users');
 var posts = require('./routes/posts');
+var comments = require('./routes/comments');
 
 app.use('/', routes);
 app.use('/api', api);
 app.use('/test', test);
 app.use('/posts', posts);
+app.use('/comments', comments);
 
 
 // Handle errors

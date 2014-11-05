@@ -1,0 +1,22 @@
+div.post--content
+	img(ng-src='{{post.image}}')
+p.post--username {{post.user.name}}
+h3.post--title {{post.title}}
+p.post--text {{post.text}}
+a.post--link(href="#/post/{{post._id}}") Post link
+div.post--meta
+	div.post--timing
+		span.post--time {{post.posted | date: 'hh:mm'}}
+		span.post--date {{post.posted | date: 'dd.MM.yyyy'}}
+	div.post--controls
+		div.post--score {{post.score.upvotes - post.score.downvotes}}
+		button.comments--invoker
+			span.comments--count 120
+		div
+			button.post--upvote(ng-click='postCtrl.upvote(post)') +
+			button.post--downvote(ng-click='postCtrl.downvote(post)') -
+
+		// TODO: Show only when logged in
+		//div
+			//button.post--edit(ng-click='postCtrl.edit(post)') edit
+			//button.post--delete(ng-click='postCtrl.delete(post)') delete

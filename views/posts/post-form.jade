@@ -1,0 +1,9 @@
+form(name='addPost', ng-submit='postCtrl.add(post)')
+	h2 New post
+	input(type='text', placeholder='Title', id='title', ng-model='post.title')
+	br
+	textarea(placeholder='Text', id='text', ng-model='post.text')
+	br
+	input(type='text', placeholder='Image URL', id='image' ng-model='post.image')
+	br
+	button Add

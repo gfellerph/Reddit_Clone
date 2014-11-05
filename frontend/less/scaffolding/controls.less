@@ -3,12 +3,14 @@ input, textarea{
 }
 
 label[for]{
+
 	display: block;
 	padding-left: 16px;
 	text-indent: -16px;
 
 	input[type="checkbox"], 
 	input[type="radio"]{
+
 		top: -1px;
 		position: relative;
 		width: 13px;
@@ -20,38 +22,6 @@ label[for]{
 }
 
 button{
-	padding: 0.25em 1em;
-
-	border: none;
-	border-bottom: 3px solid;
-
-	font-family: @robotocondensed-regular;
-	font-size: 1.2em;
-
-	transition: background 150ms;
-
-	&.blue, &{ 
-		background-color: @blue; 
-		color: white;
-		border-color: @blueDark;
-
-		&:hover,
-		&:active,
-		&:focus{
-			background-color: @blueLight;
-		}
-	}
-
-	&.gray{
-		background-color: @gray300;
-		color: @gray900;
-		border-color: @gray800;
-		&:hover,
-		&:active,
-		&:focus{
-			background-color: @gray400;
-		}
-	}
 }
 
 input[type="text"], input[type="password"]{

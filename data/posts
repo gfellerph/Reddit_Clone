@@ -1,15 +1,3 @@
-{"title":"a","text":"a","image":"/gfx/footer.jpg","posted":1410981299578,"score":{"upvotes":0,"downvotes":1},"_id":"HySxDrzHgiQWcxIe"}
-{"title":"asdf","text":"asdf","image":"/gfx/footer.jpg","posted":1410987884277,"score":{"upvotes":14,"downvotes":0},"_id":"U7KWI1wf79R3OFoT"}
-{"title":"x","text":"x","image":"x","posted":1411293945747,"score":{"upvotes":0,"downvotes":0},"user":{"name":"Philipp","joined":1411293942398},"_id":"Y3xix9oAtQa8QWk8"}
-{"title":"asdf","text":"asdf","image":"asdf","posted":1410988166360,"score":{"upvotes":0,"downvotes":0},"_id":"bxSzjj87smA37nlu"}
-{"title":"x","text":"x","image":"x","posted":1411294516441,"score":{"upvotes":0,"downvotes":0},"user":{"name":"Philipp","joined":1411294511925},"_id":"PPB2DLIC6UY0R7ki"}
-{"title":"som","text":"somx","image":"som","posted":1411294525059,"score":{"upvotes":0,"downvotes":0},"user":{"name":"Philipp","joined":1411294511925},"_id":"1oU99lHssPe1Zhy6"}
-{"title":"som","text":"somx","image":"som","posted":1411294525059,"score":{"upvotes":0,"downvotes":1},"user":{"name":"Philipp","joined":1411294511925},"_id":"1oU99lHssPe1Zhy6"}
-{"title":"som","text":"somx","image":"som","posted":1411294525059,"score":{"upvotes":1,"downvotes":1},"user":{"name":"Philipp","joined":1411294511925},"_id":"1oU99lHssPe1Zhy6"}
-{"title":"som","text":"somx","image":"som","posted":1411294525059,"score":{"upvotes":2,"downvotes":1},"user":{"name":"Philipp","joined":1411294511925},"_id":"1oU99lHssPe1Zhy6"}
-{"title":"x","text":"x","image":"x","posted":1411294516441,"score":{"upvotes":1,"downvotes":0},"user":{"name":"Philipp","joined":1411294511925},"_id":"PPB2DLIC6UY0R7ki"}
-{"title":"som","text":"somx","image":"som","posted":1411294525059,"score":{"upvotes":3,"downvotes":1},"user":{"name":"Philipp","joined":1411294511925},"_id":"1oU99lHssPe1Zhy6"}
-{"title":"asdf","text":"asdf","image":"asdf","posted":1410988166360,"score":{"upvotes":1,"downvotes":0},"_id":"bxSzjj87smA37nlu"}
-{"title":"asdf","text":"asdf","image":"asdf","posted":1410988166360,"score":{"upvotes":2,"downvotes":0},"_id":"bxSzjj87smA37nlu"}
-{"title":"asdf","text":"asdf","image":"asdf","posted":1410988166360,"score":{"upvotes":3,"downvotes":0},"_id":"bxSzjj87smA37nlu"}
-{"title":"asdf","text":"asdf","image":"asdf","posted":1410988166360,"score":{"upvotes":4,"downvotes":0},"_id":"bxSzjj87smA37nlu"}
+{"title":"Nice cat","text":"Some nice cat.","posted":1413883805662,"score":{"upvotes":14,"downvotes":3},"user":{"name":"Philipp","joined":1413882732219},"image":"/gfx/cat.jpg","_id":"FXvqOVyg66Zqi7kP"}
+{"title":"Nice cat","text":"Some nice cat.\nFucking very u hueren nice.","posted":1413883825645,"score":{"upvotes":4,"downvotes":1},"user":{"name":"Philipp","joined":1413882732219},"image":"/gfx/cat.jpg","_id":"aA1LuRgU6y0rrZ9A"}
+{"title":"Nice cat","text":"Some nice cat.","posted":1413883714091,"score":{"upvotes":4,"downvotes":0},"user":{"name":"Philipp","joined":1413882732219},"image":"/gfx/cat.jpg","_id":"gYNo0Vex5IzL96Vn"}

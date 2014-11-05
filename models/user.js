@@ -1,7 +1,14 @@
-// User model
-module.exports = function (object){
-	if(!object) object = {};
+var extend = require('extend');
 
-	this.name = object.name || '';
-	this.joined = object.joined || Date.now();
+// User model
+module.exports = function (constructor){
+
+	var $scope = this;
+
+	var DEFAULT = {
+		name: '',
+		joined: Date.now()
+	}
+
+	return extend($scope, DEFAULT, constructor);
 };

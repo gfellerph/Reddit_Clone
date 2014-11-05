@@ -1,8 +1,12 @@
-var Datastore = require('nedb');
-var path = require('path');
-var db = new Datastore({ filename: path.join(__dirname + '/../data/test'), autoload: true });
+var Datastore 	= require('nedb');
+var path 		= require('path');
+var db 			= new Datastore({ filename: path.join(__dirname + '/../data/users'), autoload: true });
+
 var getOneUser;
 
+//=====
+// Helper function to get a user from DB
+//=====
 getOneUser = function(id, callback){
 	db.findOne({'_id': id}, function (err, doc){
 		if (err){
@@ -13,6 +17,9 @@ getOneUser = function(id, callback){
 	});
 }
 
+/*
+	Create a list of users
+*/
 exports.list = function (req, res){
 	db.find({}, function (err, doc){
 		if (err){
@@ -23,6 +30,9 @@ exports.list = function (req, res){
 	});
 }
 
+/*
+	Add a user
+*/
 exports.add = function (req, res){
 
 	var userName = req.body.username;
@@ -41,18 +51,27 @@ exports.add = function (req, res){
 	});
 }
 
+/*
+	Get one user
+*/
 exports.one = function (req, res){
 	getOneUser(req.params.id, function (user){
 		res.render('../views/test/one', { title: 'One User', user: user });
 	});
 }
 
+/*
+	?
+*/
 exports.updateForm = function (req, res){
 	getOneUser(req.params.id, function (user){
 		res.render('../views/test/update', { title: 'Update User', user: user });
 	});
 }
 
+/*
+	Update a user
+*/
 exports.update = function (req, res){
 	var update_rule = {
 		$set: {
