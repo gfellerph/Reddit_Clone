@@ -13,8 +13,8 @@ div.post--meta
 		button.comments--invoker
 			span.comments--count 120
 		div
-			button.post--upvote(ng-click='upvote(post)') +
-			button.post--downvote(ng-click='downvote(post)') -
+			button.post--upvote(ng-click='postCtrl.upvote(post)') +
+			button.post--downvote(ng-click='postCtrl.downvote(post)') -
 
 		// TODO: Show only when logged in
 		//div

@@ -57,30 +57,8 @@ module.exports = [
 		//=======
 
 		$scope.upvote = function (post) {
+			console.log(post);
 			var $post = new Post(post);
-			$post.score.upvotes++;
-
-			$http.put('/api/post/' + $post._id + '/upvote/', $post)
-				.error ( function (err) {
-					$post.score.upvotes--;
-					console.log(err);
-				});
-		}
-
-
-		//=========
-		// Downvote
-		//=========
-
-		$scope.downvote = function (post) {
-			var $post = new Post(post);
-			$post.score.downvotes++;
-
-			$http.put('/api/post/' + $post._id + '/downvote/', $post)
-				.error ( function (err) {
-					$post.score.downvotes--;
-					console.log(err);
-				});
 		}
 
 
@@ -88,6 +66,6 @@ module.exports = [
 		// Initiate
 		//=========
 
-		$scope.list();
+		//$scope.list();
 	}
 ];
