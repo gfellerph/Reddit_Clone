@@ -61,8 +61,41 @@ module.exports = [
 		//=======
 		// Answer
 		//=======
+
 		this.answer = function () {
 
+		}
+
+
+		//=======
+		// Upvote
+		//=======
+		
+		this.upvote = function (comment) {
+			var $comment = new Comment(comment);
+
+			$comment.score.upvotes++;
+			$http.put('/api/comments/' + $comment._id + '/upvote')
+			.error ( function (err) {
+				$comment.score.upvotes--;
+				console.log(err);
+			});
+		}
+
+
+		//=========
+		// Downvote
+		//=========
+		
+		this.downvote = function (comment) {
+			var $comment = new Comment(comment);
+
+			$comment.score.downvotes++;
+			$http.put('/api/comments/' + $comment._id + '/downvote')
+			.error ( function (err) {
+				$comment.score.downvotes--;
+				console.log(err);
+			});
 		}
 
 
