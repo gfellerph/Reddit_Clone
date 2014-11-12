@@ -6,7 +6,9 @@ module.exports = function (constructor){
 	var $scope = this;
 
 	var DEFAULT = {
-		name: '',
+		password: '',
+		username: '',
+		email: '',
 		joined: Date.now()
 	}
 

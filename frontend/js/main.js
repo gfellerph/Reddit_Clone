@@ -6,6 +6,7 @@ var app = angular.module('reddit', ['ngRoute']);
 
 // Routes
 var postRoutes = require('./routes/post');
+var authRoutes = require('./routes/auth');
 
 // Controllers
 var postCtrl = require('./controllers/post');
@@ -22,6 +23,7 @@ var commentDirective = require('./directives/comment');
 //=======
 
 app.config(postRoutes);
+app.config(authRoutes);
 
 
 //============

@@ -1,12 +1,21 @@
 
 // Dependencies
 // ======================================================
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var express         = require('express');
+var path            = require('path');
+var favicon         = require('serve-favicon');
+var logger          = require('morgan');
+var cookieParser    = require('cookie-parser');
+var bodyParser      = require('body-parser');
+var passport        = require('passport');
+var expressSession  = require('express-session');
+var routes          = require('./routes');
+var api             = require('./routes/api');
+var test            = require('./routes/users');
+var posts           = require('./routes/posts');
+var comments        = require('./routes/comments');
+var auth            = require('./routes/auth');
+var authCtrl        = require('./controllers/auth');
 
 
 // Initialize the server
@@ -25,19 +34,26 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+// Configure passort
+// ======================================================
+app.use(expressSession({secret: 'multipass'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // Handle routes
 // ======================================================
-var routes = require('./routes');
-var api = require('./routes/api');
-var test = require('./routes/users');
-var posts = require('./routes/posts');
-var comments = require('./routes/comments');
-
 app.use('/', routes);
 app.use('/api', api);
 app.use('/test', test);
 app.use('/posts', posts);
 app.use('/comments', comments);
+app.use('/auth', auth);
+
+
+// Initialize passort
+// ======================================================
+authCtrl.initialize(passport);
 
 
 // Handle errors

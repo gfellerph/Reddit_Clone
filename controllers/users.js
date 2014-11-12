@@ -1,90 +1,152 @@
-var Datastore 	= require('nedb');
-var path 		= require('path');
-var db 			= new Datastore({ filename: path.join(__dirname + '/../data/users'), autoload: true });
-
 var getOneUser;
+var isValidPassword;
+var createHash;
+var respond;
+
+var Datastore 		= require('nedb');
+var path 			= require('path');
+var passport 		= require('passport');
+var LocalStrategy 	= require('passport-local');
+var bCrypt			= require('bcrypt-nodejs');
+var User 			= require('../models/user');
 
 //=====
-// Helper function to get a user from DB
+// Initialize DB
 //=====
-getOneUser = function(id, callback){
-	db.findOne({'_id': id}, function (err, doc){
-		if (err){
-			console.log(err);
-		} else {
-			callback(doc);
-		}
-	});
+var db = new Datastore({
+	filename: path.join(__dirname + '/../data/users'),
+	autoload: true
+});
+
+//=====
+// Helper functions
+//=====
+
+// Handle DB responses
+respond = function (err, doc, req, res, next) {
+
+	// Pass the error to the express error handler (error from db)
+	if (err) next(err);
+
+	// DB responded with nothing, pass error to handler
+	if (!doc) next('User controller: respond. No results from db.');
+
+	// Attach db response to req and pass to next middleware
+	req.result = doc;
+	next();
+};
+isValidPassword = function (user, password) {
+	return bCrypt.compareSync(password, user.password);
+}
+createHash = function (password) {
+	return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+}
+// Not middleware read one
+exports.readOne = function (id, next) {
+	db.findOne({'_id': id}, next);
 }
 
-/*
-	Create a list of users
-*/
-exports.list = function (req, res){
+//=====
+// LIST
+//=====
+exports.list = function (req, res, next) {
 	db.find({}, function (err, doc){
-		if (err){
-			console.log(err);
-		} else {
-			res.render('../views/test/list', {userlist: doc});
-		}
+		respond(err, doc, req, res, next);
 	});
-}
+};
 
-/*
-	Add a user
-*/
-exports.add = function (req, res){
-
-	var userName = req.body.username;
-	var userEmail = req.body.useremail;
-
-	db.insert({
-		'username': userName,
-		'useremail': userEmail
-	}, function (err, newDoc){
-		if (err){
-			console.log(err);
-		}
-
-		res.location('list');
-		res.redirect('list');
+//=======
+// CREATE
+//=======
+exports.create = function (req, res, next) {
+	db.insert( new User(req.body), function (err, doc){
+		respond(err, doc, req, res, next);
 	});
-}
+};
 
-/*
-	Get one user
-*/
-exports.one = function (req, res){
-	getOneUser(req.params.id, function (user){
-		res.render('../views/test/one', { title: 'One User', user: user });
+//=====
+// READ
+//=====
+exports.read = function (req, res, next) {
+	db.findOne({'_id': id}, function (err, doc){
+		respond(err, doc, req, res, next);
 	});
-}
+};
 
-/*
-	?
-*/
-exports.updateForm = function (req, res){
-	getOneUser(req.params.id, function (user){
-		res.render('../views/test/update', { title: 'Update User', user: user });
-	});
-}
+//=======
+// UPDATE
+//=======
+exports.update = function (req, res, next) {
+	var updatedUser = new User(req.body);
 
-/*
-	Update a user
-*/
-exports.update = function (req, res){
 	var update_rule = {
-		$set: {
-			username: req.body.username,
-			useremail: req.body.useremail
-		}
+		$set: updatedUser
 	};
 
-	db.update({'_id': req.params.id}, update_rule, {}, function (err, numReplaced, newDoc){
-		if (err){
-			console.log(err);
-		}
-		res.location('/test/list');
-		res.redirect('/test/list');
+	db.update({_id: req.params.id}, update_rule, {}, function (err, numReplaced, doc) {
+		respond(err, doc, req, res, next);
 	});
-}
+};
+
+//=======
+// DELETE
+//=======
+exports.delete = function (req, res, next) {
+	db.remove({ _id: req.params.id}, function (err, doc) {
+		respond(err, doc, req, res, next);
+	});
+};
+
+//======
+// LOGIN
+//======
+
+passport.use('login', new LocalStrategy({
+	passReqToCallback: true
+},
+function (req, username, password, done) {
+	db.findOne({username: username}, function (err, user) {
+		if (err) return done(err);
+		if (!user) {
+			console.log('User not found with username ' + username);
+			return done(null, false, req.flash('message', 'User not found.'));
+		}
+		if (!isValidPassword(user, password)) {
+			console.log('Invalid Password');
+			return done(null, false, req.flash('message', 'Invalid password'));
+		}
+
+		return done(null, user);
+
+	});
+}));
+
+passport.use('signup', new LocalStrategy({
+	passReqToCallback: true
+},
+function (req, username, password, done) {
+	findOrCreateUser = function () {
+		db.findOne({username: username}, function (err, user) {
+			if (err) {
+				console.log(err);
+				return done(err);
+			}
+
+			if (user) {
+				console.log('User already exists');
+				return done(null, false, req.flash('message', 'User already exists'));
+			} else {
+				var newUser = new User({
+					username: username,
+					password: createHash(password),
+					email: req.param('email')
+				});
+
+				db.insert(newUser, function (err, user) {
+					if (err) console.log(err);
+					else return done(null, user);
+				});
+			}
+		});
+	};
+}));

@@ -1,5 +1,5 @@
 div(ng-controller='PostController as postCtrl')
-	postform
+	//postform
 	
 	select(ng-model='order')
 			option(value='posted') posted
@@ -12,4 +12,4 @@ div(ng-controller='PostController as postCtrl')
 		li.post(ng-repeat='post in posts | filter:query | orderBy:order')
 			post
 
-	p.post--blank-slate(ng-show='posts.length==0') Erfasse den ersten Post
+	p.post--blank-slate(ng-show='posts.length==0') Erfasse den ersten Post 
