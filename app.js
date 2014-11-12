@@ -11,10 +11,9 @@ var passport        = require('passport');
 var expressSession  = require('express-session');
 var routes          = require('./routes');
 var api             = require('./routes/api');
-var test            = require('./routes/users');
 var posts           = require('./routes/posts');
 var comments        = require('./routes/comments');
-var auth            = require('./routes/auth');
+var auth            = require('./routes/auth')(passport);
 var authCtrl        = require('./controllers/auth');
 
 
@@ -36,24 +35,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Configure passort
 // ======================================================
-app.use(expressSession({secret: 'multipass'}));
+app.use(expressSession({
+    secret: 'multipass'
+    ,saveUninitialized: true
+    ,resave: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+// Initialize passort
+// ======================================================
+authCtrl(passport);
 
 
 // Handle routes
 // ======================================================
 app.use('/', routes);
 app.use('/api', api);
-app.use('/test', test);
 app.use('/posts', posts);
 app.use('/comments', comments);
 app.use('/auth', auth);
-
-
-// Initialize passort
-// ======================================================
-authCtrl.initialize(passport);
 
 
 // Handle errors

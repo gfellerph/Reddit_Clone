@@ -1,39 +1,36 @@
-var User 		= require('../models/user');
-var userCtrl 	= require('./users');
+var User 			= require('../models/user');
+var userCtrl 		= require('./users');
+var login 			= require('./login');
+var registration 	= require('./registration');
 
 
 
-module.exports = function () {
+module.exports = function (passport){
 
 	var checkauth;
 	var init;
 	var serialize;
 	var deserialize;
+	var isvalid;
+
+	// Check if password is valid
+	
 
 	// Serialize user for passport
-	serialize = function (passport) {
-		passport.serializeUser( function (user, next) {
-			console.log('Auth controller: serialize. User: ');
-			console.log(user);
-			next(null, user._id);
-		});
-	};
+	passport.serializeUser( function (user, next) {
+		console.log('Auth controller: serialize. User: ');
+		console.log(user);
+		next(null, user._id);
+	});
 
 	// Deserialize user for passport
-	deserialize = function (passport) {
-		passport.deserializeUser( function (id, next) {
-			userCtrl.readOne(id, function (err, user) {
-				console.log('Auth controller: deserialize. User:');
-				console.log(user);
-				next(err, user);
-			});
+	passport.deserializeUser( function (id, next) {
+		userCtrl.readOne(id, function (err, user) {
+			console.log('Auth controller: deserialize. User:');
+			console.log(user);
+			next(err, user);
 		});
-	}
-
-	// Initialize passport
-	init = function (passport) {
-
-	};
+	});
 
 	// Middleware to authenticate a user
 	checkauth = function (req, res, next) {
@@ -41,9 +38,6 @@ module.exports = function () {
 		res.redirect('/auth');
 	};
 
-	// Export set of functions
-	return {
-		initialize: init
-		,isAuthenticated: checkauth
-	}
+	login(passport);
+	registration(passport);
 }

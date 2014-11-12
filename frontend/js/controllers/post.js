@@ -6,7 +6,12 @@ module.exports = [
 	'$scope',
 	'$http',
 	'$routeParams',
-	function ($scope, $http, $routeParams) {
+	'$firebase',
+	function ($scope, $http, $routeParams, $firebase) {
+
+		var ref = new Firebase("https://dazzling-torch-4816.firebaseio.com/");
+		var sync = $firebase(ref);
+		console.log(sync);
 
 		// List of all posts
 		$scope.posts = [];

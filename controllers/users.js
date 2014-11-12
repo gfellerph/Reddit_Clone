@@ -41,9 +41,13 @@ isValidPassword = function (user, password) {
 createHash = function (password) {
 	return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
 }
-// Not middleware read one
-exports.readOne = function (id, next) {
-	db.findOne({'_id': id}, next);
+// Not express middleware read one
+exports.readOne = function (username, next) {
+	db.findOne({'username': username}, next);
+}
+
+exports.createOne = function (user, next) {
+	db.insert(user, next);
 }
 
 //=====

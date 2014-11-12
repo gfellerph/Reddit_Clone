@@ -1,5 +1,5 @@
 // Mounted on localhost:3000/auth
-
+// Hoodie, Azure, Firebase, Angular fire, parse.com, breeze, signalR
 var express = require('express');
 var router = express.Router();
 
@@ -12,7 +12,7 @@ module.exports = function (passport) {
 
 	router.post('/login', passport.authenticate('login', {
 		successRedirect: '/posts',
-		failureRedirect: '/auth',
+		failureRedirect: '/404',
 		failureFlash: true
 	}));
 
@@ -21,9 +21,9 @@ module.exports = function (passport) {
 		res.render('../views/auth/register.jade');
 	});
 
-	router.post('/register', passport.authenticate('signup', {
+	router.post('/register', passport.authenticate('registration', {
 		successRedirect: '/posts',
-		failureRedirect: '/auth',
+		failureRedirect: '/404',
 		failureFlash: true
 	}));
 
