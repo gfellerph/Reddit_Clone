@@ -1,17 +1,12 @@
-var Post = require('../../../models/post');
-var Score = require('../../../models/score');
-var User = require('../../../models/user');
+var Post = require('../models/post');
+var Score = require('../models/score');
+var User = require('../models/user');
 
 module.exports = [
 	'$scope',
 	'$http',
 	'$routeParams',
-	'$firebase',
-	function ($scope, $http, $routeParams, $firebase) {
-
-		var ref = new Firebase("https://dazzling-torch-4816.firebaseio.com/");
-		var sync = $firebase(ref);
-		console.log(sync);
+	function ($scope, $http, $routeParams) {
 
 		// List of all posts
 		$scope.posts = [];

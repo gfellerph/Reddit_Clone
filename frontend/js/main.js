@@ -1,4 +1,4 @@
-var app = angular.module('reddit', ['ngRoute', 'firebase']);
+var app = angular.module('reddit', ['ngRoute']);
 
 //========
 // Imports

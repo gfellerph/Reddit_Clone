@@ -1,22 +1,54 @@
 doctype html
-html
+html(ng-app='reddit')
 	head
 		meta(charset='UTF-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
-		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		
+		//=======
+		// Styles
+		// ======
 
-		title= title
+		link(rel='stylesheet', href='/css/main.css')
+		
 
+		//===============
+		// Header scripts
+		// ==============
+
+		script(src='/js/bower_components/modernizr/modernizr.js')
+		
 	body
-		div#background
 
-		div#wrapper
-			header#header
-				include header.jade
 
-			main#main
-				div.content
-					block content
+		//=======
+		// Header
+		//=======
+		include header.jade
 
-			footer#footer
-				include footer.jade
+
+		//===============
+		// View container
+		//===============
+		main#main(ng-view)
+			block content
+		
+
+		//=======
+		// Footer
+		//=======
+		include footer.jade
+		
+
+		//===============
+		// Footer scripts
+		// ==============
+
+		// jQuery
+		script(src='/js/bower_components/jquery/dist/jquery.js')
+
+		// Angular
+		script(src='/js/bower_components/angular/angular.js')
+		script(src='/js/bower_components/angular-route/angular-route.js')
+
+		// Custom
+		script(src='/js/main.js')

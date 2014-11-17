@@ -1,3 +1,48 @@
 #header{
+	padding: 0 2em;
+	.clearfix();
 
+	h1 {
+		float: left;
+		padding: 22px 0;
+		font-size: 1em;
+		line-height: 1em;
+
+		img {
+		}
+	}
+
+	nav {
+		float: right;
+		ul {
+			padding-left: 0;
+			margin: 0;
+			list-style: none;
+
+			.clearfix();
+
+			li {
+				float: left;
+				margin-left: 1em;
+				padding: 1em 0;
+
+				&:first-child {
+					margin-left: 0;
+				}
+
+				a {
+					display: block;
+					color: white;
+					border-bottom: 2px solid transparent;
+					text-decoration: none !important;
+
+					transition: border 200ms;
+
+					&:hover, &:focus {
+						border-bottom: 2px solid white;
+					}
+				}
+			}
+		}
+	}
 }

@@ -4,13 +4,13 @@ module.exports = [
 		$routeProvider.
 		
 			// List of all posts
-			when('/auth', {
-				templateUrl: '/auth/login'
+			when('/login', {
+				templateUrl: '/auth'
 				//,controller: 'AuthController'
 			}).
 
 			// Detail of specific post
-			when('/auth/register', {
+			when('/register', {
 				templateUrl: '/auth/register'
 				//,controller: 'AuthController'
 			}).

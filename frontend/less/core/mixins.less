@@ -25,3 +25,12 @@
 	bottom: @bottom;
 	left: @left;
 }
+
+.inner (@height: 1.4em) {
+	> * {
+		
+		margin-top: @height;
+
+		&:first-child { margin-top: 0; }
+	}
+}

@@ -1,9 +1,10 @@
 form(action='/auth/login', method='POST')
+	label(for='email') Hello, dear
+	input#username(type='text', name='email', placeholder='redditor')
+
+	label(for='password') , your password was
+	input#password(type='password', name='password', placeholder='this simple')
+
 	p
-		label(for='username') Username
-		input#username(type='text', name='username')
-	p
-		label(for='password') Password
-		input#password(type='password', name='password')
-	p
-		input(type='submit', value='log in')
+		span right? Let's
+		input.good(type='submit', value='rock.')

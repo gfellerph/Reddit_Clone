@@ -10,8 +10,8 @@ module.exports = function (passport) {
 		res.render('../views/auth/login.jade');
 	});
 
-	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/posts',
+	router.post('/login', passport.authenticate('local-login', {
+		successRedirect: '/',
 		failureRedirect: '/404',
 		failureFlash: true
 	}));
@@ -21,9 +21,9 @@ module.exports = function (passport) {
 		res.render('../views/auth/register.jade');
 	});
 
-	router.post('/register', passport.authenticate('registration', {
-		successRedirect: '/posts',
-		failureRedirect: '/404',
+	router.post('/register', passport.authenticate('local-signup', {
+		successRedirect: '/',
+		failureRedirect: '/auth/register',
 		failureFlash: true
 	}));
 

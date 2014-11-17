@@ -1,53 +1,55 @@
-input, textarea{
-	width: 100%;
+input:not([type="submit"]), textarea{
+	width: 250px;
 }
 
 label[for]{
-
-	display: block;
-	padding-left: 16px;
-	text-indent: -16px;
-
-	input[type="checkbox"], 
-	input[type="radio"]{
-
-		top: -1px;
-		position: relative;
-		width: 13px;
-		height: 13px;
-		padding: 0;
-		margin: 0;
-		vertical-align: middle;
-	}
+	color: white;
+	font-size: 2em;
 }
 
-button{
+button, input[type="submit"]{
+	background: none;
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	outline: none;
+	border-bottom: 2px solid white;
+
+	&.good {
+		color: @light-green--500;
+		border-bottom-color: @light-green--500;
+	}
 }
 
 input[type="text"], input[type="password"]{
-	padding: 0.25em 0.5em;
+	display: inline;
+	padding: 0;
 	outline: none;
+	background: none;
+	box-shadow: none;
+	border: none;
+	border-radius: 0;
 
-	&.gray{
-		background-color: rgba(255,255,255,0.3);
-		color: white;
+	font-size: 2em;
+	color: white;
 
-		&:focus{
-			border: 3px solid white;
-		}
+	border-bottom: 2px solid white;
+	
+	transition: border 200ms;
+
+	&:focus {
+		border-bottom-color: @teal--500;
 	}
 }
 
-input[type="checkbox"], input[type="radio"]{
-	border: 3px solid transparent;
-	outline: none;
+form {
+	max-width: 600px;
+	margin-right: auto;
+	margin-left: auto;
+	line-height: 3.5em;
 
-	&.gray{
-		background-color: rgba(255,255,255,0.3);
+	p {
+		font-size: 2em;
 		color: white;
-		
-		&:focus{
-			border: 3px solid white;
-		}
 	}
 }

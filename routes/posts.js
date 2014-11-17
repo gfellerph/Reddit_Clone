@@ -10,7 +10,10 @@ router.get('/', function (req, res){
 
 // List of posts
 router.get('/list', function (req, res) {
-	res.render('../views/posts/post-list');
+	console.log('User login state:');
+	console.log(req.isAuthenticated());
+	console.log(req.user);
+	res.render('../views/posts/post-list', {user: req.user, loggedIn: req.isAuthenticated()});
 });
 
 // Error with post
@@ -37,3 +40,10 @@ router.get('/post-form', function (req, res) {
 });
 
 module.exports = router;
+
+function isLoggedIn(req, res, next) {
+	if(req.isAuthenticated()) {
+		return next();
+	}
+	res.redirect('/#/auth');
+}

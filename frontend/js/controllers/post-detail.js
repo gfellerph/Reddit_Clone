@@ -1,6 +1,6 @@
-var Post = require('../../../models/post');
-var Score = require('../../../models/score');
-var User = require('../../../models/user');
+var Post = require('../models/post');
+var Score = require('../models/score');
+var User = require('../models/user');
 
 module.exports = [
 	'$scope',

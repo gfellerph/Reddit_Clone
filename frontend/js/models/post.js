@@ -1,4 +1,4 @@
-//var User 	= require('./user');
+var User 	= require('./user');
 var Score 	= require('./score');
 var extend = require('extend');
 

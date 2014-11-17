@@ -1,6 +1,6 @@
 // Requires
-var Comment = require('../../../models/comment');
-var User = require('../../../models/user');
+var Comment = require('../models/comment');
+var User = require('../models/user');
 
 module.exports = [
 	'$scope',

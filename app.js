@@ -14,14 +14,23 @@ var api             = require('./routes/api');
 var posts           = require('./routes/posts');
 var comments        = require('./routes/comments');
 var auth            = require('./routes/auth')(passport);
-var authCtrl        = require('./controllers/auth');
+var authCtrl        = require('./controllers/passport')(passport);
+var mongoose        = require('mongoose');
 
 
 // Initialize the server
 // ======================================================
 var app = express();
 
+
+// Configure mongoose
+// ======================================================
+var config = require('./config/modulus');
+mongoose.connect(config.url);
+
+
 // View engine setup
+app.locals.pretty = true;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -46,7 +55,7 @@ app.use(passport.session());
 
 // Initialize passort
 // ======================================================
-authCtrl(passport);
+//authCtrl(passport);
 
 
 // Handle routes
