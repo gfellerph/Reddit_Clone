@@ -23,5 +23,8 @@ router.put('/comment/:id/upvote', comments.upvote);
 router.put('/comment/:id/downvote', comments.downvote);
 router.delete('/comment/:id', comments.delete);
 
+// Auth API
+//router.get('/isAuthenticated', )
+
 // Return router
 module.exports = router;

@@ -1,0 +1,14 @@
+-if (!loggedIn)
+	nav
+		ul
+			li
+				a(href='#login') login
+			li
+				a(href='#register') register
+-else
+	nav
+		ul
+			li
+				a(href='#profile')= user.local.email
+			li
+				a(href='#logout') logout

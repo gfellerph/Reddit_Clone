@@ -1,9 +1,12 @@
 form(action='/auth/register', method='POST')
 	p
-		label(for='email') Username
-		input#username(type='text', name='email')
+		label(for='username') Username
+		input#username(type='text', name='username')
 	p
 		label(for='password') Password
 		input#password(type='password', name='password')
+	p
+		label(for='email') Username
+		input#email(type='text', name='email')
 	p
 		input(type='submit', value='log in')

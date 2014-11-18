@@ -6,13 +6,18 @@ module.exports = [
 			// List of all posts
 			when('/login', {
 				templateUrl: '/auth'
-				//,controller: 'AuthController'
+				,controller: 'AuthController'
 			}).
 
 			// Detail of specific post
 			when('/register', {
 				templateUrl: '/auth/register'
-				//,controller: 'AuthController'
+				,controller: 'AuthController'
+			}).
+
+			// Logout
+			when('/logout', {
+				templateUrl: '/auth/logout'
 			}).
 			
 			otherwise( { redirectTo: '/404' })

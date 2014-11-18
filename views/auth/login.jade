@@ -1,9 +1,9 @@
 form(action='/auth/login', method='POST')
 	label(for='email') Hello, dear
-	input#username(type='text', name='email', placeholder='redditor')
+	input#username(type='text', name='email', placeholder='redditor', autocomplete='off')
 
 	label(for='password') , your password was
-	input#password(type='password', name='password', placeholder='this simple')
+	input#password(type='password', name='password', placeholder='this simple', autocomplete='off')
 
 	p
 		span right? Let's

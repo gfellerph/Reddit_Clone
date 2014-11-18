@@ -31,7 +31,15 @@ module.exports = function (passport) {
 	// Logout
 	router.get('/logout', function (req, res) {
 		req.logout();
-		res.redirect('/posts');
+		res.render('../views/posts/post-list.jade');
+	});
+
+	//===================
+	// Angular directives
+	//===================
+	router.get('/header', function (req, res) {
+		console.log(req.user);
+		res.render('../views/auth/header.jade', {user: req.user, loggedIn: req.isAuthenticated()});
 	});
 
 	return router;
