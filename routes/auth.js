@@ -23,7 +23,7 @@ module.exports = function (passport) {
 
 	router.post('/register', passport.authenticate('local-signup', {
 		successRedirect: '/',
-		failureRedirect: '/auth/register',
+		failureRedirect: '/#/auth/register',
 		failureFlash: true
 	}));
 
@@ -31,7 +31,7 @@ module.exports = function (passport) {
 	// Logout
 	router.get('/logout', function (req, res) {
 		req.logout();
-		res.render('../views/posts/post-list.jade');
+		res.render('../views/auth/logout');
 	});
 
 	//===================

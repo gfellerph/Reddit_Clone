@@ -2,13 +2,13 @@
 	nav
 		ul
 			li
-				a(href='#login') login
+				a(href='#login', ng-class='{active:isActive("/login")}') login
 			li
-				a(href='#register') register
+				a(href='#register', ng-class='{active:isActive("/register")}') register
 -else
 	nav
 		ul
 			li
-				a(href='#profile')= user.local.email
+				a(href='#profile', ng-class='{active:isActive("/profile")}')= user.local.username
 			li
-				a(href='#logout') logout
+				a(href='#logout', ng-class='{active:isActive("/logout")}') logout

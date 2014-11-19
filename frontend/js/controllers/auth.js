@@ -4,9 +4,12 @@ module.exports = [
 	'$scope',
 	'$http',
 	'$routeParams',
-	function ($scope, $http, $routeParams) {
+	'$location',
+	function ($scope, $http, $routeParams, $location) {
 
-		console.log('authcontroller');
+		$scope.isActive = function (route) {
+			return route === $location.path();
+		}
 
 	}
 ];

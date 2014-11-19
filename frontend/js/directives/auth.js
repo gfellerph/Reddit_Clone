@@ -1,8 +1,14 @@
-module.exports.authHeader = function () {
+module.exports.authHeader = ['$location', function ($location) {
 	return {
-		templateUrl: '/auth/header',
-		link: function (scope, element, attrs) {
-			console.log(scope, element, attrs);
+		restrict: 'E'
+		,templateUrl: '/auth/header'
+		,link: function ($scope, $element, $attrs) {
+			console.log('$attrs.href: ', $attrs.href)
+			var path = $attrs.href.substring(1);
+			$scope.$location = $location;
+			$scope.$watch('$location.path()', function (locPath) {
+				(path === locPath) ? $element.addClass("current") : $element.removeClass("current");
+			});
 		}
 	};
-};
+}];

@@ -4,7 +4,6 @@ input:not([type="submit"]), textarea{
 
 label[for]{
 	color: white;
-	font-size: 2em;
 }
 
 button, input[type="submit"]{
@@ -14,10 +13,16 @@ button, input[type="submit"]{
 	border-radius: 0;
 	outline: none;
 	border-bottom: 2px solid white;
+	transition: color 200ms, border 200ms;
 
 	&.good {
 		color: @light-green--500;
 		border-bottom-color: @light-green--500;
+
+		&:hover, &:focus {
+			color: @teal--500;
+			border-bottom-color: @teal--500;
+		}
 	}
 }
 
@@ -30,7 +35,7 @@ input[type="text"], input[type="password"]{
 	border: none;
 	border-radius: 0;
 
-	font-size: 2em;
+	//font-size: 2em;
 	color: white;
 
 	border-bottom: 2px solid white;
@@ -43,13 +48,34 @@ input[type="text"], input[type="password"]{
 }
 
 form {
-	max-width: 600px;
+	max-width: 660px;
+	padding: 0 2em;
 	margin-right: auto;
 	margin-left: auto;
-	line-height: 3.5em;
+	line-height: 2em;
+
+	font-size: 2em;
+
+	@media @mobile {
+		font-size: 1.5em;
+	}
+
+	h1 {
+		color: white;
+		text-transform: uppercase;
+		margin: 2.5em 0;
+		text-align: center;
+		font-size: 2em;
+		line-height: 1.4em;
+		font-family: @roboto-light;
+
+		@media @mobile {
+			margin: 1.5em 0;
+		}
+	}
 
 	p {
-		font-size: 2em;
+		display: inline;
 		color: white;
 	}
 }

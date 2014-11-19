@@ -18,6 +18,7 @@ module.exports = [
 			// Logout
 			when('/logout', {
 				templateUrl: '/auth/logout'
+				,controller: 'AuthController'
 			}).
 			
 			otherwise( { redirectTo: '/404' })

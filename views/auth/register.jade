@@ -1,12 +1,11 @@
 form(action='/auth/register', method='POST')
+	h1 A warm welcome
+	label(for='username') to you, 
+	input#username(type='text', name='username', placeholder='new redditor')
+	label(for='password') . Enter a 
+	input#password(type='password', name='password', placeholder='passphrase')
+	label(for='email') and your 
+	input#email(type='text', name='email', placeholder='email address')
 	p
-		label(for='username') Username
-		input#username(type='text', name='username')
-	p
-		label(for='password') Password
-		input#password(type='password', name='password')
-	p
-		label(for='email') Username
-		input#email(type='text', name='email')
-	p
-		input(type='submit', value='log in')
+		span and you're good to
+		input.good(type='submit', value='go.')
