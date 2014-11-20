@@ -13,6 +13,7 @@ var postCtrl 			= require('./controllers/post');
 var postDetailCtrl 		= require('./controllers/post-detail');
 var commentCtrl 		= require('./controllers/comment');
 var authCtrl 			= require('./controllers/auth');
+var postFormCtrl		= require('./controllers/post-form-controller');
 
 // Directives
 var postDirective 		= require('./directives/post');
@@ -36,6 +37,7 @@ app.controller('PostController', postCtrl);
 app.controller('PostDetailController', postDetailCtrl);
 app.controller('CommentController', commentCtrl);
 app.controller('AuthController', authCtrl);
+app.controller('PostFormController', postFormCtrl);
 
 
 //===========

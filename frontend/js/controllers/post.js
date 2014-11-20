@@ -14,10 +14,8 @@ module.exports = [
 		$scope.post = new Post();
 		// ID of the post
 		$scope.postId = $routeParams.id;
-		// Dummy data for user
-		$scope.dummy_user = new User({ name: 'Philipp', joined: Date.now() });
 
-
+		console.log('postcontroller');
 		//=====
 		// LIST
 		//=====

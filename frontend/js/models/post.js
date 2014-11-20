@@ -1,4 +1,3 @@
-var User 	= require('./user');
 var Score 	= require('./score');
 var extend = require('extend');
 
@@ -12,8 +11,7 @@ module.exports = function (constructor){
 		text: '',
 		image: '',
 		posted: Date.now(),
-		score: new Score(),
-		user: new User()
+		score: new Score()
 	}
 
 	return extend($scope, DEFAULT, constructor);

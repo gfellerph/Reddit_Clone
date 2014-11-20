@@ -35,7 +35,7 @@ router.get('/post-detail', function (req, res) {
 	res.render('../views/posts/post-detail');
 });
 
-router.get('/post-form', function (req, res) {
+router.get('/post-form', isLoggedIn, function (req, res) {
 	res.render('../views/posts/post-form');
 });
 
@@ -45,5 +45,5 @@ function isLoggedIn(req, res, next) {
 	if(req.isAuthenticated()) {
 		return next();
 	}
-	res.redirect('/#/auth');
+	res.render('../views/auth/login');
 }

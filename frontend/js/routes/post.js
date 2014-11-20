@@ -5,8 +5,7 @@ module.exports = [
 		
 			// List of all posts
 			when('/', {
-				templateUrl: '/posts/list',
-				controller: 'PostController'
+				templateUrl: '/posts/list'
 			}).
 
 			// Detail of specific post
@@ -15,6 +14,11 @@ module.exports = [
 					return '/posts/post/' + $params.id
 				},
 				controller: 'PostDetailController'
+			}).
+
+			// Create post
+			when('/add-link', {
+				templateUrl: '/posts/post-form'
 			}).
 
 			// Error

@@ -1,9 +1,13 @@
-form(name='addPost', ng-submit='postCtrl.create(post)')
-	h2 New post
-	input(type='text', placeholder='Title', id='title', ng-model='post.title')
-	br
-	textarea(placeholder='Text', id='text', ng-model='post.text')
-	br
-	input(type='text', placeholder='Image URL', id='image' ng-model='post.image')
-	br
-	button Add
+div(ng-controller='PostFormController as postFCtrl')
+	form
+		input(type='text', placeholder='title', id='title', ng-model='post.title')
+		//label(for='text') and write it down
+		br
+		//textarea(placeholder='text', id='text', ng-model='post.text')
+
+		//label(for='url-content') or share the link to the
+		input(type='text', placeholder='url', id='url-content' ng-model='post.url')
+		//p
+			//span and
+		br
+		input.good(type='submit', value='submit.', ng-click='console.log("what")')

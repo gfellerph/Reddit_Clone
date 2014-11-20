@@ -1,26 +1,18 @@
 module.exports.list = function () {
 	return {
-		templateUrl: '/posts/post-template',
-		link: function (scope, element, attrs) {
-			console.log(element);
-		}
+		templateUrl: '/posts/post-template'
 	};
 };
 
 module.exports.detail = function () {
 	return {
-		templateUrl: '/posts/post-detail',
-		link: function (scope, element, attrs) {
-			console.log(element);
-		}
+		templateUrl: '/posts/post-detail'
+		
 	};
 };
 
 module.exports.form = function () {
 	return {
-		templateUrl: '/posts/post-form',
-		link: function (scope, element, attrs) {
-			console.log(element);
-		}
+		templateUrl: '/posts/post-form'
 	};
 };
