@@ -1,4 +1,9 @@
-var getOneUser;
+exports.getUser = function (req, res) {
+	if (!req.user) req.user = false;
+	res.json( req.user );
+};
+
+/*var getOneUser;
 var isValidPassword;
 var createHash;
 var respond;
@@ -153,4 +158,4 @@ function (req, username, password, done) {
 			}
 		});
 	};
-}));
+}));*/

@@ -38,8 +38,7 @@ module.exports = function (passport) {
 	// Angular directives
 	//===================
 	router.get('/header', function (req, res) {
-		console.log(req.user);
-		res.render('../views/auth/header.jade', {user: req.user, loggedIn: req.isAuthenticated()});
+		res.render('../views/auth/header.jade');
 	});
 
 	return router;

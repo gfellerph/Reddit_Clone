@@ -1,13 +1,13 @@
-div(ng-controller='PostFormController as postFCtrl')
-	form
-		input(type='text', placeholder='title', id='title', ng-model='post.title')
-		//label(for='text') and write it down
-		br
-		//textarea(placeholder='text', id='text', ng-model='post.text')
 
-		//label(for='url-content') or share the link to the
-		input(type='text', placeholder='url', id='url-content' ng-model='post.url')
-		//p
-			//span and
-		br
-		input.good(type='submit', value='submit.', ng-click='console.log("what")')
+form(ng-controller='PostController', ng-submit='create(post)')
+	input(type='text', placeholder='title', id='title', ng-model='post.title')
+	//label(for='text') and write it down
+	br
+	//textarea(placeholder='text', id='text', ng-model='post.text')
+
+	//label(for='url-content') or share the link to the
+	input(type='text', placeholder='url', id='url-content' ng-model='post.url')
+	//p
+		//span and
+	br
+	input.good(type='submit', value='submit.')

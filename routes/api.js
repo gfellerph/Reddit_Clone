@@ -4,15 +4,17 @@ var express 	= require('express');
 var router 		= express.Router();
 var posts 		= require('../controllers/posts');
 var comments 	= require('../controllers/comments');
+var users		= require('../controllers/users');
+var auth 		= require('../controllers/auth');
 
 // Posts API
-router.get('/posts', posts.list);
-router.get('/post/:id', posts.read);
-router.post('/post', posts.create);
-router.put('/post/:id', posts.update);
-router.put('/post/:id/upvote', posts.upvote);
+router.get('/posts', posts.list, function (req, res) {res.json(req.posts); });
+router.get('/post/:id', posts.read, function (req, res) {res.json(req.post); });
+router.post('/post', auth.allowed, posts.create, function (req, res) { res.json(req.post); });
+router.put('/post/:id', auth.allowed, posts.update, function (req, res) { res.json(req.post); });
+router.put('/post/:id/upvote', auth.allowed, posts.read, posts.upvote, posts.update, function (req, res) { res.json(req.post); });
 router.put('/post/:id/downvote', posts.downvote);
-router.delete('/post/:id', posts.delete);
+router.delete('/post/:id', posts.delete, function (req, res) { res.json({deletion: 'complete'}); });
 
 // Comments API
 router.get('/comments/to/:id', comments.list);
@@ -24,7 +26,7 @@ router.put('/comment/:id/downvote', comments.downvote);
 router.delete('/comment/:id', comments.delete);
 
 // Auth API
-//router.get('/isAuthenticated', )
+router.get('/user', users.getUser);
 
 // Return router
 module.exports = router;

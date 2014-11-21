@@ -1,20 +1,14 @@
-//var User 	= require('./user');
-var Score 	= require('./score');
-var extend = require('extend');
+var mongoose	= require('mongoose');
+var ObjectId	= mongoose.Schema.ObjectId;
+var VoteSchema	= mongoose.Schema.VoteSchema;
 
-// Data model of a post
-module.exports = function (constructor){
+var postSchema = mongoose.Schema({
+	title: String,
+	//text: String,
+	url: String,
+	posted: Date,
+	votes: [VoteSchema],
+	user: ObjectId
+});
 
-	var $scope = this;
-
-	var DEFAULT = {
-		title: '',
-		text: '',
-		image: '',
-		posted: Date.now(),
-		score: new Score(),
-		user: new User()
-	}
-
-	return extend($scope, DEFAULT, constructor);
-};
+module.exports = mongoose.model('Post', postSchema);

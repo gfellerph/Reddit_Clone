@@ -3,6 +3,8 @@ var getOnePost;
 var Datastore 	= require('nedb');
 var path 		= require('path');
 var Post 		= require('../models/post');
+var User 		= require('../models/user');
+var Vote 		= require('../models/vote');
 
 //=====
 // Initialize DB
@@ -25,86 +27,137 @@ getOnePost = function (id, next) {
 //=====
 // LIST
 //=====
-exports.list = function (req, res) {
-	db.find({}, function (err, doc){
-		if (err) console.log(err);
-		else res.json(doc);
+exports.list = function (req, res, next) {
+	Post.find( function (err, posts) {
+		if (err) throw err;
+		req.posts = posts;
+		next();
 	});
 };
 
 //=======
 // CREATE
 //=======
-exports.create = function (req, res) {
-	db.insert( new Post(req.body), function (err, doc){
-		if (err) console.log(err);
-		else res.json(doc);
+exports.create = function (req, res, next) {
+	var post = new Post();
+
+	post.title = req.body.title;
+	post.url = req.body.url;
+	post.posted = Date.now();
+	post.user = req.user;
+
+	post.save( function (err) {
+		if (err) throw err;
+		req.post = post;
+		next();
 	});
 };
 
 //=====
 // READ
 //=====
-exports.read = function (req, res) {
-	getOnePost(req.params.id, function (post){
-		res.json(post);
+exports.read = function (req, res, next) {
+	Post.findOne({_id: req.params.id}, function (err, post) {
+		if (err) throw err;
+		req.post = post;
+		next();
 	});
 };
 
 //=======
 // UPDATE
 //=======
-exports.update = function (req, res) {
-	var updatedPost = new Post(req.body);
-
-	var update_rule = {
-		$set: updatedPost
-	};
-
-	db.update({_id: req.params.id}, update_rule, {}, function (err, numReplaced, doc) {
-		if (err) console.log(err);
-		else res.json(doc);
-	});
+exports.update = function (req, res, next) {
+	Post.update(
+		{
+			_id: req.params.id
+		}
+		, {
+			title: req.body.title
+			,url: req.body.url
+			,votes: req.body.votes
+		}
+		, {}
+		, function (err, post) {
+			if (err) throw err;
+			req.post = post;
+			next();
+		}
+	);
 };
 
 //=======
 // DELETE
 //=======
 exports.delete = function (req, res) {
-	db.remove({ _id: req.params.id}, function (err, numRemoved) {
-		if (err) console.log(err);
-		else res.json({removed: numRemoved});
+	Post.remove({_id: req.params.id}, function (err) {
+		if (err) throw err;
+		next();
 	});
 };
 
 //=======
 // UPVOTE
 //=======
-exports.upvote = function (req, res) {
-	var update_rule = {
-		$set: {
-			'score.upvotes': req.body.score.upvotes
-		}
-	};
+exports.upvote = function (req, res, next) {
 
-	db.update({'_id': req.params.id}, update_rule, {}, function (err, numReplaced, doc) {
-		if (err) console.log(err);
-		else res.json(doc);
-	});
+	// Check if user has already voted
+	var hasVoted = false;
+	for(var i = 0; i < req.post.votes.length; i++) {
+		if(req.post.upvotes[i].userId === req.user._id) {
+			hasVoted = true;
+			req.post.upvotes[i].vote = 1;
+		}
+	}
+
+	if (!hasVoted) {
+
+		// Create new vote
+		var vote = new Vote();
+
+		vote.userId = req.user._id;
+		vote.vote = 1;
+
+		// Add vote
+		req.post.votes.push(vote);
+	}
+
+	// Enable update middleware to access the new post
+	req.body = req.post;
+
+	// Pass to next middleware
+	next();
 };
 
 //=========
 // DOWNVOTE
 //=========
-exports.downvote = function (req, res) {
-	var update_rule = {
-		$set: {
-			'score.downvotes': req.body.score.downvotes
-		}
-	};
+exports.downvote = function (req, res, next) {
 
-	db.update({'_id': req.params.id}, update_rule, {}, function (err, numReplaced, doc) {
-		if (err) console.log(err);
-		else res.json(doc);
-	});
+	// Check if user has already voted
+	var hasVoted = false;
+	for(var i = 0; i < req.post.votes.length; i++) {
+		if(req.post.upvotes[i].userId === req.user._id) {
+			hasVoted = true;
+			req.post.upvotes[i].vote = -1;
+		}
+	}
+
+	if (!hasVoted) {
+
+		// Create new vote
+		var vote = new Vote();
+
+		vote.userId = req.user._id;
+		vote.vote = -1;
+
+		// Add vote
+		req.post.votes.push(vote);
+	}
+
+	// Enable update middleware to access the new post
+	req.body = req.post;
+
+	// Pass to next middleware
+	next();
 };

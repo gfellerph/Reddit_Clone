@@ -5,8 +5,9 @@ var User = require('../models/user');
 module.exports = [
 	'$scope',
 	'$http',
+	'$location',
 	'$routeParams',
-	function ($scope, $http, $routeParams) {
+	function ($scope, $http, $location, $routeParams) {
 
 		// List of all posts
 		$scope.posts = [];
@@ -15,7 +16,7 @@ module.exports = [
 		// ID of the post
 		$scope.postId = $routeParams.id;
 
-		console.log('postcontroller');
+
 		//=====
 		// LIST
 		//=====
@@ -38,11 +39,10 @@ module.exports = [
 		//=======
 
 		$scope.create = function (post) {
-			console.log('create post', post);
 			var $post = new Post(post);
 			$http.post('/api/post', $post)
 				.success ( function (data) {
-					$scope.posts.push(data);
+					$location.path('/');
 				})
 				.error ( function (err) {
 					console.log(err);
