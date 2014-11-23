@@ -103,10 +103,12 @@ exports.upvote = function (req, res, next) {
 
 	// Check if user has already voted
 	var hasVoted = false;
+	var userId = req.user._id.toString();
+
 	for(var i = 0; i < req.post.votes.length; i++) {
-		if(req.post.upvotes[i].userId === req.user._id) {
+		if(req.post.votes[i].userId.toString() == userId) {
 			hasVoted = true;
-			req.post.upvotes[i].vote = 1;
+			req.post.votes[i].vote = 1;
 		}
 	}
 
@@ -126,7 +128,7 @@ exports.upvote = function (req, res, next) {
 	req.body = req.post;
 
 	// Pass to next middleware
-	next();
+	return next();
 };
 
 //=========
@@ -136,10 +138,12 @@ exports.downvote = function (req, res, next) {
 
 	// Check if user has already voted
 	var hasVoted = false;
+	var userId = req.user._id.toString();
+
 	for(var i = 0; i < req.post.votes.length; i++) {
-		if(req.post.upvotes[i].userId === req.user._id) {
+		if(req.post.votes[i].userId.toString() == req.user._id) {
 			hasVoted = true;
-			req.post.upvotes[i].vote = -1;
+			req.post.votes[i].vote = -1;
 		}
 	}
 
@@ -159,5 +163,5 @@ exports.downvote = function (req, res, next) {
 	req.body = req.post;
 
 	// Pass to next middleware
-	next();
+	return next();
 };

@@ -1,3 +1,38 @@
 #footer{
-	padding: 20px 0;
+	height: 180px;
+	position: relative;
+	
+	.inner-footer {
+		padding: 20px 0;
+		background: darken(@grey--900, 5%);
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+	}
+
+	.app-name {
+		margin-bottom: 2em;
+	}
+
+	.disclaimer, .description {
+		width: 50%;
+		float: left;
+	}
+
+	.disclaimer {
+		text-align: right;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+
+	.app-name, .description {
+		color: @grey--500;
+	}
+
+	.clearfix { position: relative; }
+
+	.white { color: white; }
+
+	.bold { font-family: @roboto-bold; }
 }

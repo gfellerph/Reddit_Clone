@@ -6,22 +6,24 @@ label[for]{
 	color: white;
 }
 
-button, input[type="submit"]{
-	background: none;
-	border: none;
-	box-shadow: none;
-	border-radius: 0;
-	outline: none;
-	border-bottom: 2px solid white;
-	transition: color 200ms, border 200ms;
+form {
+	button, input[type="submit"]{
+		background: none;
+		border: none;
+		box-shadow: none;
+		border-radius: 0;
+		outline: none;
+		border-bottom: 2px solid white;
+		transition: color 200ms, border 200ms;
 
-	&.good {
-		color: @light-green--500;
-		border-bottom-color: @light-green--500;
+		&.good {
+			color: @light-green--500;
+			border-bottom-color: @light-green--500;
 
-		&:hover, &:focus {
-			color: @teal--500;
-			border-bottom-color: @teal--500;
+			&:hover, &:focus {
+				color: @teal--500;
+				border-bottom-color: @teal--500;
+			}
 		}
 	}
 }

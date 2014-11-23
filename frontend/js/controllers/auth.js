@@ -11,7 +11,6 @@ module.exports = [
 		// Get user info
 		var req = $http.get('/api/user')
 			.success ( function (data) {
-				console.log('AuthController: ', data);
 				$scope.user = data;
 			})
 			.error ( function (err) {

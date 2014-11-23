@@ -1,5 +1,11 @@
 #header{
+	position: fixed;
+	top: 0;
+	width: 100%;
 	padding: 0 2em;
+	background: @grey--900;
+	z-index: 5;
+
 	.clearfix();
 
 	h1 {
@@ -7,9 +13,6 @@
 		padding: 22px 0;
 		font-size: 1em;
 		line-height: 1em;
-
-		img {
-		}
 	}
 
 	nav {
@@ -35,6 +38,7 @@
 					color: white;
 					border-bottom: 2px solid transparent;
 					text-decoration: none !important;
+					cursor: pointer;
 
 					transition: border 200ms;
 

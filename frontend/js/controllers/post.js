@@ -82,6 +82,21 @@ module.exports = [
 		}
 
 
+		//======
+		// Score
+		//======
+		$scope.score = function (post) {
+
+			var score = 0;
+
+			for (var i = 0; i < post.votes.length; i++) {
+				score += post.votes[i].vote;
+			}
+			console.log(score);
+			return score;
+		}
+
+
 		//=========
 		// Initiate
 		//=========

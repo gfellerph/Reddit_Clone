@@ -6,12 +6,8 @@
 	// Add styles for a sidewide background here
 }
 
-#wrapper{
-	position: relative;
-	z-index: 2;
-
-	> .container{
-		background-color: white;
-		box-shadow: 0 0 15px rgba(0,0,0,0.5);
-	}
+#main {
+	padding-top: 60px;
+	min-height: ~'calc(100% - 180px)';
+	&:extend(.clearfix all);
 }

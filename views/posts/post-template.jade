@@ -1,17 +1,24 @@
-div.post--content.post--overview
-	div.post--content--image(style='background-image:url({{post.image}});')
-a.post--link(href="#/post/{{post._id}}")
-div.post--meta
-	p.post--username {{post.user.name}}
-	h3.post--title {{post.title}}
-	div.post--controls
-		div.post--score {{post.score.upvotes - post.score.downvotes}}
-		div
-			button.post--upvote(ng-click='upvote(post)') +
-			button.post--downvote(ng-click='downvote(post)') -
+article.post
+	div.post--content.post--overview
+		img(ng-src='{{post.url}}')
+	a.post--link(href="#/post/{{post._id}}")
+	div.post--shadow
+	div.post--meta
+		h3.post--title {{post.title}}
+		p.post--username.ants by 
+			a {{post._id}}
+		p.post--controls.ants
+			span Scored 
+			span.white {{post.score(post)}} 
+			span points, got 
+			span.white {{post.comments.length}} 
+			span comments, 
+			button.upvote(ng-click='upvote(post)') upvote 
+			span or 
+			button.downvote(ng-click='downvote(post)') downvote
 
-		// TODO: Show only when logged in
-		//div
-			//button.post--edit(ng-click='postCtrl.edit(post)') edit
-			//button.post--delete(ng-click='postCtrl.delete(post)') delete
+			// TODO: Show only when logged in
+			//div
+				//button.post--edit(ng-click='postCtrl.edit(post)') edit
+				//button.post--delete(ng-click='postCtrl.delete(post)') delete
 			

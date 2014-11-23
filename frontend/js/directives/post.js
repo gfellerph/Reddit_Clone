@@ -1,6 +1,7 @@
 module.exports.list = function () {
 	return {
-		templateUrl: '/posts/post-template'
+		templateUrl: '/posts/post-template',
+		replace: true
 	};
 };
 

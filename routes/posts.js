@@ -2,6 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
+var auth = require('../controllers/auth');
 
 // Index
 router.get('/', function (req, res){
@@ -10,9 +11,6 @@ router.get('/', function (req, res){
 
 // List of posts
 router.get('/list', function (req, res) {
-	console.log('User login state:');
-	console.log(req.isAuthenticated());
-	console.log(req.user);
 	res.render('../views/posts/post-list', {user: req.user, loggedIn: req.isAuthenticated()});
 });
 
@@ -35,15 +33,8 @@ router.get('/post-detail', function (req, res) {
 	res.render('../views/posts/post-detail');
 });
 
-router.get('/post-form', isLoggedIn, function (req, res) {
+router.get('/post-form', auth.allowed, function (req, res) {
 	res.render('../views/posts/post-form');
 });
 
 module.exports = router;
-
-function isLoggedIn(req, res, next) {
-	if(req.isAuthenticated()) {
-		return next();
-	}
-	res.render('../views/auth/login');
-}
