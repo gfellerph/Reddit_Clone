@@ -24,6 +24,7 @@ var authCtrl 			= require('./controllers/auth');
 var postDirective 		= require('./directives/post');
 var commentDirective 	= require('./directives/comment');
 var authDirective 		= require('./directives/auth');
+var postsLoaded 		= require('./directives/posts-loaded');
 
 // Factories
 var authInterceptor 	= require('./factories/auth-interceptor');
@@ -74,3 +75,4 @@ app.directive('postform', postDirective.form);
 app.directive('comment', commentDirective.comment);
 app.directive('commentform', commentDirective.commentForm);
 app.directive('authheader', authDirective.authHeader);
+app.directive('postsLoaded', postsLoaded);

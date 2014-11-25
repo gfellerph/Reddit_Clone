@@ -9,12 +9,20 @@ module.exports = [
 	'$routeParams',
 	function ($scope, $http, $location, $routeParams) {
 
+		var $posts = $('.posts');
+
 		// List of all posts
 		$scope.posts = [];
 		// Form model/Detail view
 		$scope.post = new Post();
 		// ID of the post
 		$scope.postId = $routeParams.id;
+
+		// Refresh element positions
+		$scope.updatePackery = function () {
+			console.log($posts);
+			$posts.packery();
+		};
 
 
 		//=====
@@ -92,7 +100,7 @@ module.exports = [
 			for (var i = 0; i < post.votes.length; i++) {
 				score += post.votes[i].vote;
 			}
-			console.log(score);
+			
 			return score;
 		}
 

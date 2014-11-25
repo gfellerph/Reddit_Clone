@@ -1,4 +1,4 @@
-div(ng-controller='PostController as postCtrl')
+div.container(ng-controller='PostController as postCtrl')
 	a(href='#/add-link') Add a link
 	
 	select(ng-model='order')
@@ -6,10 +6,11 @@ div(ng-controller='PostController as postCtrl')
 			option(value='title') title
 			option(value='score.upvotes*-1') upvotes
 
-	input(type='text', ng-model='query', placeholder='search', id='filter')
+	input(ng-change='updatePackery()', type='text', ng-model='query', placeholder='search', id='filter')
 
 	ul.posts
-		li(ng-repeat='post in posts | filter:query | orderBy:order')
+		//li.grid-sizer
+		li(posts-loaded, ng-repeat='post in posts | filter:query | orderBy:order')
 			post
 
-	p.post--blank-slate(ng-show='posts.length==0') Erfasse den ersten Post 
+	p.post--blank-slate(ng-show='posts.length==0') Erfasse den ersten Post
