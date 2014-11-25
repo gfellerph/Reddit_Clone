@@ -6,16 +6,16 @@ article.post
 	div.post--meta
 		h3.post--title {{post.title}}
 		p.post--username.ants by 
-			a {{post._id}}
+			a(href='#') {{post.user.local.username}}
 		p.post--controls.ants
 			span Scored 
-			span.white {{post.score(post)}} 
+			span.white {{score()}} 
 			span points, got 
-			span.white {{post.comments.length}} 
+			span.white {{comments.length}} 
 			span comments, 
-			button.upvote(ng-click='upvote(post)') upvote 
+			button.upvote(ng-click='upvote(post)' ng-class='{active: hasUpvoted()}') upvote 
 			span or 
-			button.downvote(ng-click='downvote(post)') downvote
+			button.downvote(ng-click='downvote(post)' ng-class='{active: hasDownvoted()}') downvote
 
 			// TODO: Show only when logged in
 			//div

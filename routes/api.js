@@ -13,8 +13,8 @@ router.get('/posts', posts.list, function (req, res) {res.json(req.posts); });
 router.get('/post/:id', posts.read, function (req, res) {res.json(req.post); });
 router.post('/post', auth.allowed, posts.create, function (req, res) { res.json(req.post); });
 router.put('/post/:id', auth.allowed, posts.update, function (req, res) { res.json(req.post); });
-router.put('/post/:id/upvote', auth.allowed, posts.read, posts.upvote, posts.update, function (req, res) { res.json(req.post); });
-router.put('/post/:id/downvote', auth.allowed, posts.read, posts.downvote, posts.update, function (req, res) { res.json(req.post); });
+router.put('/post/:id/upvote', auth.allowed, posts.read, posts.upvote, posts.update, function (req, res) { res.json(req.body); });
+router.put('/post/:id/downvote', auth.allowed, posts.read, posts.downvote, posts.update, function (req, res) { res.json(req.body); });
 router.delete('/post/:id', posts.delete, function (req, res) { res.json({deletion: 'complete'}); });
 
 // Comments API

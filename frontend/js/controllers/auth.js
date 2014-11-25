@@ -8,6 +8,11 @@ module.exports = [
 	function ($scope, $http, $routeParams, $location) {
 		$scope.user = false;
 
+		// Expose user to root scope
+		$scope.$watch('user', function (user) {
+			$scope.$root.user = user;
+		});
+
 		// Get user info
 		var req = $http.get('/api/user')
 			.success ( function (data) {

@@ -8,7 +8,7 @@ var postSchema = mongoose.Schema({
 	url: String,
 	posted: Date,
 	votes: [VoteSchema],
-	user: ObjectId
+	user: {type: String, ref: 'User'}
 });
 
 module.exports = mongoose.model('Post', postSchema);

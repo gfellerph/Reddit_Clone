@@ -13,6 +13,7 @@ var routes          = require('./routes');
 var api             = require('./routes/api');
 var posts           = require('./routes/posts');
 var comments        = require('./routes/comments');
+var presentation    = require('./routes/presentation');
 var auth            = require('./routes/auth')(passport);
 var authCtrl        = require('./controllers/passport')(passport);
 var mongoose        = require('mongoose');
@@ -67,6 +68,7 @@ app.use('/api', api);
 app.use('/posts', posts);
 app.use('/comments', comments);
 app.use('/auth', auth);
+app.use('/presentation', presentation);
 
 
 // Handle errors

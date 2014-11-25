@@ -5,7 +5,8 @@ module.exports = [
 		
 			// List of all posts
 			when('/', {
-				templateUrl: '/posts/list'
+				templateUrl: '/posts/list',
+				controller: 'ListViewController'
 			}).
 
 			// Detail of specific post
@@ -13,7 +14,7 @@ module.exports = [
 				templateUrl: function ($params) {
 					return '/posts/post/' + $params.id
 				},
-				controller: 'PostDetailController'
+				controller: 'DetailViewController'
 			}).
 
 			// Create post

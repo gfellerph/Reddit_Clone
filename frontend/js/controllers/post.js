@@ -1,7 +1,3 @@
-var Post = require('../models/post');
-var Score = require('../models/score');
-var User = require('../models/user');
-
 module.exports = [
 	'$scope',
 	'$http',
@@ -9,66 +5,21 @@ module.exports = [
 	'$routeParams',
 	function ($scope, $http, $location, $routeParams) {
 
-		var $posts = $('.posts');
-
-		// List of all posts
-		$scope.posts = [];
-		// Form model/Detail view
-		$scope.post = new Post();
-		// ID of the post
-		$scope.postId = $routeParams.id;
-
-		// Refresh element positions
-		$scope.updatePackery = function () {
-			console.log($posts);
-			$posts.packery();
-		};
-
-
-		//=====
-		// LIST
-		//=====
-
-		$scope.list = function () {
-
-			// Get list of posts
-			$http.get('/api/posts')
-				.success ( function (data) {
-					$scope.posts = data;
-				})
-				.error ( function (err) {
-					console.log(err);
-				});
-		};
-
-
-		//=======
-		// CREATE
-		//=======
-
-		$scope.create = function (post) {
-			var $post = new Post(post);
-			$http.post('/api/post', $post)
-				.success ( function (data) {
-					$location.path('/');
-				})
-				.error ( function (err) {
-					console.log(err);
-				});
-		}
-
 
 		//=======
 		// Upvote
 		//=======
 
-		$scope.upvote = function (post) {
-			var $post = new Post(post);
-			$post.score.upvotes++;
+		$scope.upvote = function () {
 
-			$http.put('/api/post/' + $post._id + '/upvote/', $post)
+			var id = $scope.post._id;
+
+			$http.put('/api/post/' + id + '/upvote/', $scope.post)
+				.success ( function (post) {
+					console.log(post);
+					$scope.post.votes = post.votes;
+				})
 				.error ( function (err) {
-					$post.score.upvotes--;
 					console.log(err);
 				});
 		}
@@ -78,13 +29,15 @@ module.exports = [
 		// Downvote
 		//=========
 
-		$scope.downvote = function (post) {
-			var $post = new Post(post);
-			$post.score.downvotes++;
+		$scope.downvote = function () {
 
-			$http.put('/api/post/' + $post._id + '/downvote/', $post)
+			var id = $scope.post._id;
+
+			$http.put('/api/post/' + id + '/downvote/', $scope.post)
+				.success ( function (post) {
+					$scope.post.votes = post.votes;
+				})
 				.error ( function (err) {
-					$post.score.downvotes--;
 					console.log(err);
 				});
 		}
@@ -93,22 +46,48 @@ module.exports = [
 		//======
 		// Score
 		//======
-		$scope.score = function (post) {
+
+		$scope.score = function () {
 
 			var score = 0;
 
-			for (var i = 0; i < post.votes.length; i++) {
-				score += post.votes[i].vote;
+			if(!$scope.post.votes) return score;
+
+			for (var i = 0; i < $scope.post.votes.length; i++) {
+				score += $scope.post.votes[i].vote;
 			}
 			
 			return score;
 		}
 
+		$scope.hasUpvoted = function () {
 
-		//=========
-		// Initiate
-		//=========
+			if(!$scope.post || !$scope.$root.user || !$scope.post.votes) return false;
 
-		$scope.list();
+			var post = $scope.post;
+			var userId = $scope.$root.user._id;
+			var upvoted = false;
+
+			for (var i = 0; i < post.votes.length; i++) {
+				if(post.votes[i].userId == userId && post.votes[i].vote == 1) upvoted = true;
+			}
+
+			return upvoted;
+		}
+
+		$scope.hasDownvoted = function () {
+
+			if(!$scope.post || !$scope.$root.user || !$scope.post.votes) return false;
+
+			var post = $scope.post;
+			var userId = $scope.$root.user._id;
+			var downvoted = false;
+
+			for (var i = 0; i < post.votes.length; i++) {
+				if(post.votes[i].userId == userId && post.votes[i].vote == -1) downvoted = true;
+			}
+
+			return downvoted;
+		}
 	}
 ];

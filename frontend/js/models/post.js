@@ -1,4 +1,3 @@
-var Score 	= require('./score');
 var extend = require('extend');
 
 // Data model of a post
@@ -10,8 +9,7 @@ module.exports = function (constructor){
 		title: '',
 		text: '',
 		image: '',
-		posted: Date.now(),
-		score: new Score()
+		posted: Date.now()
 	}
 
 	return extend($scope, DEFAULT, constructor);

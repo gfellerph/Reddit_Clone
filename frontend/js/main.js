@@ -13,10 +13,13 @@ var app = angular.module('reddit', ['ngRoute']);
 // Routes
 var postRoutes 			= require('./routes/post');
 var authRoutes 			= require('./routes/auth');
+var presiRoutes			= require('./routes/presentation');
 
 // Controllers
 var postCtrl 			= require('./controllers/post');
-var postDetailCtrl 		= require('./controllers/post-detail');
+var listViewCtrl		= require('./controllers/list-view');
+var detailViewCtrl 		= require('./controllers/detail-view');
+var postFormCtrl 		= require('./controllers/post-form');
 var commentCtrl 		= require('./controllers/comment');
 var authCtrl 			= require('./controllers/auth');
 
@@ -28,6 +31,7 @@ var postsLoaded 		= require('./directives/posts-loaded');
 
 // Factories
 var authInterceptor 	= require('./factories/auth-interceptor');
+var authChangeNotifier 	= require('./factories/auth-change-notifier');
 
 // Config
 var interceptor 		= require('./config/interceptor');
@@ -38,6 +42,7 @@ var interceptor 		= require('./config/interceptor');
 //========
 
 app.factory('authInterceptor', authInterceptor);
+app.factory('authState', authChangeNotifier);
 
 
 //=======
@@ -53,6 +58,7 @@ app.config(interceptor);
 
 app.config(postRoutes);
 app.config(authRoutes);
+app.config(presiRoutes);
 
 
 //============
@@ -60,7 +66,9 @@ app.config(authRoutes);
 //============
 
 app.controller('PostController', postCtrl);
-app.controller('PostDetailController', postDetailCtrl);
+app.controller('DetailViewController', detailViewCtrl);
+app.controller('ListViewController', listViewCtrl);
+app.controller('PostFormController', postFormCtrl);
 app.controller('CommentController', commentCtrl);
 app.controller('AuthController', authCtrl);
 
@@ -69,8 +77,7 @@ app.controller('AuthController', authCtrl);
 // Directives
 //===========
 
-app.directive('post', postDirective.list);
-app.directive('postdetail', postDirective.detail);
+app.directive('post', postDirective.post);
 app.directive('postform', postDirective.form);
 app.directive('comment', commentDirective.comment);
 app.directive('commentform', commentDirective.commentForm);

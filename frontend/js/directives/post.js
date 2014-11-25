@@ -1,19 +1,14 @@
-module.exports.list = function () {
+module.exports.post = function () {
 	return {
 		templateUrl: '/posts/post-template',
-		replace: true
-	};
-};
-
-module.exports.detail = function () {
-	return {
-		templateUrl: '/posts/post-detail'
-		
+		replace: true,
+		controller: 'PostController'
 	};
 };
 
 module.exports.form = function () {
 	return {
-		templateUrl: '/posts/post-form'
+		templateUrl: '/posts/post-form',
+		controller: 'PostFormController'
 	};
 };

@@ -4,6 +4,8 @@ nav(ng-show='!user')
 			a(href='#login', ng-class='{active:isActive("/login")}') login
 		li
 			a(href='#register', ng-class='{active:isActive("/register")}') register
+		li
+			a(href='#presentation') presentation
 
 nav(ng-show='user')
 	ul
@@ -11,3 +13,5 @@ nav(ng-show='user')
 			a(href='#profile', ng-class='{active:isActive("/profile")}') {{user.local.username}}
 		li
 			a(ng-click='logout()', ng-class='{active:isActive("/logout")}') logout
+		li
+			a(href='#presentation') presentation

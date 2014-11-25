@@ -6,29 +6,12 @@ var Post 		= require('../models/post');
 var User 		= require('../models/user');
 var Vote 		= require('../models/vote');
 
-//=====
-// Initialize DB
-//=====
-var db = new Datastore({
-	filename: path.join(__dirname + '/../data/posts'),
-	autoload: true
-});
-
-//=====
-// Helper function to get one post
-//=====
-getOnePost = function (id, next) {
-	db.findOne({'_id': id}, function (err, doc){
-		if (err) console.log(err);
-		else next(doc);
-	});
-};
 
 //=====
 // LIST
 //=====
 exports.list = function (req, res, next) {
-	Post.find( function (err, posts) {
+	Post.find().populate('user', '-local.password').exec( function (err, posts) {
 		if (err) throw err;
 		req.posts = posts;
 		next();
@@ -57,11 +40,14 @@ exports.create = function (req, res, next) {
 // READ
 //=====
 exports.read = function (req, res, next) {
-	Post.findOne({_id: req.params.id}, function (err, post) {
-		if (err) throw err;
-		req.post = post;
-		next();
-	});
+	Post.findOne({_id: req.params.id})
+		.populate('user', '-local.password')
+		.exec( function (err, post) {
+			if (err) throw err;
+			req.post = post;
+			next();
+		}
+	);
 };
 
 //=======

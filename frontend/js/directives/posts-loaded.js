@@ -15,11 +15,11 @@ module.exports = function () {
 
 	controllerFunction = function ($scope) {
 		$scope.$on('postsloaded', function (e) {
-			
+			console.log('initialize packery');
 			// Initialize packery
 			$posts.packery({
-				itemSelector: 'li',
-				gutter: 10
+				//itemSelector: 'li',
+				gutter: 0
 			});
 		});
 	};
