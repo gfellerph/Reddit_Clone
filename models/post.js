@@ -4,9 +4,10 @@ var VoteSchema	= mongoose.Schema.VoteSchema;
 
 var postSchema = mongoose.Schema({
 	title: String,
-	//text: String,
+	text: String,
 	url: String,
 	posted: Date,
+	type: String,
 	votes: [VoteSchema],
 	user: {type: String, ref: 'User'}
 });

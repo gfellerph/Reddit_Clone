@@ -12,7 +12,7 @@ var Vote 		= require('../models/vote');
 //=====
 exports.list = function (req, res, next) {
 	Post.find().populate('user', '-local.password').exec( function (err, posts) {
-		if (err) throw err;
+		if (err) return next(err);
 		req.posts = posts;
 		next();
 	});
@@ -27,14 +27,24 @@ exports.create = function (req, res, next) {
 	post.title = req.body.title;
 	post.url = req.body.url;
 	post.posted = Date.now();
-	post.user = req.user;
+	post.user = req.user._id;
+
+	console.log(determineType(req.body.url));
 
 	post.save( function (err) {
-		if (err) throw err;
+		if (err) return next(err);
 		req.post = post;
 		next();
 	});
 };
+
+function determineType (url) {
+	var imgRegex = new RegExp("(http(s?):)|([/|.|\w|\s])*\.(?:jp?g|png)");
+	var gifRegex = new RegExp("(http(s?):)|([/|.|\w|\s])*\.(?:gif)")
+	if (url.match(imgRegex)) { return 'image'; }
+	if (url.match(gifRegex)) { return 'gif'; }
+	if (url.indexOf())
+}
 
 //=====
 // READ
@@ -43,7 +53,7 @@ exports.read = function (req, res, next) {
 	Post.findOne({_id: req.params.id})
 		.populate('user', '-local.password')
 		.exec( function (err, post) {
-			if (err) throw err;
+			if (err) console.log(err);
 			req.post = post;
 			next();
 		}

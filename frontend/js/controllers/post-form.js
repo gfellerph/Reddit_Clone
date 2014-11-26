@@ -18,6 +18,7 @@ module.exports = [
 
 		$scope.create = function (post) {
 			var $post = new Post(post);
+			console.log($post);
 			$http.post('/api/post', $post)
 				.success ( function (data) {
 					$location.path('/');

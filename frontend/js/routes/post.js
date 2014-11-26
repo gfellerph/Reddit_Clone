@@ -19,7 +19,8 @@ module.exports = [
 
 			// Create post
 			when('/add-link', {
-				templateUrl: '/posts/post-form'
+				templateUrl: '/posts/post-form',
+				controller: 'PostFormController'
 			}).
 
 			// Error
