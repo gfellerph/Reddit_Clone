@@ -43,7 +43,6 @@ function determineType (url) {
 	var gifRegex = new RegExp("(http(s?):)|([/|.|\w|\s])*\.(?:gif)")
 	if (url.match(imgRegex)) { return 'image'; }
 	if (url.match(gifRegex)) { return 'gif'; }
-	if (url.indexOf())
 }
 
 //=====

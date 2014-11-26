@@ -1,9 +1,12 @@
 {
   "name": "Reddit_Clone",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuelsch/Reddit_Clone"
   },
   "dependencies": {
     "body-parser": "~1.0.0",
