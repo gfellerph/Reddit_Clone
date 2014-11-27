@@ -1,21 +1,11 @@
-//var User 	= require('./user');
-var Score 	= require('./score');
-var extend = require('extend');
+var mongoose	= require('mongoose');
+var VoteSchema	= mongoose.Schema.VoteSchema;
 
-//=====
-// Data model of a comment
-//=====
-module.exports = function (constructor) {
-	var $scope = this;
+var commentSchema = mongoose.Schema({
+	text: String,
+	votes: [VoteSchema],
+	post: {tpye: String, ref: 'Post'}
+	user: {type: String, ref: 'User'}
+});
 
-	var DEFAULT = {
-		text: '',
-		parent: null,
-		posted: Date.now(),
-		user: new User(),
-		score: new Score(),
-		postId: -1
-	}
-	
-	return extend($scope, DEFAULT, constructor);
-};
+module.exports = mongoose.model('Comment', commentSchema);

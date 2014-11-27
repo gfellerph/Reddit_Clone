@@ -1,6 +1,6 @@
 var mongoose	= require('mongoose');
-var ObjectId	= mongoose.Schema.ObjectId;
 var VoteSchema	= mongoose.Schema.VoteSchema;
+var CommentSchema = mongoose.Schema.CommentSchema;
 
 var postSchema = mongoose.Schema({
 	title: String,

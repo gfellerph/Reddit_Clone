@@ -1,7 +1,4 @@
-var getOnePost;
 
-var Datastore 	= require('nedb');
-var path 		= require('path');
 var Post 		= require('../models/post');
 var User 		= require('../models/user');
 var Vote 		= require('../models/vote');
@@ -28,7 +25,8 @@ exports.create = function (req, res, next) {
 	post.url = req.body.url;
 	post.posted = Date.now();
 	post.user = req.user._id;
-
+	post.text = req.body.text;
+	post.type = determineType(req.body.url);
 	console.log(determineType(req.body.url));
 
 	post.save( function (err) {
@@ -39,10 +37,10 @@ exports.create = function (req, res, next) {
 };
 
 function determineType (url) {
-	var imgRegex = new RegExp("(http(s?):)|([/|.|\w|\s])*\.(?:jp?g|png)");
-	var gifRegex = new RegExp("(http(s?):)|([/|.|\w|\s])*\.(?:gif)")
-	if (url.match(imgRegex)) { return 'image'; }
-	if (url.match(gifRegex)) { return 'gif'; }
+	if (!url || url == '') { return 'text'; }
+	if (url.indexOf('.jpg')>0 || url.indexOf('.png')>0) { return 'image'; }
+	if (url.indexOf('.gif')>0) { return 'gif'; }
+	return 'none';
 }
 
 //=====
@@ -84,7 +82,7 @@ exports.update = function (req, res, next) {
 //=======
 // DELETE
 //=======
-exports.delete = function (req, res) {
+exports.delete = function (req, res, next) {
 	Post.remove({_id: req.params.id}, function (err) {
 		if (err) throw err;
 		next();
@@ -125,6 +123,20 @@ exports.upvote = function (req, res, next) {
 	// Pass to next middleware
 	return next();
 };
+exports.deleteVote = function (req, res, next) {
+	var userId = req.user._id.toString();
+
+	for (var i = 0; i < req.post.votes.length; i++) {
+		if (req.post.votes[i].userId.toString() == userId) {
+			req.post.votes[i].vote = 0;
+			req.body = req.post;
+			return next();
+		}
+	}
+
+	console.log('Delete upvote: user vote not found');
+	return next();
+}
 
 //=========
 // DOWNVOTE

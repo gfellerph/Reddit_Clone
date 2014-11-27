@@ -1,114 +1,162 @@
-var getOneComment;
 
-var Datastore 	= require('nedb');
-var path		= require('path');
 var Comment 	= require('../models/comment');
+var Vote 		= require('../models/vote');
 
-//=====
-// Initialize DB
-//=====
-var db	= new Datastore({
-	filename: path.join(__dirname + '/../data/comments'),
-	autoload: true
-});
-
-//=====
-// Helper function to get a comment from DB
-//=====
-getOneComment = function (id, callback) {
-	db.findOne({_id: id}, function (err, doc) {
-		if (err) console.log(err);
-		else callback(doc);
-	});
-};
 
 //=====
 // LIST
 //=====
-exports.list = function (req, res) {
+exports.list = function (req, res, next) {
 	// Get all comments of one post
-	db.find({postId: req.params.id}, function (err, doc){
-		if (err) console.log(err);
-		else res.json(doc);
+	Comment.find()
+	.populate('user', '-local.password')
+	.exec( function (err, comments){
+		if (err) return next(err);
+		req.comments = comments;
+		next();
+	});
+};
+
+//=====
+// READ
+//=====
+exports.read = function (req, res, next) {
+	Comment.findOne({_id: req.params.id})
+	.populate('user', '-local.password')
+	.exec( function (err, comment) {
+		if (err) next(err);
+		req.comment = comment;
+		next();
 	});
 };
 
 //=======
 // CREATE
 //=======
-exports.create = function (req, res) {
-	console.log(req.body);
-	var c = new Comment(req.body);
-	console.log(c);
-	db.insert( new Comment(req.body), function (err, doc){
-		if (err) console.log(err);
-		else res.json(doc);
-	});
-}
+exports.create = function (req, res, next) {
+	var comment = new Comment();
 
-//=====
-// READ
-//=====
-exports.read = function (req, res) {
-	getOneComment(req.params.id, function (user){
-		res.json(user);
+	comment.text = req.body.text;
+	comment.user = req.user._id;
+
+	comment.save( function (err) {
+		if (err) return next(err);
+		req.comment = comment;
+		next();
 	});
 };
 
 //=======
 // UPDATE
 //=======
-exports.update = function (req, res) {
-	var updatedComment = new Comment(req.body);
-
-	var update_rule = {
-		$set: updatedComment
-	};
-
-	db.update({_id: req.params.id}, update_rule, {}, function (err, numReplaced, doc) {
-		if (err) console.log(err);
-		else res.json(doc);
-	});
+exports.update = function (req, res, next) {
+	Comment.update(
+		{
+			_id: req.params.id
+		}
+		, {
+			text: req.body.text,
+			votes: req.body.votes
+		}
+		, {}
+		, function (err, comment) {
+			if (err) next(err);
+			req.comment = comment;
+			next();
+		}
+	);
 };
 
 //=======
 // DELETE
 //=======
-exports.delete = function (req, res) {
-	db.remove({_id: req.params.id}, function (err, numRemoved) {
-		if (err) console.log(err);
-		else res.json({removed: numRemoved});
-	});
+exports.delete = function (req, res, next) {
+	Comment.remove({_id: req.params.id}, function (err) {
+		if (err) next(err);
+	})
 };
 
 //=======
 // UPVOTE
 //=======
-exports.upvote = function (req, res) {
-	var update_rule = {
-		$set: {
-			'score.upvotes': req.body.score.upvotes
-		}
-	};
+exports.upvote = function (req, res, next) {
+	
+	// Check if user has already voted
+	var hasVoted = false;
+	var userId = req.user._id.toString();
 
-	db.update({_id: req.params.id}, update_rule, {}, function (err, numReplaced, doc) {
-		if (err) console.log(err);
-		else res.json(doc);
-	});
+	for(var i = 0; i < req.comment.votes.length; i++) {
+		if(req.comment.votes[i].userId.toString() == userId) {
+			hasVoted = true;
+			req.comment.votes[i].vote = 1;
+		}
+	}
+
+	if (!hasVoted) {
+
+		// Create new vote
+		var vote = new Vote();
+
+		vote.userId = req.user._id;
+		vote.vote = 1;
+
+		// Add vote
+		req.comment.votes.push(vote);
+	}
+
+	// Enable update middleware to access the new comment
+	req.body = req.comment;
+
+	// Pass to next middleware
+	return next();
 };
+
+exports.deleteVote = function (req, res, next) {
+	var userId = req.user._id.toString();
+
+	for (var i = 0; i < req.comment.votes.length; i++) {
+		if (req.comment.votes[i].userId.toString() == userId) {
+			req.comment.votes[i].vote = 0;
+			req.body = req.comment;
+			return next();
+		}
+	}
+
+	console.log('Delete upvote: user vote not found');
+	return next();
+}
 
 //=========
 // DOWNVOTE
 //=========
-exports.downvote = function (req, res){
-	var update_rule = {
-		$set: {
-			'score.downvotes': req.body.score.downvotes
-		}
-	};
+exports.downvote = function (req, res, next){
+	
+	// Check if user has already voted
+	var hasVoted = false;
+	var userId = req.user._id.toString();
 
-	db.update({_id: req.params.id}, update_rule, {}, function (err, numReplaced, doc){
-		if (err) console.log(err);
-		else res.json(doc);
-	});
+	for(var i = 0; i < req.comment.votes.length; i++) {
+		if(req.comment.votes[i].userId.toString() == req.user._id) {
+			hasVoted = true;
+			req.comment.votes[i].vote = -1;
+		}
+	}
+
+	if (!hasVoted) {
+
+		// Create new vote
+		var vote = new Vote();
+
+		vote.userId = req.user._id;
+		vote.vote = -1;
+
+		// Add vote
+		req.comment.votes.push(vote);
+	}
+
+	// Enable update middleware to access the new comment
+	req.body = req.comment;
+
+	// Pass to next middleware
+	return next();
 };

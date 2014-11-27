@@ -1,6 +1,14 @@
 article.post
-	div.post--content.post--overview
+
+	div.post--content.image(ng-show='type=="image"')
 		img(ng-src='{{post.url}}')
+
+	div.post--content.gif(ng-show='type=="gif"')
+		img(ng-src='{{post.url}}')
+
+	div.post--content.text(ng-show='type=="text"')
+		p {{text}}
+
 	a.post--link(href="#/post/{{post._id}}")
 	div.post--shadow
 	div.post--meta
@@ -21,4 +29,3 @@ article.post
 			//div
 				//button.post--edit(ng-click='postCtrl.edit(post)') edit
 				//button.post--delete(ng-click='postCtrl.delete(post)') delete
-			

@@ -30,8 +30,7 @@ html(ng-app='reddit')
 		// View container
 		//===============
 		section#main(ng-view)
-			//block content
-		
+				
 
 		//=======
 		// Footer
@@ -43,14 +42,7 @@ html(ng-app='reddit')
 		// Footer scripts
 		// ==============
 
-		// jQuery
-		script(src='/js/bower_components/jquery/dist/jquery.js')
-
-		// Angular
-		script(src='/js/bower_components/angular/angular.js')
-		script(src='/js/bower_components/angular-route/angular-route.js')
-
-		// Vendor
+		// Vendor (cannot be compiled with gulp because of 'require' being used in the script)
 		script(src='/js/bower_components/packery/dist/packery.pkgd.min.js')
 
 		// Custom
