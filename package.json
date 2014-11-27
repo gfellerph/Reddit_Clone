@@ -25,9 +25,6 @@
     "serve-favicon": "~2.1.1",
     "socket.io": "^1.2.0",
     "static-favicon": "~1.0.0",
-    "typescript": "~1.0.1"
-  },
-  "devDependencies": {
     "passport-local": "~1.0.0",
     "express-session": "~1.9.1",
     "bcrypt-nodejs": "0.0.3",
