@@ -1,6 +1,9 @@
 {
   "name": "Reddit_Clone",
   "version": "0.0.1",
+  "engines": {
+    "node": "0.10.25"
+  },
   "scripts": {
     "start": "node ./bin/www"
   },

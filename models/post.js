@@ -12,4 +12,4 @@ var postSchema = mongoose.Schema({
 	user: {type: String, ref: 'User'}
 });
 
-module.exports = mongoose.model('Post', postSchema);
+module.exports = postSchema;
