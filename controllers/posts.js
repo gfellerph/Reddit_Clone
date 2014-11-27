@@ -1,4 +1,4 @@
-
+var mongoose 	= require('mongoose');
 var Post 		= require('../models/post');
 var User 		= require('../models/user');
 var Vote 		= require('../models/vote');

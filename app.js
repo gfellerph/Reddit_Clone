@@ -28,9 +28,6 @@ var app = express();
 // ======================================================
 var config = require('./config/modulus');
 mongoose.connect(config.url);
-mongoose.model('User', require('./models/user'));
-mongoose.model('Post', require('./models/post'));
-mongoose.model('Comment', require('./models/comment'));
 
 
 // View engine setup

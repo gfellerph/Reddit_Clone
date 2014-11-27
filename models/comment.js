@@ -9,4 +9,4 @@ var commentSchema = mongoose.Schema({
 	user: {type: String, ref: 'User'}
 });
 
-module.exports = commentSchema;
+module.exports = mongoose.model('Comment', commentSchema);
