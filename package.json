@@ -6,7 +6,7 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "./frontend/bower install && ./frontend/buildsystem/gulp"
+    "postinstall": "./frontend/bower install"
   },
   "repository": {
     "type": "git",
