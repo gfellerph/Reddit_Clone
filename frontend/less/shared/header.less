@@ -1,0 +1,53 @@
+#header{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	padding: 0 2em;
+	background: @grey--900;
+	z-index: 5;
+	box-shadow: 0 0 30px rgba(0,0,0,0.7);
+
+	.clearfix();
+
+	h1 {
+		float: left;
+		padding: 22px 0;
+		font-size: 1em;
+		line-height: 1em;
+	}
+
+	nav {
+		float: right;
+		ul {
+			padding-left: 0;
+			margin: 0;
+			list-style: none;
+
+			.clearfix();
+
+			li {
+				float: left;
+				margin-left: 1em;
+				padding: 1em 0;
+
+				&:first-child {
+					margin-left: 0;
+				}
+
+				a {
+					display: block;
+					color: white;
+					border-bottom: 2px solid transparent;
+					text-decoration: none !important;
+					cursor: pointer;
+
+					transition: border 200ms;
+
+					&:hover, &:focus, &.active {
+						border-bottom: 2px solid white;
+					}
+				}
+			}
+		}
+	}
+}

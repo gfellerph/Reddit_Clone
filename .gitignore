@@ -1,3 +1,11 @@
+<<<<<<< HEAD
 node_modules
 bower_components
+=======
+data
+node_modules
+bower_components
+assets/js/*
+assets/css/*
+>>>>>>> gh-pages
 *.cache

@@ -1,0 +1,11 @@
+form(action='/auth/register', method='POST')
+	h1 welcome
+	label(for='username') to you, 
+	input#username(type='text', name='username', placeholder='new redditor')
+	label(for='password') . Enter a 
+	input#password(type='password', name='password', placeholder='passphrase')
+	label(for='email') and your 
+	input#email(type='text', name='email', placeholder='email address')
+	p
+		span and you're good to
+		input.good(type='submit', value='go.')

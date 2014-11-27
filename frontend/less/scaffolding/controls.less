@@ -1,0 +1,83 @@
+input:not([type="submit"]), textarea{
+	width: 250px;
+}
+
+label[for]{
+	color: white;
+}
+
+form {
+	button, input[type="submit"]{
+		background: none;
+		border: none;
+		box-shadow: none;
+		border-radius: 0;
+		outline: none;
+		border-bottom: 2px solid white;
+		transition: color 200ms, border 200ms;
+
+		&.good {
+			color: @light-green--500;
+			border-bottom-color: @light-green--500;
+
+			&:hover, &:focus {
+				color: @teal--500;
+				border-bottom-color: @teal--500;
+			}
+		}
+	}
+}
+
+input[type="text"], input[type="password"]{
+	display: inline;
+	padding: 0;
+	outline: none;
+	background: none;
+	box-shadow: none;
+	border: none;
+	border-radius: 0;
+
+	//font-size: 2em;
+	color: white;
+
+	border-bottom: 2px solid white;
+	
+	transition: border 200ms;
+
+	&:focus {
+		border-bottom-color: @teal--500;
+	}
+}
+
+form {
+	max-width: 660px;
+	padding: 0 2em;
+	margin-right: auto;
+	margin-left: auto;
+	line-height: 2em;
+
+	font-size: 2em;
+
+	@media @mobile {
+		font-size: 1.5em;
+	}
+
+	h1 {
+		color: white;
+		text-transform: uppercase;
+		margin: 2.5em 0;
+		text-align: center;
+		font-size: 2em;
+		line-height: 1.4em;
+		font-family: @roboto-light;
+
+		@media @mobile {
+			margin: 1.5em 0;
+		}
+	}
+
+	p {
+		display: inline;
+		color: white;
+	}
+}

@@ -1,0 +1,36 @@
+.floating-ul(){
+	.clearfix();
+	padding: 0;
+	list-style: none;
+
+	> li{
+		float: left;
+	}
+}
+
+.clearfix(){
+	&:before, &:after{
+		content: ' ';
+		display: table;
+	}
+	&:after{
+		clear: both;
+	}
+}
+
+.absolute(@top: 0, @right: @top, @bottom: @top, @left: @right){
+	position: absolute;
+	top: @top;
+	right: @right;
+	bottom: @bottom;
+	left: @left;
+}
+
+.inner (@height: 1.4em) {
+	> * {
+		
+		margin-top: @height;
+
+		&:first-child { margin-top: 0; }
+	}
+}

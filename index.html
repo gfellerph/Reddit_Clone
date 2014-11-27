@@ -7,15 +7,15 @@
 		<meta charset="UTF-8" />
 		
 		<meta name="keywords" content="" />
-		<meta name="author" content="Maxomedia AG" />
-		<meta name="publisher" content="Maxomedia AG" />
+		<meta name="author" content="HSR Rapperswil School Project" />
+		<meta name="publisher" content="HSR Rapperswil School Project" />
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		
 		<title>Reddit Dolly</title>
 		
-		<link href="css/main.css" rel="stylesheet"/>
+		<link href="/assets/build/main.css" rel="stylesheet"/>
 	</head>
 
 	<body>
@@ -24,147 +24,121 @@
 
 			<!-- HEADER -->
 			<header id="header">
-				<div class="content">
-					<div class="row">
-						<h3>subreddits</h3>
-						<nav id="subreddits">
-							<ul>
-								<li><a href="#">subreddit 1</a></li>
-								<li><a href="#">subreddit 2</a></li>
-								<li><a href="#">subreddit 3</a></li>
-								<li><a href="#">subreddit 4</a></li>
-								<li><a href="#">subreddit 5</a></li>
-								<li><a href="#">subreddit 6</a></li>
-								<li><a href="#">subreddit 7</a></li>
-								<li><a href="#">subreddit 8</a></li>
-								<li><a href="#">subreddit 9</a></li>
-								<li><a href="#">subreddit 10</a></li>
-								<li class="float-right"><a href="#">more</a></li>
-							</ul>
-						</nav>
+
+				<!-- HEADER (BLUE) -->
+				<div class="sticky">
+					<nav>
+						<ul>
+							<li>
+								<a href="#" data-expands="addLink" class="addLink">+</a>
+							</li>
+							<li>
+								<h1>reddit:</h1>
+							</li>
+							<li>
+								<ul class="filters">
+									<li><a href="#" data-group="filter" class="tag active">front</a></li>
+									<li><a href="#" data-group="filter" class="tag">all</a></li>
+									<li><a href="#" data-group="filter" class="tag">random</a></li>
+									<li><a href="#" data-group="filter" data-subreddit="r/funny" class="tag">funny</a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+					<div id="headerRight">
+                        <div class="search col-sm-8">
+                            <input type="text" placeholder="Search">
+                        </div>
+						<div class="profile col-sm-4">
+							<button class="login icon-user">login</button>
+						</div>
 					</div>
-					<div class="row">
-						<div class="subbanner">
-							<a href="/"><img class="logo" src="/gfx/logo.jpg" alt=""></a>
+				</div>
+				
+				<!-- HIDDEN SECTION WITH FORMS ETC. -->
+				<div id="expander">
+					<div class="panel" id="new-post" data-expandable="addLink">
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-7 inner">
+									<ul class="post-title">
+										<li>
+											<h3>Share link:</h3>
+										</li>
+										<li>
+											<ul class="post-type">
+												<li><a class="tag active" data-group="post-type" href="#">Image</a></li>
+												<li><a class="tag" data-group="post-type" href="#">Text</a></li>
+											</ul>
+										</li>
+									</ul>
+									<div class="row">
+										<div class="col-sm-8 inner">
+											<div class="row">
+												<div class="col-sm-2">
+													<span>URL</span>
+												</div>
+												<div class="col-sm-10">
+													<input id="post-url" class="gray" type="text">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-2">
+													<span>Title</span>
+												</div>
+												<div class="col-sm-10">
+													<input id="post-title" class="gray" type="text">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12 text-right">
+													<label for="post-rules">
+														<input id="post-rules" class="gray" type="checkbox">
+														<span>I accept the rules</span>
+													</label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12 text-right">
+													<button class="submit-post blue">Submit</button>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<img src="//placehold.it/300" alt="">
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-5 inner">
+									<h3>Rules:</h3>
+									<ul class="rules">
+										<li>No reactiongifs or HIFW posts</li>
+										<li>No posts with their sole purpose being to communicate with another redditor.</li>
+										<li>No posts for the specific point of it being your reddit brithday.</li>
+										<li>Posts which result in harassment of any individual, subreddit, or other entity may be removed at the moderator's discretion.</li>
+										<li>No politics</li>
+										<li>No pictures of just text</li>
+										<li>No DAE posts</li>
+										<li>No reactiongifs or HIFW posts</li>
+										<li>No posts with their sole purpose being to communicate with another redditor.</li>
+										<li>No posts for the specific point of it being your reddit brithday.</li>
+										<li>Posts which result in harassment of any individual, subreddit, or other entity may be removed at the moderator's discretion.</li>
+										<li>No politics</li>
+										<li>No pictures of just text</li>
+										<li>No DAE posts</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</header>
 
-			<!-- ASIDE -->
-			<nav id="menu">
-
-				<div class="controls">
-					<div class="new-post">
-						<button data-folder="link-post" class="icon-plus">post</button>
-					</div>
-					<div class="search">
-						<span class="icon-search"></span>
-						<input type="text" placeholder="search">
-						<a data-folder="search" href="#" class="icon-cog"></a>
-					</div>
-					<div class="login">
-						<button data-folder="login" class="icon-user">login</button>
-					</div>
-				</div>
-
-				<div class="folder">
-					<section class="link-post">
-						<h3>new link post</h3>
-						<div class="row">
-							<div class="col-sm-6">
-								<label for="">URL</label>
-								<input id="txt_new_link_url" type="text">
-							</div>
-							<div class="col-sm-6">
-								<label for="">Title</label>
-								<input id="txt_new_link_title" type="text">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<label for="">image-URL</label>
-								<input id="txt_new_link_img" type="text">
-							</div>
-							<div class="col-sm-6">
-								<label for="">Tags (separate by space)</label>
-								<input id="txt_new_link_tags" type="text">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12 float-right">
-								<button id="btn_new_link_post">post</button>
-							</div>
-						</div>
-					</section>
-					<section class="text-post">
-						<h3>new text post</h3>
-					</section>
-					<section class="search">
-						
-					</section>
-
-					<section class="login">
-						<h3>login</h3>
-						<form action="#" class="inner">
-							<input type="text" placeholder="username">
-							<p class="error noval">please fill the field</p>
-							<input type="password" placeholder="password">
-							<p class="error noval">please fill the field</p>
-							<p class="error incorrectpassword">password not correct</p>
-							<div class="row">
-								<div class="col-xs-6">
-									<a href="#" class="block">forgot it</a>
-								</div>
-								<div class="col-xs-6">
-									<button class="float-right">login</button>
-								</div>
-							</div>
-						</form>
-					</section>
-
-					<section class="register">
-						<h3>register</h3>
-						<form action="#" class="inner">
-							<input type="text" placeholder="pick a username">
-							<p class="error usernametaken">username is taken</p>
-							<p class="error noval">please fill the field</p>
-							<input type="password" placeholder="pick a password">
-							<p class="error noval">please fill the field</p>
-							<input type="password" placeholder="repeat password">
-							<p class="error nomatch">passwords do not match</p>
-							<p>
-								<span>password strength:</span>
-								<span class="passwordstrength">-</span>
-							</p>
-							<div class="row">
-								<div class="col">
-									<button class="float-right">register</button>
-								</div>
-							</div>
-						</form>
-					</section>
-
-					<section class="credentials">
-						<h3>logged in as xy</h3>
-					</section>
-				</div>
-
-				<section class="goldgoal">
-					<div class="goldprogresswrapper">
-						<div class="goldprogress"></div>
-						<span class="goldpercent">7%</span>
-					</div>
-					<div class="text-center">
-						<button class="icon-dollar supportreddit">support us</button>
-					</div>
-				</section>
-			</nav>
-
 			<!-- CONTENT -->
 			<div id="body">
 				<div class="content">
 					<div class="row">
+<<<<<<< HEAD
 						
 						<section class="mainnav">
 							<div class="row">
@@ -305,88 +279,67 @@
 								</section>
 							</article>
 						</section>
+=======
 
-						<section class="pagenav">
-							<nav>
-								<span>Mehr:</span>
-								<a href="#" class="icon-angle-left">zurück</a>
-								<a href="#" class="icon-angle-right after">weiter</a>
-								<span>or try a</span>
-								<a href="#" class="icon-shuffle">random subreddit</a>
-							</nav>
-						</section>
+						<div class="col-sm-8">
+							<section class="inner">
+								<ol id="posts">
+									<li class="template post">
+										<article>
+											<div class="controls">
+                                                <div>
+                                                	<a data-group="voting" class="upvote icon-up-dir" href="#"></a>
+                                                </div>
+                                                <div>
+                                                	<a data-group="voting" class="downvote icon-down-dir" href="#"></a>
+                                                </div>
+											</div>
+											<div class="score-container">
+												<span class="score"></span>
+											</div>
+											<div class="content">
+												<img src="" alt="" class="thumbnail">
+												<header class="h3 title"></header>
+												<p class="text"></p>
+												<time class="created"></time>
+												<span class="autor"></span>
+
+												<div class="comments">
+                                                    <button class="commentBtn">Kommentar</button>
+													<ul class="comment-container">
+													</ul>
+												</div>
+											</div>
+										</article>
+									</li>
+								</ol>
+							</section>
+						</div>
+
+                        <div class="col-sm-4">
+                            <div id="loginArea">
+                                <h2>funny</h2>
+                                <button class="logout">abmelden</button>
+                            </div>
+                        </div>
+>>>>>>> gh-pages
+
 					</div>
 				</div>
 			</div>
 
 			<!-- FOOTER -->
 			<footer id="footer">
-				<div class="container inner">
-					<section class="text-center">
-						<img src="/gfx/footer.jpg" alt="">
-					</section>
-					
-					<section class="footerlinks">
-						<div class="row">
-							<div class="col-sm-3">
-								<h4>Über</h4>
-								<nav>
-									<ul>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-									</ul>
-								</nav>
-							</div>
-							<div class="col-sm-3">
-								<h4>Hilfe</h4>
-								<nav>
-									<ul>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-									</ul>
-								</nav>
-							</div>
-							<div class="col-sm-3">
-								<h4>Tools</h4>
-								<nav>
-									<ul>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-									</ul>
-								</nav>
-							</div>
-							<div class="col-sm-3">
-								<h4>&lt;3</h4>
-								<nav>
-									<ul>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-										<li><a href="#">some link</a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-					</section>
-
+			
 					<section class="disclaimer ants text-center">
-						<p>Das Benutzen dieser Website begründet sich auf der Verpflichtung unserer <a href="#">User Agreement (updated)</a> und <a href="">Privacy Policy (updated)</a>. © 2014 reddit inc. Alle Rechte vorbehalten.</p>
+						<p>This is a  school project for the HSR Rapperswil, CH</p>
+						<p>© 2014 reddit inc. Alle Rechte vorbehalten.</p>
 						<p>REDDIT and the ALIEN Logo are registered trademarks of reddit inc.</p>
 					</section>
 				</div>
 			</footer>
 		</div>
 
-		<script data-main="js/main.js" src="js/vendor/require.js"></script>
+		<script async src="/assets/build/main.js"></script>
 	</body>
 </html>

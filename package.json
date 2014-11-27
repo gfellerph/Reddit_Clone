@@ -1,0 +1,33 @@
+{
+  "name": "Reddit_Clone",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuelsch/Reddit_Clone"
+  },
+  "dependencies": {
+    "body-parser": "~1.0.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.0.1",
+    "debug": "~0.7.4",
+    "express": "~4.0.0",
+    "extend": "~2.0.0",
+    "jade": "~1.3.0",
+    "morgan": "~1.0.0",
+    "nedb": "~0.11.0",
+    "passport": "^0.2.1",
+    "passport-facebook": "^1.0.3",
+    "passport-google-oauth": "^0.1.5",
+    "passport-twitter": "^1.0.2",
+    "serve-favicon": "~2.1.1",
+    "socket.io": "^1.2.0",
+    "static-favicon": "~1.0.0",
+    "passport-local": "~1.0.0",
+    "express-session": "~1.9.1",
+    "bcrypt-nodejs": "0.0.3",
+    "mongoose": "~3.8.19"
+  }
+}

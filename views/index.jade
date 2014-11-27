@@ -1,0 +1,49 @@
+doctype html
+html(ng-app='reddit')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		
+		//=======
+		// Styles
+		// ======
+
+		link(rel='stylesheet', href='/css/main.css')
+		
+
+		//===============
+		// Header scripts
+		// ==============
+
+		script(src='/js/bower_components/modernizr/modernizr.js')
+		
+	body
+
+
+		//=======
+		// Header
+		//=======
+		include shared/header.jade
+
+
+		//===============
+		// View container
+		//===============
+		section#main(ng-view)
+				
+
+		//=======
+		// Footer
+		//=======
+		include shared/footer.jade
+		
+
+		//===============
+		// Footer scripts
+		// ==============
+
+		// Vendor (cannot be compiled with gulp because of 'require' being used in the script)
+		script(src='/js/bower_components/packery/dist/packery.pkgd.min.js')
+
+		// Custom
+		script(src='/js/main.js')

@@ -1,0 +1,33 @@
+.eyes {
+	&:extend(.clearfix all);
+
+	&:before, &:after {
+		display: inline-block;
+		content: '';
+		height: 9px;
+		width: 9px;
+		border-radius: 12px;
+		background: @red--600;
+		transition: height 50ms;
+	}
+	&:before {
+		margin-right: 15px;
+		animation: blink 30s infinite;
+		animation-delay: 30s;
+	}
+
+	&:after {
+		animation: blink 25s infinite;
+		animation-delay: 13s;
+	}
+}
+
+@keyframes blink {
+	0%, 2% {
+		transform: scaleY(1);
+	}
+
+	0.5%, 0.75% {
+		transform: scaleY(0);
+	}
+}
