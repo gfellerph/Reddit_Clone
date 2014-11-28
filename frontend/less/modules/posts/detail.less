@@ -3,25 +3,24 @@
 
 	.post {
 		display: block;
+		background: black;
+		padding: 3em 0;
 
 		.post--content {
-			text-align: center;
-			background: black;
-			padding: 3em 0;
+			position: relative;
+			margin: 0 auto;
+			
+			@media (min-width: 768px) { width: 750px; }
+			@media (min-width: 992px) { width: 970px; }
+			@media (min-width: 1200px) { width: 1170px; }
 		}
 
 		.post--link, .post--shadow { display: none; }
 
 		.post--meta {
-			position: relative;
-			margin: 0 auto;
-			padding: 2em 15px;
+			background: none;
 
-			&:extend(.inner all);
 
-			@media (min-width: 768px) { width: 750px; }
-			@media (min-width: 992px) { width: 970px; }
-			@media (min-width: 1200px) { width: 1170px; }
 
 			h3 {
 				font-size: 2em;

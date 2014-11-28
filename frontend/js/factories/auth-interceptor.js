@@ -13,7 +13,7 @@ module.exports = [
 				if (rejection.status === 401) {
 					$location.path('/login').search('returnTo', JSON.parse(rejection.data).returnTo);
 				}
-				//return $q.reject(rejection);
+				return $q.reject(rejection);
 			}
 		}
 

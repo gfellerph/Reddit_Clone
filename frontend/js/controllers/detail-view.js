@@ -8,6 +8,7 @@ module.exports = [
 
 		// Form model/Detail view
 		$scope.post = {};
+		$scope.comments = [];
 
 		// Get details of one post
 		$http.get('/api/post/' + $routeParams.id)
@@ -18,6 +19,13 @@ module.exports = [
 				console.log(err);
 			});
 
-		//console.log($scope);
+		// Get comments for that post
+		$http.get('/api/comments/to/' + $routeParams.id)
+			.success ( function (data) {
+				$scope.comments = data;
+			})
+			.error ( function (err) {
+				console.log(err);
+			});
 	}
 ];

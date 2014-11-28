@@ -1,0 +1,17 @@
+.post--content.image {
+	.post--detail-container & { text-align: center; }
+
+	header {
+		//.absolute(auto, 1em, 1em);
+		.inner(0.5em);
+		padding: 1em;
+		background: darken(@grey--900, 5%);
+
+		.post--detail-container &{
+			background: none;
+			padding-bottom: 0;
+		}
+
+		
+	}
+}

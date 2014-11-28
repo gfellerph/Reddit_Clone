@@ -4,12 +4,23 @@ ul.comments {
 	padding: 0;
 
 	> li {
-		background-color: @grey--100;
+		color: @grey--500;
+		background: @grey--800;
 		margin-top: 6px;
 		padding: 0.5em 1em;
 
 		&:first-child { margin-top: 0; }
 	}
+}
+
+.comment{
+	.author {
+		text-align: right;
+	}
+}
+
+.comment--text {
+	color: @grey--100;
 }
 
 .comment--blank-slate {

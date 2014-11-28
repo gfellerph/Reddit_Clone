@@ -67,7 +67,6 @@ app.use('/api', api);
 app.use('/posts', posts);
 app.use('/comments', comments);
 app.use('/auth', auth);
-//app.use('/presentation', presentation);
 
 
 // Handle errors

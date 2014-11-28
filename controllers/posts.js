@@ -22,12 +22,11 @@ exports.create = function (req, res, next) {
 	var post = new Post();
 
 	post.title = req.body.title;
-	post.url = req.body.url;
+	post.url = req.body.url || '';
 	post.posted = Date.now();
 	post.user = req.user._id;
-	post.text = req.body.text;
-	post.type = determineType(req.body.url);
-	console.log(determineType(req.body.url));
+	post.text = req.body.text || '';
+	post.type = determineType(req.body.url, req.body.text);
 
 	post.save( function (err) {
 		if (err) return next(err);
@@ -36,10 +35,11 @@ exports.create = function (req, res, next) {
 	});
 };
 
-function determineType (url) {
+function determineType (url, text) {
 	if (!url || url == '') { return 'text'; }
-	if (url.indexOf('.jpg')>0 || url.indexOf('.png')>0) { return 'image'; }
-	if (url.indexOf('.gif')>0) { return 'gif'; }
+	if (url != '' && text && text != '') return 'textandimage';
+	if (url.indexOf('.jpg')>0 || url.indexOf('.png')>0 || url.indexOf('.gif')>0) { return 'image'; }
+	//if (url.indexOf('.gif')>0) { return 'gif'; }
 	return 'none';
 }
 
@@ -50,7 +50,7 @@ exports.read = function (req, res, next) {
 	Post.findOne({_id: req.params.id})
 		.populate('user', '-local.password')
 		.exec( function (err, post) {
-			if (err) console.log(err);
+			if (err) return next(err);
 			req.post = post;
 			next();
 		}
@@ -67,12 +67,14 @@ exports.update = function (req, res, next) {
 		}
 		, {
 			title: req.body.title
-			,url: req.body.url
+			,url: req.body.url || ''
+			,text: req.body.text || ''
+			,type: determineType(req.body.url, req.body.text)
 			,votes: req.body.votes
 		}
 		, {}
 		, function (err, post) {
-			if (err) throw err;
+			if (err) return next(err);
 			req.post = post;
 			next();
 		}
@@ -84,7 +86,7 @@ exports.update = function (req, res, next) {
 //=======
 exports.delete = function (req, res, next) {
 	Post.remove({_id: req.params.id}, function (err) {
-		if (err) throw err;
+		if (err) return next(err);
 		next();
 	});
 };
@@ -101,7 +103,10 @@ exports.upvote = function (req, res, next) {
 	for(var i = 0; i < req.post.votes.length; i++) {
 		if(req.post.votes[i].userId.toString() == userId) {
 			hasVoted = true;
-			req.post.votes[i].vote = 1;
+
+			// If already upvoted, set to 0
+			if (req.post.votes[i].vote == 1) req.post.votes[i].vote = 0;
+			else req.post.votes[i].vote = 1;
 		}
 	}
 
@@ -150,7 +155,10 @@ exports.downvote = function (req, res, next) {
 	for(var i = 0; i < req.post.votes.length; i++) {
 		if(req.post.votes[i].userId.toString() == req.user._id) {
 			hasVoted = true;
-			req.post.votes[i].vote = -1;
+
+			// if already downvoted, set to 0
+			if (req.post.votes[i].vote == -1) req.post.votes[i].vote = 0;
+			else req.post.votes[i].vote = -1;
 		}
 	}
 

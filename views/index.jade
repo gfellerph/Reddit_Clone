@@ -29,7 +29,7 @@ html(ng-app='reddit')
 		//===============
 		// View container
 		//===============
-		section#main(ng-view)
+		section#main.inner(ng-view)
 				
 
 		//=======
@@ -43,6 +43,7 @@ html(ng-app='reddit')
 		// ==============
 
 		// Vendor (cannot be compiled with gulp because of 'require' being used in the script)
+		script(src='/js/jquery-2.1.1.min.js')
 		script(src='/js/packery.pkgd.min.js')
 
 		// Custom

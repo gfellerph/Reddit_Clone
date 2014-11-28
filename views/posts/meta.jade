@@ -1,0 +1,11 @@
+span Scored 
+span.white {{score()}} 
+span points, got 
+span.white {{commentCount()}} 
+span comments, 
+button.upvote(ng-click='upvote()' ng-class='{active: hasUpvoted()}') upvote
+span  or 
+button.downvote(ng-click='downvote()' ng-class='{active: hasDownvoted()}') downvote
+// TODO: Show only when logged in
+//button.post--edit(ng-click='postCtrl.edit(post)') edit
+//button.post--delete(ng-click='postCtrl.delete(post)') delete

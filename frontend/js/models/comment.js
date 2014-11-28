@@ -9,12 +9,7 @@ module.exports = function (constructor) {
 	var $scope = this;
 
 	var DEFAULT = {
-		text: '',
-		parent: null,
-		posted: Date.now(),
-		user: new User(),
-		score: new Score(),
-		postId: -1
+		text: ''
 	}
 	
 	return extend($scope, DEFAULT, constructor);

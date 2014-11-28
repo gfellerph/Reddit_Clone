@@ -3,9 +3,9 @@
 div.post--detail-container
 	post
 
-div(ng-controller='CommentController as comCtrl')
+div.container.inner
 	commentform
-
+	hr(ng-show='user')
 	ul.comments
 		li(ng-repeat='comment in comments | filter:query | orderBy:order')
 			comment

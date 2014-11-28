@@ -1,0 +1,19 @@
+.post--content.text {
+	padding: 1.5em 1em;
+	background: darken(@grey--900,5%);
+	&:extend(.inner all);
+
+	.post--detail-container & {
+		background: none;
+	}
+
+	header {
+		border-bottom: 1px solid @grey--500;
+		padding-bottom: 0.5em;
+	}
+
+	> p {
+		color: @grey--100;
+		font-size: 1.1em;
+	}
+}

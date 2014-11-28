@@ -8,7 +8,7 @@ var Vote 		= require('../models/vote');
 //=====
 exports.list = function (req, res, next) {
 	// Get all comments of one post
-	Comment.find()
+	Comment.find({post: req.params.id})
 	.populate('user', '-local.password')
 	.exec( function (err, comments){
 		if (err) return next(err);
@@ -24,7 +24,7 @@ exports.read = function (req, res, next) {
 	Comment.findOne({_id: req.params.id})
 	.populate('user', '-local.password')
 	.exec( function (err, comment) {
-		if (err) next(err);
+		if (err) return next(err);
 		req.comment = comment;
 		next();
 	});
@@ -35,13 +35,19 @@ exports.read = function (req, res, next) {
 //=======
 exports.create = function (req, res, next) {
 	var comment = new Comment();
-
+	
+	if (!req.body.text) return next('Comment Controller.create: text is ' + req.body.text);
+	
 	comment.text = req.body.text;
+	comment.posted = Date.now();
 	comment.user = req.user._id;
+	comment.post = req.params.id;
 
 	comment.save( function (err) {
 		if (err) return next(err);
 		req.comment = comment;
+		// Attach user object to comment
+		req.comment.user = req.user;
 		next();
 	});
 };
@@ -60,7 +66,7 @@ exports.update = function (req, res, next) {
 		}
 		, {}
 		, function (err, comment) {
-			if (err) next(err);
+			if (err) return next(err);
 			req.comment = comment;
 			next();
 		}
@@ -72,7 +78,7 @@ exports.update = function (req, res, next) {
 //=======
 exports.delete = function (req, res, next) {
 	Comment.remove({_id: req.params.id}, function (err) {
-		if (err) next(err);
+		if (err) return next(err);
 	})
 };
 
@@ -88,7 +94,10 @@ exports.upvote = function (req, res, next) {
 	for(var i = 0; i < req.comment.votes.length; i++) {
 		if(req.comment.votes[i].userId.toString() == userId) {
 			hasVoted = true;
-			req.comment.votes[i].vote = 1;
+
+			// If already upvoted, set to 0
+			if (req.comment.votes[i].vote == 1) req.comment.votes[i].vote = 0;
+			else req.comment.votes[i].vote = 1;
 		}
 	}
 
@@ -138,7 +147,10 @@ exports.downvote = function (req, res, next){
 	for(var i = 0; i < req.comment.votes.length; i++) {
 		if(req.comment.votes[i].userId.toString() == req.user._id) {
 			hasVoted = true;
-			req.comment.votes[i].vote = -1;
+
+			// If already upvoted, set to 0
+			if (req.comment.votes[i].vote == -1) req.comment.votes[i].vote = 0;
+			else req.comment.votes[i].vote = -1;
 		}
 	}
 

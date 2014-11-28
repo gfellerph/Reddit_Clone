@@ -16,11 +16,10 @@ module.exports = [
 
 			$http.put('/api/post/' + id + '/upvote/', $scope.post)
 				.success ( function (post) {
-					console.log(post);
 					$scope.post.votes = post.votes;
 				})
 				.error ( function (err) {
-					console.log(err);
+					//console.log(err);
 				});
 		}
 
@@ -30,7 +29,6 @@ module.exports = [
 		//=========
 
 		$scope.downvote = function () {
-
 			var id = $scope.post._id;
 
 			$http.put('/api/post/' + id + '/downvote/', $scope.post)
@@ -38,7 +36,7 @@ module.exports = [
 					$scope.post.votes = post.votes;
 				})
 				.error ( function (err) {
-					console.log(err);
+					//console.log(err);
 				});
 		}
 

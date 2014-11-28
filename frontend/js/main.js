@@ -1,6 +1,5 @@
 // Vendor scripts
-require('../bower_components/jquery/dist/jquery.min.js');
-require('../bower_components/angular/angular.js');
+require('../bower_components/angular/angular.min.js');
 require('../bower_components/angular-route/angular-route.js');
 
 //========
@@ -17,15 +16,16 @@ var app = angular.module('reddit', ['ngRoute']);
 // Routes
 var postRoutes 			= require('./routes/post');
 var authRoutes 			= require('./routes/auth');
-var presiRoutes			= require('./routes/presentation');
 
 // Controllers
 var postCtrl 			= require('./controllers/post');
-var listViewCtrl		= require('./controllers/list-view');
+var listViewCtrl		= require('./controllers/list-posts');
 var detailViewCtrl 		= require('./controllers/detail-view');
 var postFormCtrl 		= require('./controllers/post-form');
 var commentCtrl 		= require('./controllers/comment');
+var commentFormCtrl 	= require('./controllers/comment-form');
 var authCtrl 			= require('./controllers/auth');
+var loginCtrl 			= require('./controllers/login-form');
 
 // Directives
 var postDirective 		= require('./directives/post');
@@ -62,7 +62,6 @@ app.config(interceptor);
 
 app.config(postRoutes);
 app.config(authRoutes);
-app.config(presiRoutes);
 
 
 //============
@@ -74,7 +73,9 @@ app.controller('DetailViewController', detailViewCtrl);
 app.controller('ListViewController', listViewCtrl);
 app.controller('PostFormController', postFormCtrl);
 app.controller('CommentController', commentCtrl);
+app.controller('CommentFormController', commentFormCtrl);
 app.controller('AuthController', authCtrl);
+app.controller('LoginFormController', loginCtrl);
 
 
 //===========

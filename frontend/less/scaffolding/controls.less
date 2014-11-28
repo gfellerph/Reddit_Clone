@@ -26,6 +26,21 @@ form {
 			}
 		}
 	}
+	textarea {
+		width: 100%;
+		background: @grey--800;
+		font-size: 18px;
+		border: 2px solid white;
+		border-radius: 0;
+		outline: none;
+		color: white;
+		resize: none;
+		padding: 0 0.5em;
+
+		&:focus {
+			border: 2px solid @teal--500;
+		}
+	}
 }
 
 input[type="text"], input[type="password"]{

@@ -1,31 +1,24 @@
 article.post
 
-	div.post--content.image(ng-show='type=="image"')
+	div.post--content.image(ng-show="post.type=='image'")
 		img(ng-src='{{post.url}}')
+		//div.post--shadow
+		header
+			h3.post--title {{post.title}}
+			div.author
+				include author.jade
+			div.meta
+				include meta.jade
 
-	div.post--content.gif(ng-show='type=="gif"')
-		img(ng-src='{{post.url}}')
+	div.post--content.text(ng-show='post.type=="text" || type=="textandimage"')
+		header
+			h3 {{post.title}}
+			p.author
+				include author.jade
+		img.text-image(ng-show='post.type=="textandimage"' ng-src='{{url}}')
+		p {{post.text}}
 
-	div.post--content.text(ng-show='type=="text"')
-		p {{text}}
+		div.meta
+			include meta.jade
 
 	a.post--link(href="#/post/{{post._id}}")
-	div.post--shadow
-	div.post--meta
-		h3.post--title {{post.title}}
-		p.post--username.ants by 
-			a(href='#') {{post.user.local.username}}
-		p.post--controls.ants
-			span Scored 
-			span.white {{score()}} 
-			span points, got 
-			span.white {{comments.length}} 
-			span comments, 
-			button.upvote(ng-click='upvote(post)' ng-class='{active: hasUpvoted()}') upvote 
-			span or 
-			button.downvote(ng-click='downvote(post)' ng-class='{active: hasDownvoted()}') downvote
-
-			// TODO: Show only when logged in
-			//div
-				//button.post--edit(ng-click='postCtrl.edit(post)') edit
-				//button.post--delete(ng-click='postCtrl.delete(post)') delete

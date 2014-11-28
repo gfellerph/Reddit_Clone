@@ -19,8 +19,10 @@
     @media all and (max-width: 550px) { width: 100%/1; }
   }
 }
+
 .post {
   overflow: hidden;
+  color: @grey--500;
 
   h3 {
     color: white;
@@ -28,13 +30,6 @@
   }
 }
 
-.post--content{
-
-  img {
-    width: 100%;
-  }
-
-}
 .post--shadow {
   .absolute(50%, 5px, 5px);
   background: -webkit-linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, rgba(0,0,0,1) 100%);
@@ -43,45 +38,8 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 
 }
-.post--meta {
-  color: @grey--500;
-  .absolute(auto, 5px, 5px);
-  padding: 0.5em;
-  position: relative;
-  z-index: 2;
-}
 
 .post--link {
-  .absolute(0);
+  .absolute(5px);
   z-index: 1;
-}
-
-.post--controls {
-  button {
-    border: none;
-    background: none;
-    border-radius: 0;
-    outline: none;
-    margin: 0;
-    padding: 0;
-    display: inline;
-    color: white;
-    border-bottom: 2px solid transparent;
-
-    transition: border 200ms;
-
-    &.upvote.active {
-      color: @light-green--500;
-      border-bottom: 2px solid @light-green--500;
-    }
-
-    &.downvote.active {
-      color: @red--500;
-      border-bottom: 2px solid @red--500;
-    }
-
-    &:hover, &:focus {
-      border-bottom: 2px solid white;
-    }
-  }
 }

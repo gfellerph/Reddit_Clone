@@ -1,3 +1,7 @@
-form(novalidate, ng-submit='comCtrl.create()')
-	textarea(ng-model='comment.text')
-	button Add
+form(novalidate, ng-submit='create(comment)', ng-show='user')
+	p Type your 
+	textarea(placeholder='comment' id='text', name='text', ng-model='comment.text')
+	p
+		span and 
+		input.good(type='submit', value='submit')
+		span  it.

@@ -1,9 +1,7 @@
-div.comment--timing
-	span.comment--time {{comment.posted | date: 'hh:mm'}}
-	span.comment--date {{comment.posted | date: 'dd.MM.yyyy'}}
-p.comment--text {{comment.text}}
-p.comment--author {{comment.author}}
-span.comment--score {{comment.score.upvotes - comment.score.downvotes}}
-button.comment--upvote(ng-click='comCtrl.upvote(comment)') +
-button.comment--upvote(ng-click='comCtrl.downvote(comment)') -
-button.comment--answer(ng-click='comCtrl.answer()') Antworten
+article.comment
+	div.meta
+		include meta.jade
+	p.comment--text {{comment.text}}
+	div.author
+		include author.jade
+	//button.comment--answer(ng-click='comCtrl.answer()') Antworten

@@ -10,11 +10,13 @@ module.exports = function (passport) {
 		res.render('../views/auth/login.jade');
 	});
 
-	router.post('/login', passport.authenticate('local-login', {
-		successRedirect: '/',
-		failureRedirect: '/404',
-		failureFlash: true
-	}));
+	router.post('/login', 
+		passport.authenticate('local-login'),
+		function (req, res) {
+			console.log(req.user);
+			res.json(req.user);
+		}
+	);
 
 	// Register
 	router.get('/register', function (req, res) {

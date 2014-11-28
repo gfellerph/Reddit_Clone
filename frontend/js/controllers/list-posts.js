@@ -11,10 +11,13 @@ module.exports = [
 		// List of all posts
 		$scope.posts = [];
 		
+		$scope.$watch('posts', function (posts) {
+			//$('.posts').packery();
+		});
 
 		// Refresh element positions
 		$scope.updatePackery = function () {
-			$('.posts').packery();
+			//$('.posts').packery();
 		};
 
 

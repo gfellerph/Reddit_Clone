@@ -1,10 +1,10 @@
-form(action='/auth/login', method='POST')
-	h1 HELLO,
+form(ng-submit='login(user)' ng-controller='LoginFormController')
+	h1 LOGIN,
 	label(for='email') dear
-	input#username(type='text', name='email', placeholder='redditor', autocomplete='off')
+	input#username(ng-model='user.username',type='text', name='email', placeholder='redditor', autocomplete='off')
 
 	label(for='password') , your password was
-	input#password(type='password', name='password', placeholder='this one', autocomplete='off')
+	input#password(ng-model='user.password', type='password', name='password', placeholder='this one', autocomplete='off')
 
 	p
 		span right? Let's

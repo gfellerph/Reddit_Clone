@@ -1,0 +1,33 @@
+.meta {
+  position: relative;
+  font-size: 0.75em;
+  z-index: 2;
+
+  button {
+    border: none;
+    background: none;
+    border-radius: 0;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    color: white;
+    border-bottom: 2px solid transparent;
+
+    transition: border 200ms;
+
+    &.upvote.active {
+      color: @light-green--500;
+      border-bottom: 2px solid @light-green--500;
+    }
+
+    &.downvote.active {
+      color: @red--500;
+      border-bottom: 2px solid @red--500;
+    }
+
+    &:hover, &:focus {
+      border-bottom: 2px solid white;
+    }
+  }
+}
