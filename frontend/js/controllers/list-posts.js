@@ -6,7 +6,8 @@ module.exports = [
 	'$http',
 	'$location',
 	'$routeParams',
-	function ($scope, $http, $location, $routeParams) {
+	'SocketIO',
+	function ($scope, $http, $location, $routeParams, SocketIO) {
 
 		// List of all posts
 		$scope.posts = [];
@@ -33,5 +34,10 @@ module.exports = [
 			.error ( function (err) {
 				console.log(err);
 			});
+
+		// New post is submitted, add it to list
+		SocketIO.on('post.new', function (data) {
+			$scope.posts.push(data);
+		});
 	}
 ];

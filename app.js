@@ -25,6 +25,19 @@ var http            = require('http');
 var app = express();
 
 
+// Socket IO
+//======================================================================
+var debug = require('debug')('Reddit_Clone');
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+
+
+var io = require('socket.io').listen(server);
+require('./controllers/socket.io')(io).init();
+
 // Configure mongoose
 // ======================================================
 var config = require('./config/modulus');
@@ -67,7 +80,7 @@ app.use(passport.session());
 // Handle routes
 // ======================================================
 app.use('/', routes);
-app.use('/api', api);
+app.use('/api', api(io));
 app.use('/posts', posts);
 app.use('/comments', comments);
 app.use('/auth', auth);
@@ -109,24 +122,7 @@ app.use(function(err, req, res, next) {
 
 
 
-//======================================================================
-// Contents from bin/www
-var debug = require('debug')('Reddit_Clone');
-app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function() {
-  debug('Express server listening on port ' + server.address().port);
-});
-
-
-var io = require('socket.io').listen(server);
-
-io.sockets.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
-        console.log(data);
-    });
-});
 
 // Export the app
 // ======================================================

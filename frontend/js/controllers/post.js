@@ -3,6 +3,7 @@ module.exports = [
 	'$http',
 	'$location',
 	'$routeParams',
+	
 	function ($scope, $http, $location, $routeParams) {
 
 
@@ -13,7 +14,9 @@ module.exports = [
 		$scope.upvote = function () {
 
 			var id = $scope.post._id;
-
+			/*var socket = SocketIOController;
+			console.log(socket);*/
+			//socket.send('post.upvote', $scope.post);
 			$http.put('/api/post/' + id + '/upvote/', $scope.post)
 				.success ( function (post) {
 					$scope.post.votes = post.votes;

@@ -4,7 +4,8 @@ module.exports = [
 	'$scope',
 	'$http',
 	'$routeParams',
-	function ($scope, $http, $routeParams) {
+	'SocketIO',
+	function ($scope, $http, $routeParams, SocketIO) {
 
 		// Form model/Detail view
 		$scope.post = {};
@@ -22,10 +23,20 @@ module.exports = [
 		// Get comments for that post
 		$http.get('/api/comments/to/' + $routeParams.id)
 			.success ( function (data) {
+				console.log(data);
 				$scope.comments = data;
 			})
 			.error ( function (err) {
 				console.log(err);
 			});
+
+		// New comment incoming, check if it belongs to this post
+		SocketIO.on('comment.new', function (data) {
+			if (data.post != $scope.post._id){
+				return;
+			}
+			$scope.comments.push(data);
+			$scope.$apply();
+		});
 	}
 ];

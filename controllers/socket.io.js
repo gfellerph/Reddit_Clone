@@ -1,11 +1,11 @@
 module.exports = function(io) {
+	function init() {
+		io.on('connection', function (socket) {
+			console.log('socket initialized');
+		});
+	}
 
-	console.log('socket.io');
-
-    io.sockets.on('connection', function (socket) {
-        socket.on('captain', function(data) {
-            console.log(data);
-            socket.emit('Hello');
-        });
-    });
+	return {
+		init: init
+	}
 };

@@ -1,10 +1,13 @@
-// Vendor scripts
+// Import bower components scripts
 require('../bower_components/angular/angular.min.js');
-require('../bower_components/angular-route/angular-route.js');
-var socket = io.connect();
-socket.on('news', function(data) {
+require('../bower_components/angular-route/angular-route.min.js');
+require('../bower_components/angular-resource/angular-resource.min.js');
+require('../bower_components/angular-cookies/angular-cookies.min.js');
+require('../bower_components/angular-sanitize/angular-sanitize.min.js');
+require('../bower_components/angular-socket-io/socket.min.js');
+require('../bower_components/socket.io-client/dist/socket.io.min.js');
 
-});
+
 //========
 // The app
 //========
@@ -39,6 +42,7 @@ var postsLoaded 		= require('./directives/posts-loaded');
 // Factories
 var authInterceptor 	= require('./factories/auth-interceptor');
 var authChangeNotifier 	= require('./factories/auth-change-notifier');
+var socketIO 			= require('./factories/socket.io');
 
 // Config
 var interceptor 		= require('./config/interceptor');
@@ -50,6 +54,7 @@ var interceptor 		= require('./config/interceptor');
 
 app.factory('authInterceptor', authInterceptor);
 app.factory('authState', authChangeNotifier);
+app.factory('SocketIO', socketIO);
 
 
 //=======

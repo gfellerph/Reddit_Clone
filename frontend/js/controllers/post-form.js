@@ -20,12 +20,12 @@ module.exports = [
 			var $post = new Post(post);
 			console.log($post);
 			$http.post('/api/post', $post)
-				.success ( function (data) {
-					$location.path('/');
-				})
-				.error ( function (err) {
-					console.log(err);
-				});
+			.success ( function (data) {
+				$location.path('/');
+			})
+			.error ( function (err) {
+				console.log(err);
+			});
 		}
 	}
 ];
