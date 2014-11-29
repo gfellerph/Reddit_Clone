@@ -17,6 +17,7 @@ var auth            = require('./routes/auth')(passport);
 var authCtrl        = require('./controllers/passport')(passport);
 var mongoose        = require('mongoose');
 var flash           = require('connect-flash');
+var http            = require('http');
 
 
 // Initialize the server
@@ -50,6 +51,9 @@ app.use(expressSession({
     secret: 'multipass'
     ,saveUninitialized: true
     ,resave: true
+    ,cookie: {
+        maxAge: 60*60*24
+    }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -99,6 +103,30 @@ app.use(function(err, req, res, next) {
     });
 });
 
+
+
+
+
+
+
+//======================================================================
+// Contents from bin/www
+var debug = require('debug')('Reddit_Clone');
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+
+
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('news', { hello: 'world' });
+    socket.on('my other event', function (data) {
+        console.log(data);
+    });
+});
 
 // Export the app
 // ======================================================

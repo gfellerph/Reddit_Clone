@@ -13,9 +13,8 @@ module.exports = [
 		//=======
 
 		$scope.login = function (user) {
-			var $user = new User(user);
-			console.log($user);
-			$http.post('/auth/login', $user)
+			
+			$http.post('/auth/login', user)
 				.success ( function (data) {
 					//$location.path('/');
 				})

@@ -33,5 +33,6 @@ router.delete('/comment/:id/downvote', auth.allowed, comments.read, comments.del
 // Auth API
 router.get('/user', users.getUser);
 
+
 // Return router
 module.exports = router;

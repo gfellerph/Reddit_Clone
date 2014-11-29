@@ -7,15 +7,15 @@ module.exports = function (passport) {
 
 	// Login
 	router.get('/', function (req, res) {
+		console.log(req.flash('loginMessage'));
 		res.render('../views/auth/login.jade');
 	});
 
-	router.post('/login', 
-		passport.authenticate('local-login'),
-		function (req, res) {
-			console.log(req.user);
-			res.json(req.user);
-		}
+	router.post('/login',
+			passport.authenticate('local-login', {
+				successRedirect: '/',
+				failureRedirect: '/#/login'
+			})
 	);
 
 	// Register

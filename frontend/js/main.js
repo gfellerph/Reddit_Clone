@@ -1,7 +1,10 @@
 // Vendor scripts
 require('../bower_components/angular/angular.min.js');
 require('../bower_components/angular-route/angular-route.js');
+var socket = io.connect();
+socket.on('news', function(data) {
 
+});
 //========
 // The app
 //========

@@ -1,7 +1,7 @@
-form(ng-submit='login(user)' ng-controller='LoginFormController')
+form(action='/auth/login' method='post' ng-controller='LoginFormController')
 	h1 LOGIN,
-	label(for='email') dear
-	input#username(ng-model='user.username',type='text', name='email', placeholder='redditor', autocomplete='off')
+	label(for='username') dear
+	input#username(ng-model='user.username',type='text', name='username', placeholder='redditor', autocomplete='off')
 
 	label(for='password') , your password was
 	input#password(ng-model='user.password', type='password', name='password', placeholder='this one', autocomplete='off')
