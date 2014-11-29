@@ -35,9 +35,36 @@ module.exports = [
 				console.log(err);
 			});
 
+		//==========================
+		// Register Socket io events
+		//==========================
+		
 		// New post is submitted, add it to list
 		SocketIO.on('post.new', function (data) {
 			$scope.posts.push(data);
+			$scope.$apply();
 		});
+
+		// New vote submitted
+		SocketIO.on('post.vote', function (data) {
+			for(var i = 0; i < $scope.posts.length; i++) {
+				if ($scope.posts[i]._id == data._id) {
+					$scope.posts[i] = data;
+					$scope.$apply();
+					return;
+				}
+			}
+		});
+
+		// Post deleted
+		SocketIO.on('post.delete', function (data) {
+			for (var i = 0; i < $scope.posts.length; i++) {
+				if ($scope.posts[i]._id == data._id) {
+					$scope.posts.splice(i, 1);
+					$scope.$apply();
+					return;
+				}
+			}
+		})
 	}
 ];

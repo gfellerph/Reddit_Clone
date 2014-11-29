@@ -65,7 +65,7 @@ app.use(expressSession({
     ,saveUninitialized: true
     ,resave: true
     ,cookie: {
-        maxAge: 60*60*24
+        maxAge: 1000*60*60*24*365
     }
 }));
 app.use(passport.initialize());

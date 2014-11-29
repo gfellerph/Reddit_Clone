@@ -45,15 +45,11 @@ exports.create = function (req, res, next) {
 
 	comment.save( function (err) {
 		if (err) return next(err);
+
 		// Attach user object to comment
 		var nc = comment.toObject();
-		console.log('comment create');
-		console.log(typeof nc);
 		nc.user = req.user;
-		console.log(nc);
 		req.comment = nc;
-		console.log(req.comment);
-		//req.comment.user = req.user;
 		next();
 	});
 };
@@ -85,7 +81,8 @@ exports.update = function (req, res, next) {
 exports.delete = function (req, res, next) {
 	Comment.remove({_id: req.params.id}, function (err) {
 		if (err) return next(err);
-	})
+		next();
+	});
 };
 
 //=======

@@ -5,7 +5,25 @@ module.exports = [
 	'$scope',
 	'$http',
 	'$routeParams',
-	function ($scope, $http, $routeParams) {
+	'SocketIO',
+	function ($scope, $http, $routeParams, SocketIO) {
+
+
+		//=======
+		// Delete
+		//=======
+
+		$scope.deleteComment = function () {
+			var id = $scope.comment._id;
+
+			$http.delete('/api/comment/' + id)
+			.success ( function (res){
+
+			})
+			.error ( function (err) {
+				console.log(err);
+			});
+		}
 
 		//=======
 		// Upvote
@@ -14,9 +32,9 @@ module.exports = [
 		$scope.upvoteComment = function () {
 			var id = $scope.comment._id;
 
-			$http.put('/api/comment/' + id + '/upvote/', $scope.comment)
+			$http.put('/api/comment/' + id + '/upvote/')
 			.success ( function (comment) {
-				$scope.comment.votes = comment.votes;
+				
 			})
 			.error ( function (err) {
 				console.log(err);
@@ -32,15 +50,16 @@ module.exports = [
 
 			var id = $scope.comment._id;
 
-			$http.put('/api/comment/' + id + '/downvote/', $scope.comment)
+			$http.put('/api/comment/' + id + '/downvote/')
 			.success ( function (comment) {
-				$scope.comment.votes = comment.votes;
+				
 			})
 			.error ( function (err) {
 				console.log(err);
 			});
 		}
 
+		// Calculate score
 		$scope.score = function () {
 
 			var score = 0;
@@ -54,6 +73,7 @@ module.exports = [
 			return score;
 		}
 
+		// Check if user has already upvoted
 		$scope.hasUpvoted = function () {
 
 			if(!$scope.comment || !$scope.$root.user || !$scope.comment.votes) return false;
@@ -69,6 +89,7 @@ module.exports = [
 			return upvoted;
 		}
 
+		// Check if user has already downvoted
 		$scope.hasDownvoted = function () {
 
 			if(!$scope.comment || !$scope.$root.user || !$scope.comment.votes) return false;
@@ -82,6 +103,12 @@ module.exports = [
 			}
 
 			return downvoted;
+		}
+
+		// Check if user wrote this comment
+		$scope.isCommentOwner = function () {
+			if (!$scope.user) return false;
+			return $scope.comment.user._id == $scope.user._id;
 		}
 	}
 ];

@@ -2,6 +2,7 @@ var mongoose 	= require('mongoose');
 var Post 		= require('../models/post');
 var User 		= require('../models/user');
 var Vote 		= require('../models/vote');
+var Comment 	= require('../models/comment');
 
 
 //=====
@@ -30,7 +31,9 @@ exports.create = function (req, res, next) {
 
 	post.save( function (err) {
 		if (err) return next(err);
-		req.post = post;
+		var np = post.toObject();
+		np.user = req.user;
+		req.post = np;
 		next();
 	});
 };
@@ -85,9 +88,15 @@ exports.update = function (req, res, next) {
 // DELETE
 //=======
 exports.delete = function (req, res, next) {
-	Post.remove({_id: req.params.id}, function (err) {
-		if (err) return next(err);
-		next();
+	// Remove all comments to this post
+	Comment.remove({post: req.params.id}, function (err) {
+		if (err) next(err);
+
+		// Remove the post
+		Post.remove({_id: req.params.id}, function (err) {
+			if (err) return next(err);
+			next();
+		});
 	});
 };
 
