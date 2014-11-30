@@ -1,7 +1,8 @@
-article.comment
-	div.meta
-		include meta.jade
-	p.comment--text {{comment.text}}
-	div.author
-		include author.jade
-	//button.comment--answer(ng-click='comCtrl.answer()') Antworten
+li
+	article.comment
+		div.meta
+			include meta.jade
+		p.comment--text {{comment.text}}
+		div.author
+			include author.jade
+		//button.comment--answer(ng-click='comCtrl.answer()') Antworten

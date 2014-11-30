@@ -63,7 +63,7 @@ module.exports = [
 		$scope.score = function () {
 
 			var score = 0;
-
+			//console.log('score called ', $scope.comment);
 			if(!$scope.comment.votes) return score;
 
 			for (var i = 0; i < $scope.comment.votes.length; i++) {

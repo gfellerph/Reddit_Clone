@@ -1,32 +1,17 @@
-module.exports = function () {
+module.exports = ['$rootScope', function($rootScope) {
 
 	var linkFunction;
-	var controllerFunction;
-
-	var $posts = $('.posts');
 
 	linkFunction = function (scope, element, attrs) {
-		if(scope.$last){
-			setTimeout(function () {
-				scope.$emit('postsloaded', element, attrs);
-			}, 1);
-		};
-	};
+		var imgLoad = imagesLoaded(element);
 
-	controllerFunction = function ($scope) {
-		$scope.$on('postsloaded', function (e) {
-			//console.log('initialize packery');
-			// Initialize packery
-			/*$posts.packery({
-				//itemSelector: 'li',
-				gutter: 0
-			});*/
+		imgLoad.on('always', function () {
+			console.log('Element.packery', scope, element.packery);
 		});
 	};
 
 	return {
 		link: linkFunction,
-		restrict: 'A',
-		controller: controllerFunction
+		restrict: 'A'
 	}
-};
+}];

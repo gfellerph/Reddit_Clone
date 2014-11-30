@@ -1,15 +1,18 @@
 .posts{
   list-style: none;
+  display: block;
 
   margin-top: 3em;
   margin-bottom: 3em;
+  margin: 3em 1em;
   padding: 0;
 
   &:extend(.clearfix all);
 
   li {
     position: relative;
-    padding: 5px;
+    display: block;
+    padding: 0 0.5em;
     @media all and (max-width: 2499px) { width: 100%/5; }
     @media all and (max-width: 1999px) { width: 100%/4; }
     @media all and (max-width: 1599px) { width: 100%/4; }
@@ -17,6 +20,8 @@
     @media all and (max-width: 991px) { width: 100%/2; }
     @media all and (max-width: 767px) { width: 100%/2; }
     @media all and (max-width: 550px) { width: 100%/1; }
+    margin-bottom: 1em;
+    &.grid-sizer {padding: 0;margin-bottom: 0;}
   }
 }
 

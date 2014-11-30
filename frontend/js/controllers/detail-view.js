@@ -10,6 +10,7 @@ module.exports = [
 		var isItMyPost;
 
 		isItMyPost = function (id) {
+			if (!$scope.post) return false;
 			return $scope.post._id == id;
 		}
 
@@ -53,18 +54,32 @@ module.exports = [
 			}
 		});
 
+		// New vote submitted
+		SocketIO.on('post.vote', function (data) {
+			$scope.post = data;
+			$scope.$apply();
+		});
+
 		SocketIO.on('comment.delete', function (data) {
-			console.log('Deleted comment: ', data);
 			if (!isItMyPost(data.post)) return;
-			console.log('this is my post');
 			for(var i = 0; i < $scope.comments.length; i++) {
 				if ($scope.comments[i]._id == data._id) {
-					console.log('found comment to remove');
 					$scope.comments.splice(i, 1);
 					$scope.$apply();
 					return;
 				}
 			}
+		});
+
+		// Post deleted
+		SocketIO.on('post.delete', function (data) {
+			$scope.post.text = '';
+			$scope.post.url = '';
+			$scope.post.user.local.username = '';
+			$scope.post.title = 'Post has been deleted';
+			$('.post .meta').remove();
+			$('.post .author').remove();
+			$scope.$apply();
 		});
 	}
 ];

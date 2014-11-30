@@ -6,6 +6,7 @@ module.exports = [
 	
 	function ($scope, $http, $location, $routeParams) {
 
+
 		//=======
 		// Delete
 		//=======
@@ -22,8 +23,8 @@ module.exports = [
 		}
 
 		$scope.isPostOwner = function () {
-			if (!$scope.user) return false;
-			return $scope.post.user._id == $scope.user._id;
+			if (!$scope.$parent.user || !$scope.post || !$scope.post.user) return false;
+			return $scope.post.user._id == $scope.$parent.user._id;
 		}
 
 		//=======
@@ -33,9 +34,6 @@ module.exports = [
 		$scope.upvote = function () {
 
 			var id = $scope.post._id;
-			/*var socket = SocketIOController;
-			console.log(socket);*/
-			//socket.send('post.upvote', $scope.post);
 			$http.put('/api/post/' + id + '/upvote/', $scope.post)
 				.success ( function (post) {
 					//$scope.post.votes = post.votes;
@@ -68,6 +66,8 @@ module.exports = [
 		//======
 
 		$scope.score = function () {
+
+			if (!$scope.post) return 0;
 
 			var score = 0;
 

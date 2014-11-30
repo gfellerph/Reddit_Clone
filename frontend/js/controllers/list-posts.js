@@ -1,6 +1,7 @@
 var Post = require('../models/post');
 var Score = require('../models/score');
 
+
 module.exports = [
 	'$scope',
 	'$http',
@@ -11,15 +12,6 @@ module.exports = [
 
 		// List of all posts
 		$scope.posts = [];
-		
-		$scope.$watch('posts', function (posts) {
-			//$('.posts').packery();
-		});
-
-		// Refresh element positions
-		$scope.updatePackery = function () {
-			//$('.posts').packery();
-		};
 
 
 		//=====
@@ -35,10 +27,11 @@ module.exports = [
 				console.log(err);
 			});
 
+
 		//==========================
 		// Register Socket io events
 		//==========================
-		
+
 		// New post is submitted, add it to list
 		SocketIO.on('post.new', function (data) {
 			$scope.posts.push(data);
@@ -49,7 +42,7 @@ module.exports = [
 		SocketIO.on('post.vote', function (data) {
 			for(var i = 0; i < $scope.posts.length; i++) {
 				if ($scope.posts[i]._id == data._id) {
-					$scope.posts[i] = data;
+					$scope.posts[i].votes = data.votes;
 					$scope.$apply();
 					return;
 				}
@@ -65,6 +58,6 @@ module.exports = [
 					return;
 				}
 			}
-		})
+		});
 	}
 ];

@@ -1,11 +1,14 @@
 // Import bower components scripts
-require('../bower_components/angular/angular.min.js');
+require('../bower_components/angular/angular.js');
 require('../bower_components/angular-route/angular-route.min.js');
 require('../bower_components/angular-resource/angular-resource.min.js');
 require('../bower_components/angular-cookies/angular-cookies.min.js');
 require('../bower_components/angular-sanitize/angular-sanitize.min.js');
-require('../bower_components/angular-socket-io/socket.min.js');
-require('../bower_components/socket.io-client/dist/socket.io.min.js');
+/*require('../bower_components/angular-socket-io/socket.min.js');
+require('../bower_components/socket.io-client/dist/socket.io.min.js');*/
+require('../bower_components/angular-masonry/angular-masonry.js');
+
+
 
 
 //========
@@ -38,6 +41,7 @@ var postDirective 		= require('./directives/post');
 var commentDirective 	= require('./directives/comment');
 var authDirective 		= require('./directives/auth');
 var postsLoaded 		= require('./directives/posts-loaded');
+var packeryDirective 	= require('./directives/packery');
 
 // Factories
 var authInterceptor 	= require('./factories/auth-interceptor');
@@ -96,3 +100,4 @@ app.directive('comment', commentDirective.comment);
 app.directive('commentform', commentDirective.commentForm);
 app.directive('authheader', authDirective.authHeader);
 app.directive('postsLoaded', postsLoaded);
+app.directive('packery', packeryDirective);
