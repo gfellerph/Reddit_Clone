@@ -21,6 +21,7 @@ var app = angular.module('reddit', ['ngRoute']);
 // Routes
 var postRoutes 			= require('./routes/post');
 var authRoutes 			= require('./routes/auth');
+var profileRoutes 		= require('./routes/profile');
 
 // Controllers
 var postCtrl 			= require('./controllers/post');
@@ -31,6 +32,7 @@ var commentCtrl 		= require('./controllers/comment');
 var commentFormCtrl 	= require('./controllers/comment-form');
 var authCtrl 			= require('./controllers/auth');
 var loginCtrl 			= require('./controllers/login-form');
+var profileCtrl 		= require('./controllers/profile');
 
 // Directives
 var postDirective 		= require('./directives/post');
@@ -68,8 +70,9 @@ app.config(interceptor);
 // Routes
 //=======
 
-app.config(postRoutes);
 app.config(authRoutes);
+app.config(profileRoutes);
+app.config(postRoutes);
 
 
 //============
@@ -84,6 +87,7 @@ app.controller('CommentController', commentCtrl);
 app.controller('CommentFormController', commentFormCtrl);
 app.controller('AuthController', authCtrl);
 app.controller('LoginFormController', loginCtrl);
+app.controller('ProfileController', profileCtrl);
 
 
 //===========

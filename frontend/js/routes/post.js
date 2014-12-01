@@ -21,12 +21,10 @@ module.exports = [
 			when('/add-link', {
 				templateUrl: '/posts/post-form',
 				controller: 'PostFormController'
-			}).
+			})
 
-			// Error
-			when('/404', {
-				templateUrl: '/posts/404'
-			}).
-			otherwise( { redirectTo: '/404' })
+			.otherwise({
+				redirectTo: '/'
+			});
 	}
 ];

@@ -1,0 +1,16 @@
+div.container
+	h1 {{userById.local.username}}
+
+	h2 Posts
+	ul.posts
+		li.grid-sizer(packery)
+		li(packery ng-repeat='post in posts | filter:query | orderBy:order')
+			post
+	p.post--blank-slate(ng-show='posts.length==0') {{userById.local.username}} has posted nothing until now.
+
+
+	h2 Comments
+	ul.comments
+		li(ng-repeat='comment in comments | orderBy:score')
+			comment
+	p.comment--blank-slate(ng-show='comments.length==0') {{userById.local.username}} has written no comments until now.

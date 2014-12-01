@@ -10,12 +10,12 @@ article.post
 			div.meta
 				include meta.jade
 
-	div.post--content.text(ng-show='post.type=="text" || type=="textandimage"')
+	div.post--content.text(ng-show='post.type=="text" || post.type=="textandimage"')
 		header
 			h3 {{post.title}}
 			p.author
 				include author.jade
-		img.text-image(ng-show='post.type=="textandimage"' ng-src='{{url}}')
+		img.text-image(ng-show='post.type=="textandimage"' ng-src='{{post.url}}')
 		p {{post.text}}
 
 		div.meta

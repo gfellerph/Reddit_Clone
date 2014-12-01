@@ -1,3 +1,3 @@
 span by 
-a {{post.user.local.username}}
+a(href='#/profile/{{post.user._id}}') {{post.user.local.username}}
 time , {{post.posted | date:'dd. MMMM yyyy'}}

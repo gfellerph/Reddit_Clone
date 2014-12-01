@@ -17,6 +17,20 @@ exports.list = function (req, res, next) {
 	});
 };
 
+//=============
+// LIST BY USER
+//=============
+exports.listByUser = function (req, res, next) {
+	Comment.find({user: req.params.id})
+	.populate('user', '-local.password')
+	.exec( function (err, comments) {
+		if (err) return next(err);
+		req.comments = comments;
+		next();
+	});
+};
+
+
 //=====
 // READ
 //=====

@@ -8,7 +8,8 @@ module.exports = [
 	'$location',
 	'$routeParams',
 	'SocketIO',
-	function ($scope, $http, $location, $routeParams, SocketIO) {
+	'$rootScope',
+	function ($scope, $http, $location, $routeParams, SocketIO, $rootScope) {
 
 		// List of all posts
 		$scope.posts = [];

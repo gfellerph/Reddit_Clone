@@ -1,27 +1,23 @@
-module.exports = [ "$rootScope", function($rootScope) {
+
+module.exports = [ function() {
     return {
         restrict: "A",
+        appended: false,
         link: function(scope, element, attrs) {
-            if ($rootScope.packery === undefined || $rootScope.packery === null) {
-                console.log('making packery!');
-                $rootScope.packery = new Packery(element[0].parentElement, {
+            
+            if (scope.packery === undefined || scope.packery === null) {
+                scope.packery = new Packery(element[0].parentElement, {
                     columnWidth: ".grid-sizer",
                     gutter: 0
                 });
-                $rootScope.packery.bindResize();
-                imagesLoaded(element, function() {
-                    $rootScope.packery.appended(element[0]);
-                    $rootScope.packery.layout();
-                });
+                scope.packery.bindResize();
             } else {
-                //$rootScope.packery.bindResize();
-                imagesLoaded(element, function() {
-                    $rootScope.packery.appended(element[0]);
-                    $rootScope.packery.layout();
-                    //$rootScope.packery.items.splice(1,1); // hack to fix a bug where the first element was added twice in two different positions
-                    console.log("that");
-                });
+                scope.packery.appended(element[0]);
             }
+
+            imagesLoaded(element[0], function () {                
+                scope.packery.layout();
+            });
         }
     };
 } ];

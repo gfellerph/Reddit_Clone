@@ -16,6 +16,20 @@ exports.list = function (req, res, next) {
 	});
 };
 
+
+//=============
+// LIST BY USER
+//=============
+exports.listByUser = function (req, res, next) {
+	Post.find({user: req.params.id})
+	.populate('user', '-local.password')
+	.exec( function (err, posts) {
+		if (err) return next(err);
+		req.posts = posts;
+		next();
+	});
+};
+
 //=======
 // CREATE
 //=======
@@ -41,7 +55,7 @@ exports.create = function (req, res, next) {
 function determineType (url, text) {
 	if (!url || url == '') { return 'text'; }
 	if (url != '' && text && text != '') return 'textandimage';
-	if (url.indexOf('.jpg')>0 || url.indexOf('.png')>0 || url.indexOf('.gif')>0) { return 'image'; }
+	if (url.indexOf('.jpg')>0 || url.indexOf('.png')>0 || url.indexOf('.gif')>0 || url.indexOf('.jpeg')>0) { return 'image'; }
 	//if (url.indexOf('.gif')>0) { return 'gif'; }
 	return 'none';
 }

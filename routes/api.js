@@ -33,7 +33,13 @@ module.exports = function (io) {
 
 	// Auth API
 	router.get('/user', users.getUser);
+	router.get('/user/:id', users.getUserById, function (req, res) { res.json(req.userById); });
+
+	// Profile API
+	router.get('/posts/from/user/:id', posts.listByUser, function (req, res) { res.json(req.posts); });
+	router.get('/comments/from/user/:id', comments.listByUser, function (req, res) { res.json(req.comments); });
 	
+	// Helper function
 	function broadcast (eventName, data) {
 		io.sockets.emit(eventName, data);
 	}
