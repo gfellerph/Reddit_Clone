@@ -4,10 +4,6 @@ require('../bower_components/angular-route/angular-route.min.js');
 require('../bower_components/angular-resource/angular-resource.min.js');
 require('../bower_components/angular-cookies/angular-cookies.min.js');
 require('../bower_components/angular-sanitize/angular-sanitize.min.js');
-/*require('../bower_components/angular-socket-io/socket.min.js');
-require('../bower_components/socket.io-client/dist/socket.io.min.js');*/
-require('../bower_components/angular-masonry/angular-masonry.js');
-
 
 
 

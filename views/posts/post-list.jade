@@ -1,16 +1,22 @@
-div
-	a(href='#/add-link') Add a link
-	
-	select(ng-model='order')
-			option(value='posted') posted
-			option(value='title') title
-			option(value='score.upvotes*-1') upvotes
+div.bg-black
+	form
+		span Add a 
+		a.good(href='#/add-link') new link
+		span , display 
 
-	input(ng-change='updatePackery()', type='text', ng-model='query', placeholder='search', id='filter')
+		select()
+			option(value='all' selected) all
+			option(value='dev') only dev 
+			option(value='img') only image
+			option(value='text') only text
 
-	ul.posts(postsLoaded)
-		li.grid-sizer
-		li(packery, ng-repeat='post in posts | filter:query | orderBy:order')
-			post
+		span  posts or 
+		input(type='text', ng-model='query', placeholder='search', id='filter')
+		span  for a specific post.
 
-	p.post--blank-slate(ng-show='posts.length==0') Erfasse den ersten Post
+ul.posts()
+	li.grid-sizer(packery)
+	li(packery ng-repeat='post in posts | filter:query | orderBy:order')
+		post
+
+p.post--blank-slate(ng-show='posts.length==0') Erfasse den ersten Post

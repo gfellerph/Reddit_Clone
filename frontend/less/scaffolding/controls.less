@@ -1,18 +1,40 @@
-input:not([type="submit"]), textarea{
-	width: 250px;
-}
-
-label[for]{
-	color: white;
-}
-
 form {
-	button, input[type="submit"]{
+	max-width: 660px;
+	padding: 2em;
+	margin-right: auto;
+	margin-left: auto;
+	color: white;
+	font-size: 2em;
+
+	@media @mobile {
+		font-size: 1.5em;
+	}
+
+	span, label {
+		line-height: 2em;
+	}
+
+	h1 {
+		color: white;
+		text-transform: uppercase;
+		margin: 2em 0;
+		text-align: center;
+		font-size: 2em;
+		line-height: 1.4em;
+		font-family: @roboto-light;
+
+		@media @mobile {
+			margin: 1.5em 0;
+		}
+	}
+
+	button, input[type="submit"], a{
 		background: none;
 		border: none;
 		box-shadow: none;
 		border-radius: 0;
 		outline: none;
+		text-decoration: none !important;
 		border-bottom: 2px solid white;
 		transition: color 200ms, border 200ms;
 
@@ -26,10 +48,31 @@ form {
 			}
 		}
 	}
+
+	input[type="text"], input[type="password"]{
+		display: inline;
+		padding: 0;
+		outline: none;
+		background: none;
+		box-shadow: none;
+		border: none;
+		border-radius: 0;
+		width: 250px;
+
+		color: white;
+
+		border-bottom: 2px solid white;
+		
+		transition: border 200ms;
+
+		&:focus {
+			border-bottom-color: @teal--500;
+		}
+	}
+
 	textarea {
 		width: 100%;
 		background: @grey--800;
-		font-size: 18px;
 		border: 2px solid white;
 		border-radius: 0;
 		outline: none;
@@ -41,58 +84,22 @@ form {
 			border: 2px solid @teal--500;
 		}
 	}
-}
 
-input[type="text"], input[type="password"]{
-	display: inline;
-	padding: 0;
-	outline: none;
-	background: none;
-	box-shadow: none;
-	border: none;
-	border-radius: 0;
+	select {
+		border: none;
+		background: none;
+		border-radius: none;
+		box-shadow: none;
+		outline: none;
+		border-bottom: 2px solid white;
 
-	//font-size: 2em;
-	color: white;
-
-	border-bottom: 2px solid white;
-	
-	transition: border 200ms;
-
-	&:focus {
-		border-bottom-color: @teal--500;
-	}
-}
-
-form {
-	max-width: 660px;
-	padding: 0 2em;
-	margin-right: auto;
-	margin-left: auto;
-	line-height: 2em;
-
-	font-size: 2em;
-
-	@media @mobile {
-		font-size: 1.5em;
-	}
-
-	h1 {
-		color: white;
-		text-transform: uppercase;
-		margin: 2.5em 0;
-		text-align: center;
-		font-size: 2em;
-		line-height: 1.4em;
-		font-family: @roboto-light;
-
-		@media @mobile {
-			margin: 1.5em 0;
+		&:focus {
+			border-color: @teal--500;
 		}
-	}
-
-	p {
-		display: inline;
-		color: white;
+		
+		option {
+			background: @grey--800;
+			border: 2px solid white;
+		}
 	}
 }

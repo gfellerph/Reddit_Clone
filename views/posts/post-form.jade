@@ -1,15 +1,19 @@
-
 form(ng-submit='create(post)')
-	p Type a
-	input(type='text', placeholder='title', id='title', ng-model='post.title')
+	h1 new post
+	p
+		span Type a
+		input(type='text', placeholder='title', id='title', ng-model='post.title')
 	//label(for='text') and write it down
-	p and a
-	textarea(placeholder='text', id='text', ng-model='post.text')
+	p
+		span and a
+		input(type='text', placeholder='url', id='url-content' ng-model='post.url')
+	p
+		span or an
+		textarea(placeholder='text', id='text', ng-model='post.text')
 
 	//label(for='url-content') or share the link to the
-	p or an
-	input(type='text', placeholder='url', id='url-content' ng-model='post.url')
 	//p
 		//span and
-	p and
-	input.good(type='submit', value='submit.')
+	p
+		span and
+		input.good(type='submit', value='submit it.')

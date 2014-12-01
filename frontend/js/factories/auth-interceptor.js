@@ -3,6 +3,7 @@ module.exports = [
 	, '$location'
 	, function ($q, $location) {
 		var handler = {
+			
 			response: function (response) {
 				if (response.status === 401) {
 					// console.log(response.status);
