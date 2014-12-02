@@ -8,6 +8,6 @@ nav(ng-show='!user')
 nav(ng-show='user')
 	ul
 		li
-			a(href='#profile', ng-class='{active:isActive("/profile")}') {{user.local.username}}
+			a(href='#profile/{{user._id}}', ng-class='{active:isActive("/profile/{{user._id}}")}') {{user.local.username}}
 		li
 			a(ng-click='logout()', ng-class='{active:isActive("/logout")}') logout

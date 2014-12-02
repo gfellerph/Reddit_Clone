@@ -40,13 +40,14 @@ module.exports = [
 		SocketIO.on('comment.new', function (data) {
 			if (!isItMyPost(data.post)) return;
 			$scope.comments.push(data);
+			$scope.post.comments.push(data._id);
 			$scope.$apply();
 		});
 
 		SocketIO.on('comment.vote', function (data) {
 			if (!isItMyPost(data.post)) return;
 			for(var i = 0; i < $scope.comments.length; i++) {
-				if ($scope.comments[i]._id == data._id) {
+				if ($scope.comments[i] == data._id) {
 					$scope.comments[i] = data;
 					$scope.$apply();
 					return;
@@ -56,12 +57,18 @@ module.exports = [
 
 		// New vote submitted
 		SocketIO.on('post.vote', function (data) {
-			$scope.post = data;
+			$scope.post.votes = data.votes;
 			$scope.$apply();
 		});
 
+		// Comment deleted, update post and comment
 		SocketIO.on('comment.delete', function (data) {
 			if (!isItMyPost(data.post)) return;
+			for(var i = 0; i < $scope.post.comments.length; i++) {
+				if ($scope.post.comments[i] == data._id) {
+					$scope.post.comments.splice(i, 1);
+				}
+			}
 			for(var i = 0; i < $scope.comments.length; i++) {
 				if ($scope.comments[i]._id == data._id) {
 					$scope.comments.splice(i, 1);

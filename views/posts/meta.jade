@@ -1,7 +1,7 @@
 span Scored 
 span.white {{score()}} 
 span points, got 
-span.white {{commentCount()}} 
+span.white {{post.comments.length}} 
 span comments, 
 button.upvote(ng-click='upvote()' ng-class='{active: hasUpvoted()}') upvote
 span  or 

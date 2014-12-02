@@ -1,4 +1,4 @@
-
+var Post 		= require('../models/post');
 var Comment 	= require('../models/comment');
 var Vote 		= require('../models/vote');
 
@@ -57,33 +57,44 @@ exports.create = function (req, res, next) {
 	comment.user = req.user._id;
 	comment.post = req.params.id;
 
-	comment.save( function (err) {
+	comment.save( function (err, comment) {
 		if (err) return next(err);
 
-		// Attach user object to comment
-		var nc = comment.toObject();
-		nc.user = req.user;
-		req.comment = nc;
-		next();
-	});
+		Comment.findOne({_id: comment._id})
+		.populate('user', '-local.password')
+		.exec( function (err, comment){
+			if (err) return next(err);
+
+			// Add the comment to the post collection
+			req.post.comments.push(comment._id);
+
+			// Hand the comment object to next middleware
+			req.comment = comment;
+			next();
+		});
+	})
 };
 
 //=======
 // UPDATE
 //=======
 exports.update = function (req, res, next) {
+
+	// Get relevant information from request object
+	var comment = req.comment || req.body;
+	var id = comment.id || req.params.id;
+
 	Comment.update(
 		{
-			_id: req.params.id
+			_id: id
 		}
 		, {
-			text: req.body.text,
-			votes: req.body.votes
+			text: comment.text,
+			votes: comment.votes
 		}
 		, {}
-		, function (err, comment) {
+		, function (err, num, raw) {
 			if (err) return next(err);
-			req.comment = comment;
 			next();
 		}
 	);
@@ -95,6 +106,21 @@ exports.update = function (req, res, next) {
 exports.delete = function (req, res, next) {
 	Comment.remove({_id: req.params.id}, function (err) {
 		if (err) return next(err);
+
+		Post.update(
+			{
+				_id: req.comment.post
+			},
+			{
+				$pull: {comments: req.comment._id}
+			},
+			{
+				multi: true
+			},
+			function(err) {
+				if (err) next(err);
+			}
+		);
 		next();
 	});
 };
@@ -129,9 +155,6 @@ exports.upvote = function (req, res, next) {
 		// Add vote
 		req.comment.votes.push(vote);
 	}
-
-	// Enable update middleware to access the new comment
-	req.body = req.comment;
 
 	// Pass to next middleware
 	return next();
@@ -182,9 +205,6 @@ exports.downvote = function (req, res, next){
 		// Add vote
 		req.comment.votes.push(vote);
 	}
-
-	// Enable update middleware to access the new comment
-	req.body = req.comment;
 
 	// Pass to next middleware
 	return next();

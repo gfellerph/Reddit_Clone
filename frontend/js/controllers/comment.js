@@ -8,7 +8,7 @@ module.exports = [
 	'SocketIO',
 	function ($scope, $http, $routeParams, SocketIO) {
 
-
+console.log('detailview')
 		//=======
 		// Delete
 		//=======
@@ -73,6 +73,7 @@ module.exports = [
 			return score;
 		}
 
+		$scope.commentScore = $scope.score();
 		// Check if user has already upvoted
 		$scope.hasUpvoted = function () {
 

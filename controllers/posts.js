@@ -43,12 +43,17 @@ exports.create = function (req, res, next) {
 	post.text = req.body.text || '';
 	post.type = determineType(req.body.url, req.body.text);
 
-	post.save( function (err) {
+	post.save( function (err, post) {
 		if (err) return next(err);
-		var np = post.toObject();
-		np.user = req.user;
-		req.post = np;
-		next();
+
+		Post.findOne({_id: post.id})
+		.populate('user', '-local.password')
+		.exec( function (err, post) {
+
+			// Hand post object to next middleware
+			req.post = post;
+			next();
+		});
 	});
 };
 
@@ -67,7 +72,6 @@ exports.read = function (req, res, next) {
 	Post.findOne({_id: req.params.id})
 		.populate('user', '-local.password')
 		.exec( function (err, post) {
-			if (err) return next(err);
 			req.post = post;
 			next();
 		}
@@ -78,21 +82,26 @@ exports.read = function (req, res, next) {
 // UPDATE
 //=======
 exports.update = function (req, res, next) {
+
+	// Get needed information from the request object
+	var post = req.post || req.body;
+	var id = post._id || req.params.id;
+
 	Post.update(
 		{
-			_id: req.params.id
+			_id: id
 		}
 		, {
-			title: req.body.title
-			,url: req.body.url || ''
-			,text: req.body.text || ''
-			,type: determineType(req.body.url, req.body.text)
-			,votes: req.body.votes
+			title: post.title
+			,url: post.url || ''
+			,text: post.text || ''
+			,type: determineType(post.url, post.text)
+			,votes: post.votes
+			,comments: post.comments
 		}
 		, {}
-		, function (err, post) {
+		, function (err, num, raw) {
 			if (err) return next(err);
-			req.post = post;
 			next();
 		}
 	);
@@ -145,9 +154,6 @@ exports.upvote = function (req, res, next) {
 		req.post.votes.push(vote);
 	}
 
-	// Enable update middleware to access the new post
-	req.body = req.post;
-
 	// Pass to next middleware
 	return next();
 };
@@ -196,9 +202,6 @@ exports.downvote = function (req, res, next) {
 		// Add vote
 		req.post.votes.push(vote);
 	}
-
-	// Enable update middleware to access the new post
-	req.body = req.post;
 
 	// Pass to next middleware
 	return next();

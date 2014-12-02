@@ -1,6 +1,6 @@
 var mongoose	= require('mongoose');
+
 var VoteSchema	= mongoose.Schema.VoteSchema;
-var CommentSchema = mongoose.Schema.CommentSchema;
 
 var postSchema = mongoose.Schema({
 	title: String,
@@ -9,6 +9,7 @@ var postSchema = mongoose.Schema({
 	posted: Date,
 	type: String,
 	votes: [VoteSchema],
+	comments: [{type: mongoose.Schema.ObjectId, ref: 'Comment'}],
 	user: {type: String, ref: 'User'}
 });
 

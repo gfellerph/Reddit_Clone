@@ -3,9 +3,8 @@ module.exports = [
 	'$http',
 	'$location',
 	'$routeParams',
-	
-	function ($scope, $http, $location, $routeParams) {
-
+	'SocketIO',
+	function ($scope, $http, $location, $routeParams, SocketIO) {
 
 		//=======
 		// Delete
@@ -109,5 +108,11 @@ module.exports = [
 
 			return downvoted;
 		}
+
+		/*SocketIO.on('post.vote', function (data) {
+			console.log('post.vote', data, $scope);
+			$scope.post.votes = data.votes;
+			$scope.$apply();
+		});*/
 	}
 ];
