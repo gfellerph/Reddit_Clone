@@ -52,11 +52,14 @@
   .glyphmap(){
     .font-styling();
     & when (@class = reddit){ content: "\E001" }
+    & when (@class = triangle-down){ content: "\E002" }
     
   }
 }
 
 .gfx-reddit:before { content: "\E001" }
+.gfx-triangle-down:before { content: "\E002" }
 
 
-.after.gfx-reddit:after { content: "\E001" }
+.after.gfx-reddit:after { content: "\E001" }
+.after.gfx-triangle-down:after { content: "\E002" }

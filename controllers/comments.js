@@ -9,7 +9,7 @@ var Vote 		= require('../models/vote');
 exports.list = function (req, res, next) {
 	// Get all comments of one post
 	Comment.find({post: req.params.id})
-	.populate('user', '-local.password')
+	.populate('user score', '-local.password')
 	.exec( function (err, comments){
 		if (err) return next(err);
 		req.comments = comments;

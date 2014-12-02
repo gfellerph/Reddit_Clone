@@ -1,23 +1,25 @@
 div.bg-black.box
 	form
 		span Add a 
-		a.good(href='#/add-link') new link
+		a.good(href='#/add-link') new post
 		span , display 
+	
+		span.select-box
+			i.gfx-triangle-down
+			select(ng-init='ftype = options[0]' filter-posts ng-model='ftype' ng-options='option.value for option in options' ng-change='change(ftype)')
 
-		select()
-			option(value='all' selected) all
-			option(value='dev') only dev 
-			option(value='img') only image
-			option(value='text') only text
-
-		span  posts or 
-		input(type='text', ng-model='query', placeholder='search', id='filter')
+		span  posts ordered by
+		span.select-box
+			i.gfx-triangle-down
+			select(ng-init='sortorder = sortOpt[0]' ng-options='option.value for option in sortOpt' ng-model='sortorder' ng-change='sortorderchange(post)')
+		span  or 
+		input(type='text', ng-model='query', placeholder='search', id='filter', ng-change='searchchange()')
 		span  for a specific post.
 
 div.container
 	ul.posts(post-container)
 		li.grid-sizer(packery)
-		li(packery ng-repeat='post in posts | filter:query | orderBy:order')
+		li(packery posted='{{post.posted}}' score='{{post.score}}' ng-repeat='post in posts | filter:query | filter:typeFilter | orderBy:sortorder.key')
 			post
 
-	p.post--blank-slate(ng-show='posts.length==0') Erfasse den ersten Post
+	p.post--blank-slate(ng-show='posts.length==0') Submit the first post

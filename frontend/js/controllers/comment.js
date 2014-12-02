@@ -60,7 +60,9 @@ console.log('detailview')
 		}
 
 		// Calculate score
-		$scope.score = function () {
+		/*$scope.score = function () {
+
+			console.log('comment score');
 
 			var score = 0;
 			//console.log('score called ', $scope.comment);
@@ -71,9 +73,11 @@ console.log('detailview')
 			}
 			
 			return score;
-		}
+		}*/
 
-		$scope.commentScore = $scope.score();
+		//$scope.commentScore = $scope.score();
+
+
 		// Check if user has already upvoted
 		$scope.hasUpvoted = function () {
 

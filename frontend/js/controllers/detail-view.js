@@ -50,11 +50,28 @@ module.exports = [
 			for(var i = 0; i < $scope.comments.length; i++) {
 				if ($scope.comments[i]._id == data._id) {
 					$scope.comments[i].votes = data.votes;
+					$scope.comments[i].score = data.score;
+
 					$scope.$apply();
 					return;
 				}
 			}
 		});
+
+		 function score (votes) {
+
+			console.log('commen7t score');
+
+			var score = 0;
+			//console.log('score called ', $scope.comment);
+			if(!votes) return score;
+
+			for (var i = 0; i < votes.length; i++) {
+				score += votes[i].vote;
+			}
+			
+			return score;
+		}
 
 		// New vote submitted
 		SocketIO.on('post.vote', function (data) {

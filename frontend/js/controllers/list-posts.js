@@ -44,6 +44,7 @@ module.exports = [
 			for(var i = 0; i < $scope.posts.length; i++) {
 				if ($scope.posts[i]._id == data._id) {
 					$scope.posts[i].votes = data.votes;
+					$scope.posts[i].score = data.score;
 					$scope.$apply();
 					return;
 				}

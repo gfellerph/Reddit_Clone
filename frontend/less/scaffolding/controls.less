@@ -101,4 +101,23 @@ form {
 			border: 2px solid white;
 		}
 	}
+
+	.select-box {
+		position: relative;
+
+		select {
+			position: relative;
+			padding-right: 1em;
+			cursor: pointer;
+		}
+
+		i {
+			&:before {
+				.absolute(0, 0, auto, auto);
+				margin: 0;
+				font-size: 0.7em;
+				line-height: 2.2em;
+			}
+		}
+	}
 }

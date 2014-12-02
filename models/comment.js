@@ -9,21 +9,18 @@ var commentSchema = mongoose.Schema({
 	post: {type: mongoose.Schema.ObjectId, ref: 'Post'},
 	user: {type: String, ref: 'User'},
 	posted: Date
+}, {
+	toObject: { virtuals: true },
+    toJSON: { virtuals: true }
 });
 
-commentSchema.pre('remove', function (next) {
-	console.log('post remove', this.post, this._id);
-	/*this.model('Post').update({
-			_id: this.post
-		},
-		{
-			$pull: {comments: this._id}
-		},
-		{
-			multi: true
-		},
-		next
-	);*/
+commentSchema.virtual('score').get(function() {
+	var score = 0;
+	if(!this.votes) return score;
+	for (var i = 0; i < this.votes.length; i++) {
+		score += this.votes[i].vote;
+	}	
+	return score;
 });
 
 module.exports = mongoose.model('Comment', commentSchema);
