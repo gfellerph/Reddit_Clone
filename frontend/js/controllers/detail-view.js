@@ -44,11 +44,12 @@ module.exports = [
 			$scope.$apply();
 		});
 
+		// New vote for comment submitted
 		SocketIO.on('comment.vote', function (data) {
 			if (!isItMyPost(data.post)) return;
 			for(var i = 0; i < $scope.comments.length; i++) {
-				if ($scope.comments[i] == data._id) {
-					$scope.comments[i] = data;
+				if ($scope.comments[i]._id == data._id) {
+					$scope.comments[i].votes = data.votes;
 					$scope.$apply();
 					return;
 				}
