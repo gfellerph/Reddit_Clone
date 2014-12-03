@@ -35,10 +35,9 @@ module.exports = [
 			var id = $scope.post._id;
 			$http.put('/api/post/' + id + '/upvote/', $scope.post)
 				.success ( function (post) {
-					//$scope.post.votes = post.votes;
 				})
 				.error ( function (err) {
-					//console.log(err);
+					console.log(err);
 				});
 		}
 
@@ -52,10 +51,10 @@ module.exports = [
 
 			$http.put('/api/post/' + id + '/downvote/', $scope.post)
 				.success ( function (post) {
-					//$scope.post.votes = post.votes;
+
 				})
 				.error ( function (err) {
-					//console.log(err);
+					console.log(err);
 				});
 		}
 
@@ -108,11 +107,5 @@ module.exports = [
 
 			return downvoted;
 		}
-
-		/*SocketIO.on('post.vote', function (data) {
-			console.log('post.vote', data, $scope);
-			$scope.post.votes = data.votes;
-			$scope.$apply();
-		});*/
 	}
 ];

@@ -58,21 +58,6 @@ module.exports = [
 			}
 		});
 
-		 function score (votes) {
-
-			console.log('commen7t score');
-
-			var score = 0;
-			//console.log('score called ', $scope.comment);
-			if(!votes) return score;
-
-			for (var i = 0; i < votes.length; i++) {
-				score += votes[i].vote;
-			}
-			
-			return score;
-		}
-
 		// New vote submitted
 		SocketIO.on('post.vote', function (data) {
 			$scope.post.votes = data.votes;
@@ -98,12 +83,7 @@ module.exports = [
 
 		// Post deleted
 		SocketIO.on('post.delete', function (data) {
-			$scope.post.text = '';
-			$scope.post.url = '';
-			$scope.post.user.local.username = '';
-			$scope.post.title = 'Post has been deleted';
-			$('.post .meta').remove();
-			$('.post .author').remove();
+			$scope.post = null;
 			$scope.$apply();
 		});
 	}

@@ -36,7 +36,6 @@ module.exports = [
 		// Get the owner of the profile
 		$http.get('/api/user/' + $routeParams.id)
 		.success( function (data) {
-			console.log(data);
 			$scope.userById = data;
 		})
 		.error( function (err) {

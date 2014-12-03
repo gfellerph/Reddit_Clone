@@ -8,7 +8,6 @@ module.exports = [
 	'SocketIO',
 	function ($scope, $http, $routeParams, SocketIO) {
 
-console.log('detailview')
 		//=======
 		// Delete
 		//=======
@@ -58,24 +57,6 @@ console.log('detailview')
 				console.log(err);
 			});
 		}
-
-		// Calculate score
-		/*$scope.score = function () {
-
-			console.log('comment score');
-
-			var score = 0;
-			//console.log('score called ', $scope.comment);
-			if(!$scope.comment.votes) return score;
-
-			for (var i = 0; i < $scope.comment.votes.length; i++) {
-				score += $scope.comment.votes[i].vote;
-			}
-			
-			return score;
-		}*/
-
-		//$scope.commentScore = $scope.score();
 
 
 		// Check if user has already upvoted

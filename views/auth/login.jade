@@ -9,3 +9,6 @@ form(action='/auth/login' method='post' ng-controller='LoginFormController')
 	p
 		span right? Let's
 		input.good(type='submit', value='rock.')
+
+if message
+	p.error #{message}
