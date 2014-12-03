@@ -9,9 +9,10 @@ The project is available under http://reddit-dolly.herokuapp.com
 ###Prerequisites###
 - node.js
 - node package manager (npm)
+- bower globally installed, see http://bower.io/ for instructions
 
 ###Clone the repo###
-- `git clone https://github.com/tuelsch/Reddit_Clone.git`´
+- `git clone https://github.com/tuelsch/Reddit_Clone.git`
 - move to the root directory of the project `cd ./reddit_clone`
 
 ###Install dependencies###
