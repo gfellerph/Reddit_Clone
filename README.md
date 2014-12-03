@@ -1,4 +1,4 @@
-#Reddit Dolly#
+#Reddit Clone#
 Nicole Bosshard & Philipp Gfeller
 A school project for the HSR Rapperswil
 
