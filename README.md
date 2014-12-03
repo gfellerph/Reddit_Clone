@@ -1,5 +1,6 @@
 #Reddit Clone#
 Nicole Bosshard & Philipp Gfeller
+
 A school project for the HSR Rapperswil
 
 The project is available under http://reddit-dolly.herokuapp.com
