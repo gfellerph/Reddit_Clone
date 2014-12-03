@@ -25,5 +25,5 @@ The project is available under http://reddit-dolly.herokuapp.com
 - `npm start`
 - head over to your browser and visit http://localhost:3000
 
-##Technologies used in the project##
+##Technologies used for the project##
 See http://reddit-dolly.herokuapp.com/#/profile/547cb0f89a146a7c1a9ec986 for an overview of the used technologies. Post questions as a comment.
